@@ -1,0 +1,55 @@
+14-07-2011 - JJD - fr
+=====================
+Création de la classe XoopsFormCheckBoxAll qui hérite de XoopsFormCheckBox.
+Elle permet d'ajoute une case à cocher "tout" qui permet de cocher ou décocher toutes les cases du groupe.
+
+Installation:
+-------------
+Copier le fichier "Xoopsformcheckboxall.php" dans le dossier "/class/xoopsform/" di site
+
+Utilisation:
+------------
+ - faire un inclure de la classe
+ - l'initiliser comme pour la classe XoopsFormCheckBox 
+ - appeler la fonction ->addOptionCheckAll($caption, $pos, $checked);
+	parametres : 
+          $caption : Libellé à afficher (exe : "tout")
+          $pos : position de l'option: -1 = affiché en premier 
+                                        0 = Pas d'affichage de l'options
+                                        1 = affiché en dernier (option par defaut)
+
+         $checked : spécifie si la 'option 'tout' est cochée ou non par defaut (true par défaut)
+
+
+exemple:
+--------
+
+ include_once(XOOPS_ROOT_PATH . '/class/xoopsform/formcheckboxall.php');
+
+ $obChk = new XoopsFormCheckBoxAll("test case à cocher", "chkTest",array(55,54), '<br />');
+
+  // ajout des ooptins
+  $obChk->addOption(55, 'Jean');
+  $obChk->addOption(12, 'Paul');
+  $obChk->addOption(54, 'Raoul');
+  $obChk->addOption(14, 'Marie');
+
+  $obChk->columns = 2;
+
+  //afichage de l'option tout en fin de liste
+  $obChk->addOptionCheckAll('Tout');
+
+  //ou
+  //$obChk->addOptionCheckAll('Tout', -1, true);
+
+
+
+
+  //rendu dans le template
+  $form->addElement($obChk, false);     
+
+  //ou bien affichage direct
+  echo $obChk->render();   
+
+-----------------------------------------------------------------------------------------------------------
+ 

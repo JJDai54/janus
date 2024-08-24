@@ -1,0 +1,91 @@
+<!-- Ce HIDDEN sert a stocké la liste des valeurs selectionné au moment ou l'on appuis sur le bouton de validation -->
+<style>
+.button
+{
+	width:28px;
+	height:18px;
+	background-color:white;
+	background-repeat:no-repeat;
+	border:none;
+}
+</style>
+
+
+<script type="text/javascript" src="<{$params.url}>js/doublelist.js"></script>
+
+<input type="hidden" id="<{$params.name}>" name="<{$params.name}>" value="">
+<input type="hidden" id="<{$params.name}>_array" name="<{$params.name}>_array" value="">
+<input type="hidden" id="<{$params.name}>_resultSeparator" value="<{$params.resultSeparator}>">
+
+<table style="width:<{$params.table_width}>px;">
+<tr>
+	<!-- SELECT qui contient la totalité des valeurs possibles -->
+	<td>
+		<select id="<{$params.name}>_source" size="<{$params.size}>" multiple style="width:<{$params.width}>px;<{$params.styleListOptions}>" ondblclick="dblList_addSelection('<{$params.name}>');"></select>
+	</td>
+
+	<!-- BOUTONS qui choississent les valeurs a garder ou non -->
+	<td><{$params.br}>
+		<input type="button" class="button" style="background:url('<{$params.img}>add.png');" onclick="dblList_addSelection('<{$params.name}>');"><br/><{$params.br}>
+		<input type="button" class="button" style="background:url('<{$params.img}>remove.png');" onclick="dblList_removeSelection('<{$params.name}>');"><br/><{$params.br}>
+		<input type="button" class="button" style="background:url('<{$params.img}>add_all.png');" onclick="dblList_addAll('<{$params.name}>');"><br/><{$params.br}>
+		<input type="button" class="button" style="background:url('<{$params.img}>remove_all.png');" onclick="dblList_removeAll('<{$params.name}>');"><br/><{$params.br}>
+		<input type="button" class="button" style="background:url('<{$params.img}>init.png');" onclick="fill_listes('<{$params.name}>', <{$params.name}>_colonne_texts, <{$params.name}>_colonne_init);">
+<{if $params.showVisible}>                                                                                                            
+		<{$params.br}><{$params.br}>
+    <input type="button" class="button" style="background:url('<{$params.img}>show.png');" onclick="dblList_show('<{$params.name}>', <{$params.name}>_colonne_texts, <{$params.name}>_colonne_init);">
+<{/if}>    
+	</td>
+
+	<!-- SELECT qui contient uniquement les valeurs selectionnées -->
+	<td>
+		<select id="<{$params.name}>_selection" size="<{$params.size}>" multiple style="width:<{$params.width}>px;<{$params.styleListSelected}>" ondblclick="dblList_removeSelection('<{$params.name}>');"></select>
+	</td>
+<{if $params.upDownVisible}>                                                                                                            
+	<!-- BUTONS qui place les valeurs choisit dans l'ordre -->
+	<td>
+		<input type="button" class="button" style="background:url('<{$params.img}>top.png');" onclick="dblList_moveTop('<{$params.name}>');"><br/><br/>
+		<input type="button" class="button" style="background:url('<{$params.img}>up.png');" onclick="dblList_moveUp('<{$params.name}>');"><br/><br/>
+		<input type="button" class="button" style="background:url('<{$params.img}>down.png');" onclick="dblList_moveDown('<{$params.name}>');"><br/><br/>
+		<input type="button" class="button" style="background:url('<{$params.img}>bottom.png');" onclick="dblList_moveBottom('<{$params.name}>');"><br/><br/>	</td>
+	</td>
+<{/if}>    
+  
+<{if $params.buttonVisible}>                                                                                                            
+</tr>
+<tr>
+	<td colspan="4" style="text-align:center;">
+		<input type="button" id="<{$params.name}>_submit" value="" class="button" style="width:74px;height:36px;background:url('<{$params.img}>ok.png');" onclick="dblList_getValue('<{$params.name}>');">
+		<input type="reset"  id="<{$params.name}>_reset"  value="" class="button" style="width:74px;height:36px;background:url('<{$params.img}>no.png');" value="Annuler" onclick="fill_listes('<{$params.name}>', <{$params.name}>_colonne_texts, <{$params.name}>_colonne_init);">
+	</td>
+</tr>
+<{/if}>
+                                                                                                      
+</table>
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+//var <{$params.name}>_resultSeparator = '<{$params.resultSeparator}>';	 
+
+var <{$params.name}>_colonne_texts = {	 
+  <{foreach item=opt key=keySource name=aOptons from=$params.arrayOptions}>
+    '<{$keySource}>' : '<{$opt}>' ,  
+  <{/foreach}>
+};
+
+ 
+var <{$params.name}>_init_droite = '<{foreach item=opt key=keySource name=aSelected from=$params.arraySelected}><{$opt}>,<{/foreach}>';
+var <{$params.name}>_colonne_init   = <{$params.name}>_init_droite.split(',');
+
+
+
+
+//alert('ok');
+//initialisation du second jeux de liste
+//dblList_init('<{$params.name}>', <{$params.size}>, <{$params.width}>);
+fill_listes('<{$params.name}>', <{$params.name}>_colonne_texts, <{$params.name}>_colonne_init);
+//-->
+</SCRIPT>
+

@@ -1,0 +1,128 @@
+[Config]
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.CompileOnBackground=0
+Compilator.ProgSaveAll=0
+Compilator.ProgRunSelection=0
+Compilator.LogType=0
+DefaultDir=J:\Xoops\modules-JJD\Frameworks\JJD-04.01\class\xoopsform\doublelist
+DefaultCP=0
+LogtoEnd=1
+DontOpen=0
+AbsolutePath=0
+FileFormat=0
+ProjectFilesOnly=0
+Extensions=*.*
+[Project tree]
+_doublelist
+	+doublelist
+		+images
+			-blue
+				images\blue\add.png
+				images\blue\add_all.png
+				images\blue\bottom.png
+				images\blue\down.png
+				images\blue\empty.png
+				images\blue\init.png
+				images\blue\no.png
+				images\blue\ok.png
+				images\blue\remove.png
+				images\blue\remove_all.png
+				images\blue\show.png
+				images\blue\Thumbs.db
+				images\blue\top.png
+				images\blue\up.png
+			-default
+				images\default\add.png
+				images\default\add_all.png
+				images\default\bottom.png
+				images\default\down.png
+				images\default\empty.png
+				images\default\init.png
+				images\default\no.png
+				images\default\ok.png
+				images\default\remove.png
+				images\default\remove_all.png
+				images\default\show.png
+				images\default\Thumbs.db
+				images\default\top.png
+				images\default\up.png
+			-green
+				images\green\add.png
+				images\green\add_all.png
+				images\green\bottom.png
+				images\green\down.png
+				images\green\empty.png
+				images\green\init.png
+				images\green\no.png
+				images\green\ok.png
+				images\green\remove.png
+				images\green\remove_all.png
+				images\green\show.png
+				images\green\Thumbs.db
+				images\green\top.png
+				images\green\up.png
+			-grey
+				images\grey\add.png
+				images\grey\add_all.png
+				images\grey\bottom.png
+				images\grey\down.png
+				images\grey\empty.png
+				images\grey\init.png
+				images\grey\no.png
+				images\grey\ok.png
+				images\grey\remove.png
+				images\grey\remove_all.png
+				images\grey\show.png
+				images\grey\Thumbs.db
+				images\grey\top.png
+				images\grey\up.png
+			-magenta
+				images\magenta\add.png
+				images\magenta\add_all.png
+				images\magenta\bottom.png
+				images\magenta\down.png
+				images\magenta\empty.png
+				images\magenta\init.png
+				images\magenta\no.png
+				images\magenta\ok.png
+				images\magenta\remove.png
+				images\magenta\remove_all.png
+				images\magenta\show.png
+				images\magenta\Thumbs.db
+				images\magenta\top.png
+				images\magenta\up.png
+			images\screenshot.jpg
+			images\screenshot.png
+		+js
+			js\doublelist.js
+			js\Issues · harvesthqchosen.URL
+			js\test01.js
+		-ressources
+			-images
+				ressources\images\add.png
+				ressources\images\add_all.png
+				ressources\images\down.png
+				ressources\images\no.png
+				ressources\images\ok.png
+				ressources\images\remove.png
+				ressources\images\remove_all.png
+				ressources\images\screenshot.png
+				ressources\images\up.png
+			ressources\selection.html
+		_doublelist.ppr
+		formdoublelist.php
+		selection.html
+		tplDoubleList.html
+[Open project files]
+0=js\doublelist.js
+1=ressources\selection.html
+[Selected Project Files]
+Main=
+Selected=ressources\selection.html
+[js\doublelist.js]
+TopLine=1
+Caret=39,226
+[ressources\selection.html]
+TopLine=27
+Caret=109,35

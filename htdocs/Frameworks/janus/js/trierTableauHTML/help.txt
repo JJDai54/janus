@@ -1,0 +1,118 @@
+framework "trierTableauHTML" v 02 
+contact : jjdelalandre@orane.fr
+site    : http://jubile.fr
+===============================================================================
+installation:
+-------------
+L'installationde ce script est décrite pour le CMS Xoops,
+cependant il peux être utilisé avec d'autres environnement, en modifiant notamment l'inclusion du script.
+Copier le dossier complet "trierTableauHTML" dans le répertoire "Frameworks"
+Ne pas changer le nom du dossier
+
+===============================================================================
+Utilisation :
+------------
+- Ajouter le script dans la page html
+$xoTheme->addScript(XOOPS_URL . '/Frameworks/trierTableauHTML/trierTableau.js');
+
+- Definisser l'id du tableau html
+- definisser les titre de la table avec la balise "<th>"
+- encadrer les lignes de titres avec la balise "<thead>"
+- À la fin du tableau HTML ajouter un appel à la fonction "trierTableau".
+
+Exemple 1: 
+---------------------------------------------
+<table  id="slides_list"  name="slides_list" class='table table-bordered'>
+<thead>
+    <tr>
+        <th>Titre 1</th>
+        <th>Titre 2</th>
+        <th>Titre 3</th>
+    </tr>
+</thead>
+
+    <tr>
+        <td>Valeur 1</td>
+        <td>Valeur 2</td>
+        <td>Valeur 3</td>
+    </tr>
+</table
+
+<script>
+tth_trierTableau('slides_list', 2, '1|2|3');  
+</script>
+---------------------------------------------
+Prototype de la fonction:
+function tth_trierTableau(idTbl, [defautCol2sort = 0], [cols2sort = ""], [sRoot = ""]){}
+
+idTbl : slides_list est l'id du tableau html
+
+defautCol2sort : indique la colonne de tri par défaut (défaut : 0).
+     La première colonne est la n° 1
+     Mettre 0 pour garder le tri initial
+
+cols2sort : Liste des colonnes que l'on pourra trier. 
+     Une chaine vide mettra toute les colonnes de tri.
+     La première colonne est la n° 1
+     Séparateurs utilisables : | - , ; /
+
+sRoot : chemin URL ou se trouve le dossirt trierTableauHTML.
+     Laisser vide pour Xoops
+     Par défaut http://monsite/Frameworks
+     Utilisé par les images ajoutées au titre des colonnes.
+
+
+===============================================================================            
+il est possible d'initialiser certaines option en ajoutant un appel à la fonction "tth_init" ou "tth_set_value" avant l'appel à "tth_trierTableau"
+Exemple 2:
+---------------------------------------------
+<script>
+tth_init({ "posImg" : 'left', "skin" : 'skin-arrow-green', "asc" : false});
+tth_trierTableau('slides_list', 2, '2|3|4|8|9', '<{$smarty.const.XOOPS_URL}>/Frameworks');  
+</script>
+---------------------------------------------
+
+Exemple 3:
+---------------------------------------------
+<script>
+tth_set_value("cle", new_value){
+tth_trierTableau('slides_list', 2, '2|3|4|8|9', '<{$smarty.const.XOOPS_URL}>/Frameworks');  
+</script>
+---------------------------------------------
+
+liste des options possibles à passer dans le tableaude la fonction "tth_init" ou avec la fonction "tth_set_value"
+------------------------------------------------------
+"posImg"    : 'left' ou 'right' affiche les icones qui indiquent le sens du tri à gauche ou à droite du titre,
+"skin"      : nom du dossier de skin, voir les skins dans le dossier images du frameworks
+"asc"       : boollean, indique le sens de tri par défaut;
+"last_asc"  : false : l'ordre de tri des colonnes inactives restent toujours le même selon "asc"
+              true  : l'ordre de tri change à chaque clique sur la même colonne et prend la dernier actif.
+'localLang' : valeur par défaut = "fr". Défini le type de tri pour les chaine et les dates.
+'margin'    : marges de l'icones sous la forme "0px 4px 0px 4px". valeur par défaut : "0px 4px 0px 4px".
+
+===============================================================================
+Astuces :
+---------
+Pour les colones qui affichent une icone, le tri ne peut pas se faire sur un image.
+Par contre il est possible avant l'icone ou le lien sur l'icone d'ajouter un texte ou une valeur numérique invisible.
+exemple d'une colonne qui affiche status avec une icone "actif/inactif" et un lien permettant de changer le status.
+Noter l'ajout de la balise <span style='visibility:hidden;'><{$slide.actif}></span> avec la valeur numérique , qui permettra le tri sur cette valeur.
+----------------------------------------------
+    <td class='center'>
+        <{* texte invisible pour le tri *}>
+        <span style='visibility:hidden;'><{$slide.actif}></span>
+    
+        <{if $slide.actif == 1}>
+            <{* Enregistrements actifs *}>
+            <a href="slides.php?op=bascule_actif&sld_id=<{$slide.id}>&value=0&sld_theme=<{$slide.theme}>">
+            <img src="<{$sysPathIcon16}>/on.png" title="<{$smarty.const._AM_SLIDER_DESACTIVATE}>">
+            </a>
+        <{else}>
+            <{* Enregistrements inactifs *}>
+            <a href="slides.php?op=bascule_actif&sld_id=<{$slide.id}>&value=1&sld_theme=<{$slide.theme}>">
+            <img src="<{$sysPathIcon16}>/off.png" title="<{$smarty.const._AM_SLIDER_ACTIVATE}>">
+            </a>
+        <{/if}>
+    </td>
+----------------------------------------------
+

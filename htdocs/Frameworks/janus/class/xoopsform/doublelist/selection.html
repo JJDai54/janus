@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<title>Selection de la valeur dans une liste</title>
+
+<style>
+.button
+{
+	width:28px;
+	height:18px;
+	background-color:white;
+	background-repeat:no-repeat;
+	border:none;
+}
+</style>
+
+<script type="text/javascript" src="js/doublelist.js"></script>
+</head>
+
+<body>
+<table>
+  <tr>
+    <td>
+<p>Ce script est adapté de.<a href="http://www.javascriptfr.com/codes/SELECTION-VALEURS-PARTIR-LISTES-CHOIX-MUPLIPLES_38199.aspx">Ryosama
+=&gt;&gt;&gt; ICI</a> et j'ai fait les adaptations suivantes</p>
+<ul>
+  <li>Externalisation des javascript</li>
+  <li>Regroupement des images dans des sous dossier images avec plusieurs
+    jeux&nbsp; pour faciliter le choix du jeu d'images.</li>
+  <li>Remplacement de l'utilisation de l'attribut 'name' par 'id' plus pratique puisqu'il doit être unique.</li>
+  <li>Possibilité d'avoir plusieurs jeux de listes. pour cela j'ai utilisé un system de
+    préfixe.<br>
+    L'id des deux liste commence par ce préfixe et se termine respectivement par '_source' et
+    '_selection'.<br>
+    La balise hidden qui est permet de recueillir la liste des items sélectionné a pour 'id' le
+    préfixe seul..<br>
+    Enfin ce préfixe est passé en paramètre à tous les appels de fonctions pour
+    permettre l'identification des deux listes en jeu.<br>
+    Dans l'exemple le premier jeu utilise le préfixe 'dbList' et le deuxième jeu utilise le préfixe 'JJD'.<br>
+  </li>
+  <li>Ajout du des boutons &quot;top&quot; et &quot;bottom&quot; pour placer la
+    sélection en haut ou en bas de liste.</li>
+  <li>Gestion du 'double-clique' sur chacune des listes.</li>
+  <li>Mise à jour systématique de la leur de retour dans la balise hidden.</li>
+  <li>Forcage de la largeur des listes pour éviter les recadrage intempestif.</li>
+  <li>Choix de la couleur de fond dans la fonction d'initialisation.</li>
+</ul>
+    </td>
+  </tr>
+</table>
+
+<form method="post" action="" name="configuration">
+
+<!-- Ce HIDDEN sert a stocké la liste des valeurs selectionné au moment ou l'on appuis sur le bouton de validation -->
+<input type="hidden" id="dbList" value="zzz">
+<input type="hidden" id="dbList_t" value="">
+
+<table>
+<tr>
+	<!-- SELECT qui contient la totalité des valeur possibles -->
+	<td>
+		<select id="dbList_source" size="10" multiple style="background-color:green;width:200px;" ondblclick="dblList_addSelection('dbList');"></select>
+	</td>
+
+	<!-- BOUTONS qui choississent les valeurs a garder ou non -->
+	<td>
+		<input type="button" class="button" style="background:url('images/blue/add.png');" onclick="dblList_addSelection('dbList');"><br/><br/>
+		<input type="button" class="button" style="background:url('images/blue/remove.png');" onclick="dblList_removeSelection('dbList');"><br/><br/>
+		<input type="button" class="button" style="background:url('images/blue/add_all.png');" onclick="dblList_addAll('dbList');"><br><br>
+		<input type="button" class="button" style="background:url('images/blue/remove_all.png');" onclick="dblList_removeAll('dbList');">
+	</td>
+
+	<!-- SELECT qui contient uniquement les valeurs selectionnés -->
+	<td>
+		<select id="dbList_selection" size="10" multiple style="width:200px" ondblclick="dblList_removeSelection('dbList');"></select>
+	</td>
+
+	<!-- BUTONS qui place les valeurs choisies dans l'ordre -->
+	<td></br>
+		<input type="button" class="button" style="background:url('images/blue/top.png');" onclick="dblList_moveTop('dbList');"><br/><br/>
+		<input type="button" class="button" style="background:url('images/blue/up.png');" onclick="dblList_moveUp('dbList');"><br/><br/>
+		<input type="button" class="button" style="background:url('images/blue/down.png');" onclick="dblList_moveDown('dbList');"> <br/><br/>
+		<input type="button" class="button" style="background:url('images/blue/bottom.png');" onclick="dblList_moveBottom('dbList');"><br/><br/>	</td>
+</tr>
+<tr>
+	<td colspan="4" style="text-align:center;">
+		<input type="button" value="" class="button" style="width:74px;height:36px;background:url('images/blue/ok.png');" onclick="dblList_getValue('dbList');">
+		<input type="reset" value="" class="button" style="width:74px;height:36px;background:url('images/blue/no.png');" value="Annuler" onclick="fill_listes('dbList', colonne_texts, colonne_init);">
+	</td>
+</tr>
+</table>
+<hr>
+<!-- Ce HIDDEN sert a stocké la liste des valeurs selectionné au moment ou l'on appuis sur le bouton de validation -->
+<input type="hidden" id="JJD" value="">
+<input type="hidden" id="JANUS_t" value="">
+
+<table>
+<tr>
+	<!-- SELECT qui contient la totalité des valeur possibles -->
+	<td>
+		<select id="JANUS_source" size="10" multiple style="background-color:green;width:200px;" ondblclick="dblList_addSelection('JJD');"></select>
+	</td>
+
+	<!-- BOUTONS qui choississent les valeurs a garder ou non -->
+	<td>
+		<input type="button" class="button" style="background:url('images/magenta/add.png');" onclick="dblList_addSelection('JJD');"><br/><br/>
+		<input type="button" class="button" style="background:url('images/magenta/remove.png');" onclick="dblList_removeSelection('JJD');"><br/><br/>
+		<input type="button" class="button" style="background:url('images/magenta/add_all.png');" onclick="dblList_addAll('JJD');"><br><br>
+		<input type="button" class="button" style="background:url('images/magenta/remove_all.png');" onclick="dblList_removeAll('JJD');">
+	</td>
+
+	<!-- SELECT qui contient uniquement les valeurs selectionnés -->
+	<td>
+		<select id="JANUS_selection" size="10" multiple style="background-color:yellow;width:200px" ondblclick="dblList_removeSelection('JJD');"></select>
+	</td>
+
+	<!-- BUTONS qui place les valeurs choisit dans l'ordre -->
+	<td>
+		<input type="button" class="button" style="background:url('images/magenta/top.png');" onclick="dblList_moveTop('JJD');"><br/><br/>
+		<input type="button" class="button" style="background:url('images/magenta/up.png');" onclick="dblList_moveUp('JJD');"><br/><br/>
+		<input type="button" class="button" style="background:url('images/magenta/down.png');" onclick="dblList_moveDown('JJD');"><br/><br/>
+		<input type="button" class="button" style="background:url('images/magenta/bottom.png');" onclick="dblList_moveBottom('JJD');"><br/><br/>	</td>
+	</td>
+</tr>
+<tr>
+	<td colspan="4" style="text-align:center;">
+		<input type="button" value="" class="button" style="width:74px;height:36px;background:url('images/magenta/ok.png');" onclick="dblList_getValue('JJD');">
+		<input type="reset" value="" class="button" style="width:74px;height:36px;background:url('images/magenta/no.png');" value="Annuler" onclick="fill_listes('JJD', colonne_texts, colonne_init);">
+	</td>
+</tr>
+</table>
+
+<script type="text/javascript" src="js/test01.js"></script>
+
+
+
+
+
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+
+//initialisation du premier jeux de liste
+dblList_init('dbList', 10, 200, "#99ffff", "#ff99ff");
+fill_listes('dbList', colonne_texts, colonne_init);
+
+//initialisation du second jeux de liste
+dblList_init('JJD', 14, 120);
+fill_listes('JJD', colonne_texts, colonne_init);
+//-->
+</SCRIPT>
+
+</form>
+</body>
+</html>

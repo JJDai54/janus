@@ -1,0 +1,17 @@
+27-09-2011 - Version 1.2 (JJDai fr)
+------------------------------------
+Ajout de la fonction refresheditableSelect(sName)
+Normalement il n'y a pas besoin d'appeler directement les fonctions javaScript du composant;
+Cependant il s'avère que dans certains cas, l'affichage n'est pas correcte, notammnet quand le composant est dans un conteneur masqué (visible=hidden). il semble que cela désactive certaine fonctionalités du CSS.
+Ce cas peut arriver par exemple avec une gestion d'onglets qui affiche que l'onglet courant et masque les autres.
+Pour palier ce problème, il est possible d'appeler la fonction "refreshEditableSelect(sName)" juste après avoir rendu l'objet conteneur visible.
+Si le conteneur était visible lors de la création de la page, il n'est pa utile d'appeler cette fonction.
+Il n'est pas nécéssaire non plus de l'appeler à chaque fois qu'on rend le conteneur visible, la première fois suffit.
+
+17-09-2011 - version 1.1 (JJDai fr)
+------------------------------------
+Création du composant editlist pour xoops (JJD-fr)
+Auteur : Jean-Jacques DELALANDRE
+Adaptation du script de Magne Kalleland sur http://Dhtmlgoodies.com
+
+

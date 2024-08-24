@@ -1,0 +1,40 @@
+
+.notation_bulle{
+position:absolute;
+display: block;
+border-radius: 10px;
+background-color:yellow;
+text-align: center;
+padding-top: 5px;
+padding-left: 5px;
+padding-right: 5px;
+padding-bottom: 0px;
+z-index:99;
+}
+
+
+.notation_component{
+cursor : none;
+position:absolute;
+display: block;/**/
+}
+
+.notation_masque{
+position:absolute;
+display: block;/**/
+left:0px;
+top:0px;
+border:0;
+background-color:transparent;  /*   #888888     */
+}
+
+.notation_debug{
+position:absolute;
+display: block;
+left:0px;
+top:0px;
+width = 250px;
+border:1px;
+background-color:#BBBBBB;  /*        transparent*/
+}
+
