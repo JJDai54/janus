@@ -167,7 +167,7 @@ $modId = '';
         $modId = " - mid = " . $this->module->getVar('mid');
     }
     $xoopsUrl = XOOPS_URL;
-    $aboutWy = _AM_JANUS_ABOUT_BY;
+    $aboutWy = _CO_JANUS_ABOUT_BY;
  
  $langArr = \JANUS\languageFWJJD2Array('admin');
  //echoArray($langArr);   
@@ -183,12 +183,12 @@ $html =  <<<___contribution___
             {$this->module->getInfo('name')} - {$this->module->getInfo('version')} - {$this->module->getInfo('module_status')}{$modId}
             <div style="line-height: 16px; font-weight: bold;">
         </div>
-        {$langArr['_AM_JANUS_ABOUT_BY']} : {$this->module->getInfo('author')}
+        {$langArr['_CO_JANUS_ABOUT_BY']} : {$this->module->getInfo('author')}
         </div>
         <div style="line-height: 16px;">
-            {$langArr['_AM_JANUS_ABOUT_LICENCE']} : <a href="{$license_url}" target="_blank" rel="external">{$this->module->getInfo('license')}</a>
+            {$langArr['_CO_JANUS_ABOUT_LICENCE']} : <a href="{$license_url}" target="_blank" rel="external">{$this->module->getInfo('license')}</a>
             <br>
-            {$langArr['_AM_JANUS_ABOUT_WEB_SITE']} : <a href="{$this->module->getInfo('author_website_url')}" target="_blank">{$this->module->getInfo('author_website_name')}</a>
+            {$langArr['_CO_JANUS_ABOUT_WEB_SITE']} : <a href="{$this->module->getInfo('author_website_url')}" target="_blank">{$this->module->getInfo('author_website_name')}</a>
         </div>
 </td></tr></table>
 ___contribution___;
@@ -204,7 +204,7 @@ ___contribution___;
  * ****************************** */
 function contribution($codePaypal, $btnImg, $pixelImg){
     
-  $whyDonate = _AM_JANUS_ABOUT_WHY_DONATE;  
+  $whyDonate = _CO_JANUS_ABOUT_WHY_DONATE;  
 
 $html =  <<<___contribution___
 <div style=\"clear: both; height: 1em;\"></div>
@@ -233,7 +233,7 @@ function getBox(){
   $box['module']['content'] = $this->htmlTableInfo();
 
   /* ------------------------- Module -----------------------------*/
-  $box['paypal']['legend'] = _AM_JANUS_ABOUT_CONTRIBUTION;
+  $box['paypal']['legend'] = _CO_JANUS_ABOUT_CONTRIBUTION;
   $box['paypal']['content'] = $this->contribution($this->_codePaypal, $this->_btnImg , $this->_pixelImg);
 
   /* ------------------------- Header Info -----------------------------*/

@@ -87,20 +87,26 @@ Charge les fichiers de langues
 function loadLanguageJanus($file){
 global $xoopsConfig;
   // au cas ou un autre module tenterait de charger les constantes de langue  
-  //if(defined ('_CO_JANUS_MONTH_DAY_FR')) return true;
+  if(defined ('_CO_JANUS_ABOUT_BY')) return true;
   
   $root =  JANUS_PATH . "/language/"; 
   $lang = $root . $xoopsConfig['language'] . "/" . $file . ".php";
 //echo "<hr>lg = {$lang}<hr>";
   if (!file_exists($lang)){
-    $lang = $root . "english/common.php";
+    $lang = $root . "english/{$file}.php";
   }
-//echo "<hr>lg = {$lang}<hr>";
-  include_once ($lang);
-  return true;
   
+  if (file_exists($lang)){
+//echo "<hr>lg [{$file}] = {$lang}<hr>";
+    include_once $lang;
+  }
+  return true;
+exit;  
 }
 
+/***************************************************************************
+Charge les fichiers JS
+****************************************************************************/
 function load_js($file, $suffix = '.min'){
 global $xoTheme;
     $mini = str_replace('.js', $suffix  . '.js',$file);

@@ -75,8 +75,6 @@ include_once (JANUS_PATH . "/Goffy/class/XoopsConfirm.php");
  *                  fichiers de langues
  * constante de langue générique de l'admin (Definition tout module, new,add,edit,...)
  * *******************************************************************/
-loadLanguageJanus('admin');
-//loadLanguageJanus('main');
 loadLanguageJanus('common');
 
 ?>

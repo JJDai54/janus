@@ -36,8 +36,8 @@ function getForm(){
   
     $url =  XOOPS_URL . '/modules/' .  $this->dirName . '/admin/clone.php';
     $form  = new \XoopsThemeForm(\sprintf("Cloner le module %s", $this->dirName), 'clone', $url, 'post', true);
-    $clone = new \XoopsFormText(_CLONE_NAME, 'clone', 20, 20, '');
-    $clone->setDescription(_CLONE_NAME_DSC);
+    $clone = new \XoopsFormText(_CO_JANUS_CLONE_NAME, 'clone', 20, 20, '');
+    $clone->setDescription(_CO_JANUS_CLONE_NAME_DSC);
     $form->addElement($clone, true);
 
     $form->addElement(new \XoopsFormHidden('op', 'submit'));
@@ -68,7 +68,7 @@ function clone($clone){
     $url =  XOOPS_URL . '/modules/' .  $dirName . '/admin/clone.php';
     //---------------------------------------------------------
     if (!$this->checkName($clone)){
-      \redirect_header($url, 3, \sprintf(\_CLONE_INVALID_NAME, $clone));
+      \redirect_header($url, 3, \sprintf(\_CO_JANUS_CLONE_INVALID_NAME, $clone));
     }
     //---------------------------------------------------------
 
@@ -76,7 +76,7 @@ function clone($clone){
     
     //check if name is valid
     if (empty($clone) || \preg_match('/[^a-zA-Z0-9\_\-]/', $clone)) {
-        \redirect_header($url, 3, \sprintf(_CLONE_INVALID_NAME, $clone));
+        \redirect_header($url, 3, \sprintf(_CO_JANUS_CLONE_INVALID_NAME, $clone));
     }
 
     // Check wether the cloned module exists or not
@@ -84,7 +84,7 @@ function clone($clone){
     $pathClone  = XOOPS_ROOT_PATH . '/modules/' . $clone;
 
     if ($clone && \is_dir($pathClone)) {
-        \redirect_header($url, 3, \sprintf(_CLONE_EXISTS, $clone));
+        \redirect_header($url, 3, \sprintf(_CO_JANUS_CLONE_EXISTS, $clone));
     }
 
     $patterns = [
@@ -103,7 +103,7 @@ function clone($clone){
     
     echo $this->getFormResult($clone);
     //return $msg;
-    //redirect_header($url, 8, \sprintf(_CLONE_EXISTS, $msg));
+    //redirect_header($url, 8, \sprintf(_CO_JANUS_CLONE_EXISTS, $msg));
 
     //$GLOBALS['xoopsTpl']->assign('result', $msg);
 
@@ -164,12 +164,12 @@ function cloneFolder($path, $clone)
 function result($clone){
         $msg = '';
         if (\is_dir(XOOPS_ROOT_PATH . '/modules/' . \mb_strtolower($clone))) {
-            $msg .= \sprintf(_CLONE_CONGRAT, "<a href='" . \XOOPS_URL . "/modules/system/admin.php?fct=modulesadmin&op=installlist'>" . \ucfirst(\mb_strtolower($clone)) . '</a>') . "<br>\n";
+            $msg .= \sprintf(_CO_JANUS_CLONE_CONGRAT, "<a href='" . \XOOPS_URL . "/modules/system/admin.php?fct=modulesadmin&op=installlist'>" . \ucfirst(\mb_strtolower($clone)) . '</a>') . "<br>\n";
             if (!$this->logocreated) {
-                $msg .= _CLONE_IMAGEFAIL;
+                $msg .= _CO_JANUS_CLONE_IMAGEFAIL;
             }
         } else {
-            $msg .= _CLONE_FAIL;
+            $msg .= _CO_JANUS_CLONE_FAIL;
         }
         return $msg;
         //$GLOBALS['xoopsTpl']->assign('result', $msg);

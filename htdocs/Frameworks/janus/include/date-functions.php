@@ -81,3 +81,38 @@ function isDateBetween($dateBegin, $dateEnd, $dateBeginOk = true, $dateEndOk = t
     
     return ($ret) ? 1 : 0 ;
 }
+
+/**************************************************************
+ * 
+ * ************************************************************/
+function getConstArr($exp, $sep =',',  $casse = 0){
+    if($casse > 0){
+        $exp = strtoupper($exp);
+    }else if($casse < 0){
+        $exp = strtolower($exp);
+    }
+    return explode($sep, $exp);
+}
+/**************************************************************
+ * 
+ * ************************************************************/
+function getDaysArr($shortName = true,  $casse = 0){
+    if($shortName){
+        return getConstArr(_CO_JANUS_DAY_3, ',',  $casse);
+    }else{
+        return getConstArr(_CO_JANUS_DAY, ',',  $casse);
+    }
+}
+
+/**************************************************************
+ * 
+ * ************************************************************/
+function getMonthArr($shortName = true,  $casse = 0){
+    if($shortName){
+        return getConstArr(_CO_JANUS_MONTH_3, ',',  $casse);
+    }else{
+        return getConstArr(_CO_JANUS_MONTH, ',',  $casse);
+    }
+}
+
+

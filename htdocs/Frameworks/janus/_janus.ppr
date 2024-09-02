@@ -769,12 +769,13 @@ _janus
 		+Goffy
 			+class
 				Goffy\class\index.html
+				J:\Xoops\_JJD\modules-JJD\janus\projet\htdocs\Frameworks\janus\Goffy\class\Resizer.php
 				Goffy\class\XoopsConfirm.php
 			Goffy\index.html
 			Goffy\read_me.txt
 		-images
-			-icons
-				-16
+			+icons
+				+16
 					images\icons\16\0.png
 					images\icons\16\1.png
 					images\icons\16\1day.png
@@ -1149,7 +1150,7 @@ _janus
 				images\icons\_img.html
 				images\icons\index.html
 			images\index.html
-		-include
+		+include
 			include\cloneModule.php
 			include\constantes.php
 			include\date-functions.php
@@ -1159,7 +1160,7 @@ _janus
 			include\index.html
 			include\language-functions.php
 			include\xform-functions.php
-		-js
+		+js
 			-trierTableauHTML
 				-images
 					-chiffres_Garamond
@@ -1216,17 +1217,13 @@ _janus
 				js\trierTableauHTML\trierTableau.js
 			js\config_highslide.js
 			js\index.html
-		-language
-			-english
-				language\english\admin.php
+		+language
+			+english
 				language\english\common.php
 				language\english\index.html
-				language\english\modinfo.php
-			-french
-				language\french\admin.php
+			+french
 				language\french\common.php
 				language\french\index.html
-				language\french\modinfo.php
 			language\index.html
 		-ressources
 			ressources\logoModuleVierge.png
@@ -1242,9 +1239,15 @@ _janus
 0=docs\changelog.txt
 1=Goffy\class\XoopsConfirm.php
 2=css\style-item-design.css
+3=include\xform-functions.php
+4=language\french\common.php
+5=language\english\common.php
+6=load.php
+7=include\globales-functions.php
+8=include\date-functions.php
 [Selected Project Files]
 Main=
-Selected=css\style-item-design.css
+Selected=include\date-functions.php
 [docs\changelog.txt]
 TopLine=1
 Caret=1,17
@@ -1252,5 +1255,23 @@ Caret=1,17
 TopLine=1
 Caret=1,1
 [css\style-item-design.css]
-TopLine=61
+TopLine=13
 Caret=1,13
+[include\xform-functions.php]
+TopLine=134
+Caret=9,153
+[language\french\common.php]
+TopLine=17
+Caret=1,49
+[language\english\common.php]
+TopLine=14
+Caret=1,50
+[load.php]
+TopLine=43
+Caret=18,78
+[include\globales-functions.php]
+TopLine=68
+Caret=3,100
+[include\date-functions.php]
+TopLine=80
+Caret=1,118

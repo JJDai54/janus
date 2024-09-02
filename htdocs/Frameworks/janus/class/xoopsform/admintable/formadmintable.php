@@ -133,9 +133,9 @@ tbl->columns->caption
      *     caption : Titre a afficher pour chaque colonne
      *     style   : attribut html style pour l'ffichage du ttre.  
      * exemple:
-     *     $t->addTitle('idNotedef',   _AM_JANUS_ID,   'align="center"');
-     *     $t->addTitle('name',        _AM_JANUS_NAME, 'width="300px"');
-     *     $t->addTitle('description', _AM_JANUS_DESCRIPTION);
+     *     $t->addTitle('idNotedef',   _CO_JANUS_ID,   'align="center"');
+     *     $t->addTitle('name',        _CO_JANUS_NAME, 'width="300px"');
+     *     $t->addTitle('description', _CO_JANUS_DESCRIPTION);
      
      * @var array mixed array
      * @access private
@@ -144,7 +144,7 @@ tbl->columns->caption
     
     /**
      * _extraRow : tableau de description des colonnes. 
-     *     $t->addTitle('description', _AM_JANUS_DESCRIPTION);
+     *     $t->addTitle('description', _CO_JANUS_DESCRIPTION);
      
      * @var array mixed array
      * @access private
@@ -500,7 +500,7 @@ tbl->columns->caption
    * function raccourcis pour cajouter une colonne "actif"   
    ********************************************************************/    
   function addColumn_actif($link, $columnName = 'actif'){
-    $this->addColumn($columnName, _AM_JANUS_ACTIF, 'mi', null, 50, "c");
+    $this->addColumn($columnName, _CO_JANUS_ACTIF, 'mi', null, 50, "c");
     $this->matchIcon(0, 'interdit.gif', $link, JANUS_OP_ACTIVATE, 'Inactif');
     $this->matchIcon(1, 'smiley.gif', $link, JANUS_OP_ACTIVATE, 'Actif');
   }     
@@ -943,7 +943,7 @@ tbl->columns->caption
      * puis utiliser ce code soit dans le onclick d'un bouton                   
      * <input type='button' onclick='{$extra}' value='Valider' title='' />
      * soit avec les bouton du framework moduleadmin               
-     * $index_admin->addItemButton(_AM_JANUS_ACTIVATE_SELECTION, $extra, 'add');                    
+     * $index_admin->addItemButton(_CO_JANUS_ACTIVATE_SELECTION, $extra, 'add');                    
      *********************************************************************/
   function setForm($name, $action, $opAttributName='op', $prefixName=''){ 
   
@@ -1194,7 +1194,7 @@ tbl->columns->caption
       //-------------------------------------------
       // echoArray($this->_newRows);//jexit;
       if(isset($this->_newRows['rows'])){
-      $t[] = "<tr><th colspan='{$this->_cols}' >"._AM_JANUS_NEW_ENTRY."</th></tr>";
+      $t[] = "<tr><th colspan='{$this->_cols}' >"._CO_JANUS_NEW_ENTRY."</th></tr>";
       //$this->setbackground('FFFFFF','EFEFEF');
         //$this->_render_empty();
         $row = $this->_newRows['dataEmpty'];
@@ -1285,7 +1285,7 @@ tbl->columns->caption
         $this->_cols ++;
      }
 //     if (count($this->_actions) > 0) 
-//         $t[] = "<td align='center'>" . _AM_JANUS_ACTIONS . "</td>";
+//         $t[] = "<td align='center'>" . _CO_JANUS_ACTIONS . "</td>";
     $t[] = "</tr>";
     //----------------------------------------------------------------------  
     $html = implode ("\n", $t);
