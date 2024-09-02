@@ -18,7 +18,7 @@ Extensions=*.*
 [Project tree]
 _janus
 	+janus
-		-class
+		+class
 			-xoopsform
 				-admintable
 					-doc
@@ -757,7 +757,7 @@ _janus
 			class\index.html
 			class\Permissions.php
 			class\tools.php
-		-css
+		+css
 			css\index.html
 			css\style-item-color.css
 			css\style-item-color-old.css
@@ -766,8 +766,8 @@ _janus
 		+docs
 			docs\changelog.txt
 			docs\index.html
-		-Goffy
-			-class
+		+Goffy
+			+class
 				Goffy\class\index.html
 				Goffy\class\XoopsConfirm.php
 			Goffy\index.html
@@ -1239,14 +1239,18 @@ _janus
 		load.php
 		version.php
 [Open project files]
-0=Nouveau1.txt
-1=docs\changelog.txt
+0=docs\changelog.txt
+1=Goffy\class\XoopsConfirm.php
+2=css\style-item-design.css
 [Selected Project Files]
 Main=
-Selected=docs\changelog.txt
-[Nouveau1.txt]
-TopLine=1
-Caret=1,1
+Selected=css\style-item-design.css
 [docs\changelog.txt]
 TopLine=1
-Caret=1,14
+Caret=1,17
+[Goffy\class\XoopsConfirm.php]
+TopLine=1
+Caret=1,1
+[css\style-item-design.css]
+TopLine=61
+Caret=1,13
