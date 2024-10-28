@@ -24,6 +24,7 @@ and open the template in the editor.
      -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
      border-radius: 3px;
+     z-index:999;
 
  }
 
@@ -50,8 +51,8 @@ and open the template in the editor.
      padding: 0px;
      top:5px;
      left:5px;
-     width: 48px; /* sil */
-     height: 48px; /* sil */
+     /* width: 48px; sil */
+     /* height: 48px; sil */
 
      -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
@@ -74,15 +75,21 @@ and open the template in the editor.
      padding: 0px;
      width: 170px; /* sil */
      height: 170px; /* sil */
-     border: 1px solid #EEEEEE;
-     background-color: #EEEEEE;
+     border: 2px solid #A3A3A3;
+
+    background:lightgrey;
 
      -webkit-border-radius: 3px;
      -moz-border-radius: 3px;
      border-radius: 3px;
      
-     
-     overflow:auto;
+    box-shadow: 0 20px 10px -10px rgba(255, 255, 255, 0.3) inset;
+    -moz-box-shadow : 0 20px 10px -10px rgba( 255, 255, 255, 0.3) inset;
+    -webkit-box-shadow : 0 20px 10px -10px rgba( 255, 255, 255, 0.3) inset;
+
+     /*overflow:auto;*/
+    overflow-x: hidden ;
+    overflow-y: scroll;
      /*
      -webkit-overflow-scrolling: touch;
      */
@@ -93,8 +100,8 @@ and open the template in the editor.
      position: relative;
      margin: 5px 0px 0px 5px;
      padding: 0px;
-     width: 48px; /* sil */
-     height: 48px; /* sil */
+      /*width: 48px; sil */
+   /*    height: 48px;sil */
      border: 1px solid #CCCCCC;
      background-color: #FFFFFF;
 
@@ -114,8 +121,8 @@ and open the template in the editor.
      position: relative;
      margin: 5px 0px 0px 5px;
      padding: 0px;
-     width: 48px; /* sil */
-     height: 48px; /* sil */
+     /* width: 48px; sil */
+      /*height: 48px; sil */
      border: 1px solid #EEEEEE;
      background-color: #EEEEEE;
 

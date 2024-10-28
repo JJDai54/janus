@@ -19,7 +19,7 @@ Extensions=*.*
 _janus
 	+janus
 		+class
-			-xoopsform
+			+²
 				-admintable
 					-doc
 						-images
@@ -244,7 +244,7 @@ _janus
 					class\xoopsform\editlist\changelog.txt
 					class\xoopsform\editlist\formeditlist.php
 				-iconselect
-					-lib
+					+lib
 						class\xoopsform\iconselect\lib\arrow.png
 						class\xoopsform\iconselect\lib\iconselect.css
 						class\xoopsform\iconselect\lib\iconselect.js
@@ -255,7 +255,7 @@ _janus
 					class\xoopsform\loadimages\formfilesimages.php
 					class\xoopsform\loadimages\formloadimages.php
 				-notation
-					-notation
+					+notation
 						-doc
 							-images
 								class\xoopsform\notation\notation\doc\images\grey.png
@@ -643,7 +643,7 @@ _janus
 					class\xoopsform\notation\formnotation.php
 					class\xoopsform\notation\index.html
 					class\xoopsform\notation\modele-notation.php
-				-selectfile
+				+selectfile
 					class\xoopsform\selectfile\formselectfile.php
 				-spinmap
 					-spin_map
@@ -757,7 +757,7 @@ _janus
 			class\index.html
 			class\Permissions.php
 			class\tools.php
-		+css
+		-css
 			css\index.html
 			css\style-item-color.css
 			css\style-item-color-old.css
@@ -766,7 +766,7 @@ _janus
 		+docs
 			docs\changelog.txt
 			docs\index.html
-		+Goffy
+		-Goffy
 			+class
 				Goffy\class\index.html
 				J:\Xoops\_JJD\modules-JJD\janus\projet\htdocs\Frameworks\janus\Goffy\class\Resizer.php
@@ -1245,12 +1245,17 @@ _janus
 6=load.php
 7=include\globales-functions.php
 8=include\date-functions.php
+9=class\xoopsform\iconselect\formiconselect.php
+10=class\xoopsform\iconselect\lib\iconselect.js
+11=include\fw-functions.php
+12=class\xoopsform\formloadimages.php
+13=version.php
 [Selected Project Files]
 Main=
-Selected=include\date-functions.php
+Selected=docs\changelog.txt
 [docs\changelog.txt]
 TopLine=1
-Caret=1,17
+Caret=17,6
 [Goffy\class\XoopsConfirm.php]
 TopLine=1
 Caret=1,1
@@ -1261,17 +1266,32 @@ Caret=1,13
 TopLine=134
 Caret=9,153
 [language\french\common.php]
-TopLine=17
-Caret=1,49
+TopLine=5
+Caret=22,46
 [language\english\common.php]
-TopLine=14
+TopLine=9
 Caret=1,50
 [load.php]
-TopLine=43
+TopLine=36
 Caret=18,78
 [include\globales-functions.php]
 TopLine=68
 Caret=3,100
 [include\date-functions.php]
-TopLine=80
-Caret=1,118
+TopLine=46
+Caret=52,88
+[class\xoopsform\iconselect\formiconselect.php]
+TopLine=233
+Caret=28,255
+[class\xoopsform\iconselect\lib\iconselect.js]
+TopLine=44
+Caret=21,85
+[include\fw-functions.php]
+TopLine=221
+Caret=12,247
+[class\xoopsform\formloadimages.php]
+TopLine=205
+Caret=31,221
+[version.php]
+TopLine=8
+Caret=38,33

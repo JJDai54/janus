@@ -67,11 +67,44 @@ function IconSelect($$elementID, $$xoopsName, $$parameters) {
             _View.iconSelectElement.addEventListener('click', function($event){
                 $event.stopPropagation();             
             });
-            
+
+            //JJDai
+            /* finalement inutile, remplacé par mouseleav sur le dic, voir plus bas
+            //alert( _View.iconSelectElement.id);
+            _View.iconSelectElement.addEventListener('click', function($event){
+                allOb = document.getElementsByName('togodo');
+                //if (!_View.boxScrollElement) return false;
+                console.log('+++>' +  _View.boxScrollElement.id)
+                for(var h=0; h<allOb.length; h++){
+                    //alert( allOb[h].id);
+                    if(allOb[h].id != _View.boxScrollElement.id && allOb[h].id != _View.boxElement.id){
+                //console.log('===>' +  allOb[h].id)
+                      allOb[h].style.display = "none";
+
+                    }else{
+                      //allOb[h].style.display = "block";
+                    }
+                //_View.showBox(false);
+
+                }
+                          
+            });
+            */
+
+            /* inutile, remplacé par mouseleav sur le dic, voir plus bas
             //dışarı basıldığında gizle.
             window.addEventListener('click', function(){
                 _View.showBox(false);
             });
+            */
+            
+            _View.iconSelectElement.addEventListener("mouseleave", function($event) 
+            { 
+                console.log("je quitte le div"); 
+                            _View.showBox(false);
+            }, false);   
+
+            
            
         }else{
             alert("Element not found.");
@@ -97,7 +130,7 @@ function IconSelect($$elementID, $$xoopsName, $$parameters) {
         }
         
         var horizontalIconNumber = Math.round(($icons.length) / $$parameters.vectoralIconNumber);
-        
+//alert(`${} - ${}`)        
         _View.boxElement.style.height = (($$parameters.iconsHeight + 2) * horizontalIconNumber) + 
                 ((horizontalIconNumber + 1) * $$parameters.boxIconSpace);
         //alert('indexImg = ' + $$parameters.indexImg);
@@ -155,7 +188,7 @@ function IconSelect($$elementID, $$xoopsName, $$parameters) {
         if($isShown) {
             _View.boxElement.style.display = "block";
             _View.boxScrollElement.style.display = "block";
-            _boxScroll = (_boxScroll) ? _boxScroll : new iScroll($$elementID + "-box-scroll");
+            //_boxScroll = (_boxScroll) ? _boxScroll : new iScroll($$elementID + "-box-scroll");
         }else{
             _View.boxElement.style.display = "none";
             _View.boxScrollElement.style.display = "none";
@@ -231,10 +264,13 @@ function IconSelect($$elementID, $$xoopsName, $$parameters) {
         _View.boxScrollElement = document.createElement('div');
         _View.boxScrollElement.setAttribute('id',$$elementID + "-box-scroll");
         _View.boxScrollElement.setAttribute('class', 'box');
-        
+        _View.boxScrollElement.setAttribute('name', 'togodo');  
+              
         _View.boxElement = document.createElement('div');
-        
+        _View.boxElement.setAttribute('id',$$elementID + "-box-element");
+        _View.boxElement.setAttribute('name', 'togodo');        
         //_View.boxElement.setAttribute('class', 'box');
+        
         _View.boxScrollElement.appendChild(_View.boxElement);
         
         _View.selectedIconImgElement.setAttribute('width', $parameters.selectedIconWidth);
@@ -248,11 +284,11 @@ function IconSelect($$elementID, $$xoopsName, $$parameters) {
         selectedIconElement.style.left = $parameters.selectedBoxPadding + 'px';
         componentIconElement.style.bottom = 4 + $parameters.selectedBoxPadding + 'px';
         
-        _View.boxScrollElement.style.left = parseInt(selectedBoxElement.style.width) + 1;
-        
+        _View.boxScrollElement.style.left = parseInt(selectedBoxElement.style.width) + 1 + 'px'; //JJDai
+                
         //JJDai - modif nombre d'icone horizontaux
         _View.boxScrollElement.style.width = ((($parameters.iconsWidth + $parameters.boxIconSpace) * $parameters.horizontalIconNumber) + 
-                (($parameters.horizontalIconNumber + 4) * $parameters.boxIconSpace)) + 'px';
+                (($parameters.horizontalIconNumber + 12) * $parameters.boxIconSpace)) + 'px';
         _View.boxScrollElement.style.height = ((($parameters.iconsHeight + $parameters.boxIconSpace) * $parameters.vectoralIconNumber) + 
                 (($parameters.vectoralIconNumber + 2) * $parameters.boxIconSpace)) + 'px';
 //alert ("zzz- " + $parameters.horizontalIconNumber  + " - " + $parameters.vectoralIconNumber);        

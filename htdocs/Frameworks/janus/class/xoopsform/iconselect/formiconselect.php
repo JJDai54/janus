@@ -24,8 +24,15 @@
 
 /**
  * A selection box with options for matching files.
+ * obsolete because coquille dans le nom icon en english
  */
-class XoopsFormIconeSelect extends XoopsFormElement
+class XoopsFormIconeSelect extends XoopsFormIconSelect
+{}
+
+/**
+ * A selection box with options for matching files.
+ */
+class XoopsFormIconSelect extends XoopsFormElement
 {
 var $_selectedIconWidth     = 48;
 var $_selectedIconHeight    = 48;
@@ -126,6 +133,13 @@ $url = str_replace(XOOPS_ROOT_PATH, XOOPS_URL, $imgPath);
 function getSelectedIconWidth (){
     return $this->_selectedIconWidth;
 }    
+
+//------------------------------------------------    
+function setSelectedIconSize ($newWidth, $newHeight){
+    $this->_selectedIconWidth =  $newWidth;
+    $this->_selectedIconHeight = $newHeight;
+}    
+//------------------------------------------------    
 function setSelectedIconWidth ($newValue){
     $this->_selectedIconWidth = $newValue;
 }    
@@ -144,6 +158,11 @@ function setSelectedBoxPadding ($newValue){
     $this->_selectedBoxPadding = $newValue;
 }    
 //------------------------------------------------    
+//------------------------------------------------    
+function setIconSize ($newWidth, $newHeight){
+    $this->_iconsWidth =  $newWidth;
+    $this->_iconsHeight = $newHeight;
+}    
 function getIconsWidth (){
     return $this->_iconsWidth;
 }    
@@ -180,7 +199,7 @@ function setHorizontalIconNumber ($newValue){
 }    
     
 //------------------------------------------------    
-function setGridIconNumber ($newHorizontalIcons, $newVectoralIcons){
+function setGridIconNumber ($newHorizontalIcons, $newVectoralIcons = 0){
     $this->_horizontalIconNumber = $newHorizontalIcons;
     $this->_vectoralIconNumber   =  $newVectoralIcons;
 }    
@@ -188,34 +207,43 @@ function setGridIconNumber ($newHorizontalIcons, $newVectoralIcons){
     
 function render(){
 //echo "<hr>icnSelect<hr>";
-$html = array();
-//$html[] = "<hr>icnSelect<hr>";
-$path = XOOPS_URL . "/Frameworks/janus/class/xoopsform/iconselect/lib";
+    global $xoTheme;
+    $html = array();
+    //$html[] = "<hr>icnSelect<hr>";
+    $path = XOOPS_URL . "/Frameworks/janus/class/xoopsform/iconselect/lib";
+    $xoTheme->addStylesheet("{$path}/iconselect.css");
+    $xoTheme->addScript("{$path}/iconselect.js");
+    $xoTheme->addScript("{$path}/iscroll.js");
+
 //----------------------------------------
-$html[] = <<<__script01__
-<link rel="stylesheet" type="text/css" href="{$path}/iconselect.css" >
-<script type="text/javascript" src="{$path}/iconselect.js"></script>
-<script type="text/javascript" src="{$path}/iscroll.js"></script>
-__script01__;
+// $html[] = <<<__script01__
+// <link rel="stylesheet" type="text/css" href="{$path}/iconselect.css" >
+// <script type="text/javascript" src="{$path}/iconselect.js"></script>
+// <script type="text/javascript" src="{$path}/iscroll.js"></script>
+// __script01__;
 //----------------------------------------
   //echo "{$this->imgPath}<br>";
-$imgs = array();
-$indexImg = 0;
-foreach ($this->_imgArr as $k => $img){
-  $h = strrpos($k, ".");
-  $indexKey = substr($k,0 , $h);
-  $imgs[] = "icons.push({'iconFilePath':'{$img}', 'iconValue':'{$indexKey}'});";  
-  if ($indexKey == $this->getValue()) $indexImg = count($imgs)-1;
-  //echo "{$img}<br>";
-}
-//echo "<hr>index : {$indexImg} - {$this->getValue()}<hr>";
+    $imgs = array();
+    $indexImg = 0;
+    foreach ($this->_imgArr as $k => $img){
+      $h = strrpos($k, ".");
+      $indexKey = substr($k,0 , $h);
+      $imgs[] = "icons.push({'iconFilePath':'{$img}', 'iconValue':'{$indexKey}'});";  
+      if ($indexKey == $this->getValue()) $indexImg = count($imgs)-1;
+      //echo "{$img}<br>";
+    }
+    //echo "<hr>index : {$indexImg} - {$this->getValue()}<hr>";
 
-//par defaut le nombre d'icones en largeur egal le nombre de fichier trouvs
-if($this->_horizontalIconNumber == 0 ) $this->_horizontalIconNumber = count($imgs);
-if($this->_vectoralIconNumber == 0 ) $this->_vectoralIconNumber = 1;
+    //par defaut le nombre d'icones en largeur egal le nombre de fichier trouves
+    if($this->_horizontalIconNumber == 0 ) $this->_horizontalIconNumber = count($imgs);
+    if($this->_vectoralIconNumber == 0 ) { 
+        $this->_vectoralIconNumber = intval(count($this->_imgArr) / $this->_horizontalIconNumber);
+        $maxRow = 3;
+        if ($this->_vectoralIconNumber > $maxRow) $this->_vectoralIconNumber = $maxRow;
+    }
 
-$imgList = implode("\n", $imgs);
-$extra = $this->getExtra() ;
+    $imgList = implode("\n", $imgs);
+    $extra = $this->getExtra() ;
 /*
 echo  "<br>value : {$this->getValue()}<br>" . implode("<br>", $imgs);
 echo   "<br>{'selectedIconWidth':{$this->_selectedIconWidth},
@@ -232,12 +260,32 @@ echo   "<br>{'selectedIconWidth':{$this->_selectedIconWidth},
 */
 
 //-------------------------------------------------------
+/*
+window.addEventListener("load",function(event) {
+    var $input2 = document.getElementById('dec');
+    var $input1 = document.getElementById('parenta');
+    $input1.addEventListener('keyup', function() {
+        $input2.value = $input1.value;
+    });
+},false);
+
+window.addEventListener("load",function(){
+    document.getElementById('enable').onchange=function(){
+        var txt = document.getElementById('gov1');
+        if(this.checked) txt.disabled=false;
+        else txt.disabled = true;
+    };
+},false);
+*/
+//-------------------------------------------------------
 $html[] = <<<__script02__
-<script type="text/javascript">
-    
+\n<script type="text/javascript">
+
+
+window.addEventListener("load",function(){
 var iconSelect;
 
-window.onload = function(){
+
     iconSelect = new IconSelect("{$this->getName()}-contenair", "{$this->getName()}",  
         {'selectedIconWidth':{$this->_selectedIconWidth},
         'selectedIconHeight':{$this->_selectedIconHeight},
@@ -255,7 +303,13 @@ var icons = [];
 {$imgList}            
 iconSelect.refresh(icons);
 
-};
+
+},false);
+
+
+    
+
+
 </script>
 <input type="hidden" name="{$this->getName()}" id="{$this->getName()}" value="{$this->getValue()}" />
 <div id="{$this->getName()}-contenair" {$extra}></div>

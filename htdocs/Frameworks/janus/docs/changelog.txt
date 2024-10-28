@@ -1,3 +1,10 @@
+version 4.2 - 2024-1028a - (JJDai - jjdelalandre@orange.fr
+================================================================
+Divers corrections de xoopsFormIconSelect
+    - Taiile des icones
+    - multiple implémentations dans la même page
+    - Scroll bar
+
 version 4.0 - 2024-08-13a - (JJDai - jjdelalandre@orange.fr
 ================================================================
 mutualisation des fonctionnalités  :
