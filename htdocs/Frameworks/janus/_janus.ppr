@@ -19,7 +19,14 @@ Extensions=*.*
 _janus
 	+janus
 		+class
-			+²
+			-xoopsform
+				+textplus
+					class\xoopsform\textplus\formtextplus.css
+					class\xoopsform\textplus\formtextplus.js
+					class\xoopsform\textplus\formtextplus.php
+				+duration
+					class\xoopsform\duration\formduration.js
+					class\xoopsform\duration\formduration.php
 				-admintable
 					-doc
 						-images
@@ -1150,7 +1157,7 @@ _janus
 				images\icons\_img.html
 				images\icons\index.html
 			images\index.html
-		+include
+		-include
 			include\cloneModule.php
 			include\constantes.php
 			include\date-functions.php
@@ -1160,7 +1167,7 @@ _janus
 			include\index.html
 			include\language-functions.php
 			include\xform-functions.php
-		+js
+		-js
 			-trierTableauHTML
 				-images
 					-chiffres_Garamond
@@ -1238,60 +1245,64 @@ _janus
 [Open project files]
 0=docs\changelog.txt
 1=Goffy\class\XoopsConfirm.php
-2=css\style-item-design.css
-3=include\xform-functions.php
-4=language\french\common.php
-5=language\english\common.php
-6=load.php
-7=include\globales-functions.php
-8=include\date-functions.php
-9=class\xoopsform\iconselect\formiconselect.php
-10=class\xoopsform\iconselect\lib\iconselect.js
-11=include\fw-functions.php
-12=class\xoopsform\formloadimages.php
-13=version.php
+2=..\..\class\xoopsform\formtext.php
+3=class\xoopsform\formnumber.php
+4=load.php
+5=include\xform-functions.php
+6=include\globales-functions.php
+7=include\constantes.php
+8=class\xoopsform\duration\formduration.php
+9=class\xoopsform\duration\formduration.js
+10=include\fw-functions.php
+11=class\xoopsform\textplus\formtextplus.php
+12=class\xoopsform\textplus\formtextplus.js
+13=class\xoopsform\textplus\formtextplus.css
+14=version.php
 [Selected Project Files]
 Main=
 Selected=docs\changelog.txt
 [docs\changelog.txt]
 TopLine=1
-Caret=17,6
+Caret=103,7
 [Goffy\class\XoopsConfirm.php]
-TopLine=1
-Caret=1,1
-[css\style-item-design.css]
-TopLine=13
-Caret=1,13
-[include\xform-functions.php]
-TopLine=134
-Caret=9,153
-[language\french\common.php]
-TopLine=5
-Caret=22,46
-[language\english\common.php]
-TopLine=9
-Caret=1,50
-[load.php]
-TopLine=36
-Caret=18,78
-[include\globales-functions.php]
-TopLine=68
-Caret=3,100
-[include\date-functions.php]
-TopLine=46
-Caret=52,88
-[class\xoopsform\iconselect\formiconselect.php]
-TopLine=233
-Caret=28,255
-[class\xoopsform\iconselect\lib\iconselect.js]
 TopLine=44
-Caret=21,85
+Caret=1,1
+[..\..\class\xoopsform\formtext.php]
+TopLine=34
+Caret=20,76
+[class\xoopsform\formnumber.php]
+TopLine=82
+Caret=6,124
+[load.php]
+TopLine=26
+Caret=1,1
+[include\xform-functions.php]
+TopLine=7
+Caret=75,23
+[include\globales-functions.php]
+TopLine=17
+Caret=50,59
+[include\constantes.php]
+TopLine=1
+Caret=24,18
+[class\xoopsform\duration\formduration.php]
+TopLine=1
+Caret=1,43
+[class\xoopsform\duration\formduration.js]
+TopLine=31
+Caret=94,56
 [include\fw-functions.php]
-TopLine=221
-Caret=12,247
-[class\xoopsform\formloadimages.php]
-TopLine=205
-Caret=31,221
+TopLine=257
+Caret=28,269
+[class\xoopsform\textplus\formtextplus.php]
+TopLine=28
+Caret=18,43
+[class\xoopsform\textplus\formtextplus.js]
+TopLine=1
+Caret=7,3
+[class\xoopsform\textplus\formtextplus.css]
+TopLine=1
+Caret=24,1
 [version.php]
-TopLine=8
-Caret=38,33
+TopLine=1
+Caret=29,31

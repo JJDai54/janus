@@ -51,6 +51,19 @@ function echoGPF($arr = 'GPF' ,$title = '',  $bolExit = false)
    return true;
 }
 
+function echoRequest($arr = 'GPFC' ,$title = '',  $bolExit = false)
+{
+   $arr = strtoupper($arr);
+   echo "<hr>";
+   if ($title) echo "message : {$title}<br>";
+   if (strPos($arr,'G') !== false) echo "_GET    : <pre>" . print_r($_GET, true)   . "</pre><hr>";
+   if (strPos($arr,'P') !== false) echo "_POST   : <pre>" . print_r($_POST, true)  . "</pre><hr>";
+   if (strPos($arr,'F') !== false) echo "_FILES  : <pre>" . print_r($_FILES, true) . "</pre><hr>";
+   if (strPos($arr,'C') !== false) echo "_COOKIE : <pre>" . print_r($_COOKIE, true) . "</pre><hr>";
+
+   if($bolExit) exit($title);
+   return true;
+}
 
 
 /***************************************************************************

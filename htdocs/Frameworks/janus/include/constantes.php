@@ -14,6 +14,9 @@ if (JANUS_DEBUG) echo "<hr>========= " . __FILE__. " =================<hr>";
 
 define('JANUS_FW', basename(dirname(dirname(__FILE__))));
 define('JANUS_PATH', XOOPS_ROOT_PATH . '/Frameworks/' . JANUS_FW);
+define('JANUS_URL',  XOOPS_URL       . '/Frameworks/' . JANUS_FW);
+define('JANUS_URL_XFORM', JANUS_URL . '/class/xoopsform');
+define('JANUS_XFORM_URL',  JANUS_URL_XFORM); //obsolete, a virer àa l'occcasion
 
 include_once JANUS_PATH . "/version.php";
 
@@ -27,11 +30,6 @@ define('JANUS_PATH_XFORMS', JANUS_PATH . '/class/xoopsform');
 define('JANUS_PATH_CSS', JANUS_PATH . '/css');
 //echo"<hr>JANUS_PATH => " . JANUS_PATH . "<br>JANUS_PATH_XFORMS => " . JANUS_PATH_XFORMS . "<hr>";
 
-define('JANUS_URL', XOOPS_URL . '/Frameworks/' .  JANUS_FW);
-//define('JANUS_URL', XOOPS_URL . '/Frameworks/' .  JANUS_FW_FOLDER);
-
-
-define('JANUS_XFORM_URL', JANUS_URL . '/class/xoopsform');
 define('JANUS_ICO16', JANUS_URL . "/images/icons/16");
 define('JANUS_ICO32', JANUS_URL . "/images/icons/32");
 

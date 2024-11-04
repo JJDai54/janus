@@ -116,9 +116,6 @@ var $_imgArr = array();
     }
     
 //------------------------------------------------    
-
-
-//------------------------------------------------    
 function addImages($imgPath){
     $this->_imgArr[] = $imgPath;
 }
@@ -157,7 +154,7 @@ function getSelectedBoxPadding (){
 function setSelectedBoxPadding ($newValue){
     $this->_selectedBoxPadding = $newValue;
 }    
-//------------------------------------------------    
+
 //------------------------------------------------    
 function setIconSize ($newWidth, $newHeight){
     $this->_iconsWidth =  $newWidth;
@@ -210,18 +207,13 @@ function render(){
     global $xoTheme;
     $html = array();
     //$html[] = "<hr>icnSelect<hr>";
-    $path = XOOPS_URL . "/Frameworks/janus/class/xoopsform/iconselect/lib";
-    $xoTheme->addStylesheet("{$path}/iconselect.css");
-    $xoTheme->addScript("{$path}/iconselect.js");
-    $xoTheme->addScript("{$path}/iscroll.js");
+    $url = JANUS_URL_XFORM . "/iconselect/lib";
+    $xoTheme->addStylesheet("{$url}/iconselect.css");
+    $xoTheme->addScript("{$url}/iconselect.js");
+    $xoTheme->addScript("{$url}/iscroll.js");
 
 //----------------------------------------
-// $html[] = <<<__script01__
-// <link rel="stylesheet" type="text/css" href="{$path}/iconselect.css" >
-// <script type="text/javascript" src="{$path}/iconselect.js"></script>
-// <script type="text/javascript" src="{$path}/iscroll.js"></script>
-// __script01__;
-//----------------------------------------
+
   //echo "{$this->imgPath}<br>";
     $imgs = array();
     $indexImg = 0;
@@ -244,39 +236,7 @@ function render(){
 
     $imgList = implode("\n", $imgs);
     $extra = $this->getExtra() ;
-/*
-echo  "<br>value : {$this->getValue()}<br>" . implode("<br>", $imgs);
-echo   "<br>{'selectedIconWidth':{$this->_selectedIconWidth},
-        <br>'selectedIconHeight':{$this->_selectedIconHeight},
-        <br>'selectedBoxPadding':{$this->_selectedBoxPadding},
-        <br>'iconsWidth':{$this->_iconsWidth},
-        <br>'iconsHeight':{$this->_iconsHeight},
-        <br>'boxIconSpace':{$this->_boxIconSpace},
-        <br>'vectoralIconNumber':{$this->_vectoralIconNumber},
-        <br>'horizontalIconNumber':{$this->_horizontalIconNumber},
-        <br>'iconFilePath':'{$path}/arrow.png',
-        <br>'indexImg':{$indexImg}
-        })";
-*/
 
-//-------------------------------------------------------
-/*
-window.addEventListener("load",function(event) {
-    var $input2 = document.getElementById('dec');
-    var $input1 = document.getElementById('parenta');
-    $input1.addEventListener('keyup', function() {
-        $input2.value = $input1.value;
-    });
-},false);
-
-window.addEventListener("load",function(){
-    document.getElementById('enable').onchange=function(){
-        var txt = document.getElementById('gov1');
-        if(this.checked) txt.disabled=false;
-        else txt.disabled = true;
-    };
-},false);
-*/
 //-------------------------------------------------------
 $html[] = <<<__script02__
 \n<script type="text/javascript">
@@ -295,7 +255,7 @@ var iconSelect;
         'boxIconSpace':{$this->_boxIconSpace},
         'vectoralIconNumber':{$this->_vectoralIconNumber},
         'horizontalIconNumber':{$this->_horizontalIconNumber},
-        'iconFilePath':'{$path}/arrow.png',
+        'iconFilePath':"{$url}/arrow.png",
         'indexImg':{$indexImg}
         });
 

@@ -28,7 +28,7 @@ $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 
 $versionArr = [
 	'name'                => 'janus',
-	'version'             => 4.2,
+	'version'             => 4.4,
 	'status'              => 'beta 1',
 	'release_date'        => '2024/10/28',
 	'description'         => 'Ce Framework a pour but de mutualiser des fonctionalité manquante dans le noyau',

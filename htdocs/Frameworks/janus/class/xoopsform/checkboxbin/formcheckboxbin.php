@@ -108,7 +108,7 @@ class xoopsFormCheckboxBin extends XoopsFormElement
       $this->path = str_replace('\\','/',dirname(__FILE__)) . '/' . $this->className;
 //       $this->url = str_replace(XOOPS_ROOT_PATH, XOOPS_URL, $this->path);
 
-      $this->url = JANUS_XFORM_URL .  '/' . 'checkboxbin';
+      $this->url = JANUS_URL_XFORM .  '/' . 'checkboxbin';
  
 // echo "<hr>" . XOOPS_ROOT_PATH . "<br>" 
 //             . JANUS_PATH . "<br>" 

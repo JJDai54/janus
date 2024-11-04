@@ -200,7 +200,8 @@ function loadAllXForms(){
     }
     
     //chargement des xforms formés d'un seul fichier
-    $arr = \XoopsLists::getFileListAsArray(JANUS_PATH_XFORMS);
+    //$arr = \XoopsLists::getFileListAsArray(JANUS_PATH_XFORMS);
+    $arr = \XoopsLists::getFileListByExtension(JANUS_PATH_XFORMS,['php']);
     //echoArray($arr);
     foreach ($arr as $key=>$file){
         if ($file === "index.html") continue;

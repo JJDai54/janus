@@ -1,18 +1,29 @@
-version 4.2 - 2024-1028a - (JJDai - jjdelalandre@orange.fr
+version 4.4 - 2024-11-03a - (JJDai - jjdelalandre@orange.fr)
+================================================================
+Ajout de xoopsFormTestPlus hérité de xoopsformText? Fonctionalités :
+    - ajout d'un bouton pour nettoyer la zone
+    - ajout de boutons ou d'une liste déroulante pour affecter des valeurs par défaut
+
+Ajout de xoopsFormDuration : permet d'afficher la décomposition en jours, heures, minutes, secondes d'un délai exprimé en secondes.
+    
+version 4.2 - 2024-10-28a - (JJDai - jjdelalandre@orange.fr)
 ================================================================
 Divers corrections de xoopsFormIconSelect
-    - Taiile des icones
+    - Taille des icones
     - multiple implémentations dans la même page
     - Scroll bar
+    - function loadAllXForms() getFileListAsArray remplacé par getFileListByExtension(JANUS_PATH_XFORMS,['php'])
 
-version 4.0 - 2024-08-13a - (JJDai - jjdelalandre@orange.fr
+
+
+version 4.0 - 2024-08-13a - (JJDai - jjdelalandre@orange.fr)
 ================================================================
 mutualisation des fonctionnalités  :
     - About
     - Permissions
     - Clone
     
-version 2.0 - 2021-11-01a - (JJDai - jjdelalandre@orange.fr
+version 2.0 - 2021-11-01a - (JJDai - jjdelalandre@orange.fr)
 ================================================================
 Création du dépot sur gitHub
     
