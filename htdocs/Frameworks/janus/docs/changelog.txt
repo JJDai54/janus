@@ -1,6 +1,10 @@
+version 4.6 - 2024-11-05a - (JJDai - jjdelalandre@orange.fr)
+================================================================
+Ajout de xoopsFormShowHide : permet d'afficher ou de masquer un block.
+
 version 4.4 - 2024-11-03a - (JJDai - jjdelalandre@orange.fr)
 ================================================================
-Ajout de xoopsFormTestPlus hérité de xoopsformText? Fonctionalités :
+Ajout de xoopsFormTextPlus hérité de xoopsformText? Fonctionalités :
     - ajout d'un bouton pour nettoyer la zone
     - ajout de boutons ou d'une liste déroulante pour affecter des valeurs par défaut
 

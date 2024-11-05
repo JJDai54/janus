@@ -18,8 +18,13 @@ Extensions=*.*
 [Project tree]
 _janus
 	+janus
-		+class
-			-xoopsform
+		-class
+			+xoopsform
+				+showhide
+					class\xoopsform\showhide\formshowhide.css
+					class\xoopsform\showhide\formshowhide.js
+					class\xoopsform\showhide\formshowhide.php
+					jquery\plugins\showHide.js
 				+textplus
 					class\xoopsform\textplus\formtextplus.css
 					class\xoopsform\textplus\formtextplus.js
@@ -250,7 +255,7 @@ _janus
 						class\xoopsform\editlist\editlist\editlist.js
 					class\xoopsform\editlist\changelog.txt
 					class\xoopsform\editlist\formeditlist.php
-				-iconselect
+				+iconselect
 					+lib
 						class\xoopsform\iconselect\lib\arrow.png
 						class\xoopsform\iconselect\lib\iconselect.css
@@ -776,13 +781,13 @@ _janus
 		-Goffy
 			+class
 				Goffy\class\index.html
-				..\..\..\..\..\projet\htdocs\Frameworks\janus\Goffy\class\Resizer.php
+				J:\Xoops\_JJD\modules-JJD\janus\projet\htdocs\Frameworks\janus\Goffy\class\Resizer.php
 				Goffy\class\XoopsConfirm.php
 			Goffy\index.html
 			Goffy\read_me.txt
-		-images
+		+images
 			+icons
-				+16
+				-16
 					images\icons\16\0.png
 					images\icons\16\1.png
 					images\icons\16\1day.png
@@ -992,7 +997,7 @@ _janus
 					images\icons\20\watermarks.gif
 					images\icons\20\world.gif
 					images\icons\20\zip.gif
-				-32
+				+32
 					images\icons\32\_img.html
 					images\icons\32\_zzz.png
 					images\icons\32\00004808.png
@@ -1244,43 +1249,30 @@ _janus
 		version.php
 [Open project files]
 0=docs\changelog.txt
-1=Goffy\class\XoopsConfirm.php
-2=class\xoopsform\formnumber.php
-3=load.php
-4=include\xform-functions.php
-5=include\globales-functions.php
-6=include\constantes.php
-7=class\xoopsform\duration\formduration.php
-8=class\xoopsform\duration\formduration.js
-9=include\fw-functions.php
-10=class\xoopsform\textplus\formtextplus.php
-11=class\xoopsform\textplus\formtextplus.js
-12=class\xoopsform\textplus\formtextplus.css
-13=version.php
+1=..\..\class\xoopsform\formtext.php
+2=include\constantes.php
+3=class\xoopsform\duration\formduration.php
+4=class\xoopsform\duration\formduration.js
+5=include\fw-functions.php
+6=class\xoopsform\textplus\formtextplus.php
+7=class\xoopsform\textplus\formtextplus.js
+8=class\xoopsform\textplus\formtextplus.css
+9=version.php
+10=class\xoopsform\showhide\formshowhide.css
+11=class\xoopsform\showhide\formshowhide.php
+12=jquery\plugins\showHide.js
 [Selected Project Files]
 Main=
 Selected=docs\changelog.txt
 [docs\changelog.txt]
 TopLine=1
-Caret=1,1
-[Goffy\class\XoopsConfirm.php]
-TopLine=44
-Caret=1,1
-[class\xoopsform\formnumber.php]
-TopLine=82
-Caret=6,124
-[load.php]
-TopLine=26
-Caret=1,1
-[include\xform-functions.php]
-TopLine=7
-Caret=75,23
-[include\globales-functions.php]
-TopLine=17
-Caret=50,59
+Caret=1,3
+[..\..\class\xoopsform\formtext.php]
+TopLine=34
+Caret=20,76
 [include\constantes.php]
 TopLine=1
-Caret=24,18
+Caret=18,17
 [class\xoopsform\duration\formduration.php]
 TopLine=1
 Caret=1,43
@@ -1291,8 +1283,8 @@ Caret=94,56
 TopLine=257
 Caret=28,269
 [class\xoopsform\textplus\formtextplus.php]
-TopLine=28
-Caret=18,43
+TopLine=36
+Caret=1,64
 [class\xoopsform\textplus\formtextplus.js]
 TopLine=1
 Caret=7,3
@@ -1301,4 +1293,13 @@ TopLine=1
 Caret=24,1
 [version.php]
 TopLine=1
-Caret=29,31
+Caret=54,37
+[class\xoopsform\showhide\formshowhide.css]
+TopLine=1
+Caret=5,8
+[class\xoopsform\showhide\formshowhide.php]
+TopLine=155
+Caret=12,193
+[jquery\plugins\showHide.js]
+TopLine=11
+Caret=1,24

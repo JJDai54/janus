@@ -28,12 +28,12 @@ $moduleDirNameUpper = mb_strtoupper($moduleDirName);
 
 $versionArr = [
 	'name'                => 'janus',
-	'version'             => 4.4,
+	'version'             => 4.6,
 	'status'              => 'beta 1',
-	'release_date'        => '2024/10/28',
-	'description'         => 'Ce Framework a pour but de mutualiser des fonctionalité manquante dans le noyau',
+	'release_date'        => '2024/11/05',
+	'description'         => 'Ce Framework a pour but de mutualiser des fonctionalités utilées pas mes modules',
 	'author'              => 'Jean-Jacques Delalandre',
-	'author_mail'         => 'jjdelalandre@orange.fr',
+	'author_mail'         => 'jjdelalandre@orange.fr / jjdelalandre@gmail.com',
 	'author_website_url'  => 'https://xmodules.oritheque.fr',
 	'author_website_name' => 'Origami du Monde',
 	'license'             => 'GPL 2.0 or later',
