@@ -1265,10 +1265,10 @@ _janus
 10=xoops_version.php
 [Selected Project Files]
 Main=
-Selected=docs\changelog.txt
+Selected=xoops_version.php
 [docs\changelog.txt]
 TopLine=1
-Caret=95,4
+Caret=25,1
 [janus.php]
 TopLine=59
 Caret=24,80
@@ -1298,4 +1298,4 @@ TopLine=27
 Caret=20,40
 [xoops_version.php]
 TopLine=1
-Caret=1,1
+Caret=38,33

@@ -1,4 +1,4 @@
-version 4.8 - 2025-04-20a - (JJDai - jjdelalandre@orange.fr)
+version 4.8 - 2025-04-21a - (JJDai - jjdelalandre@orange.fr)
 ================================================================
 fonction loadAllXForms
     appel à la fonction plus générique loasXForm qui charge aussi le css du xForm si il existe
