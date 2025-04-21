@@ -177,7 +177,7 @@ Renvoie la valeur d'un bit préciser par un index dans la valeur binaire
  
 		//-----------------------------------------------------------
         //if($xoopsUser->isAdmin($mid) && $adminOk) return true;
-        if($this->isUserAdmin) return true;
+        if($this->isUserAdmin && $adminOk) return true;
 		//-----------------------------------------------------------
         $fullPermName = $this->module->getVar('dirname') . '_' . $permName; 
         $my_group_ids = $this->getGroupIds($adminOk);

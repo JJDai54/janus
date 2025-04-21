@@ -1,6 +1,13 @@
+version 4.8 - 2025-04-20a - (JJDai - jjdelalandre@orange.fr)
+================================================================
+fonction loadAllXForms
+    appel à la fonction plus générique loasXForm qui charge aussi le css du xForm si il existe
+
 version 4.6 - 2024-11-05a - (JJDai - jjdelalandre@orange.fr)
 ================================================================
 Ajout de xoopsFormShowHide : permet d'afficher ou de masquer un block.
+Héritage de xoopsFormtext et xoopsformselect, ajout de bouton notamment pour vider la zone
+Correction permissions pour admin dans la fonction ->isPermit, prise en compte du paramètre "$adminOk"
 
 version 4.4 - 2024-11-03a - (JJDai - jjdelalandre@orange.fr)
 ================================================================
@@ -18,8 +25,6 @@ Divers corrections de xoopsFormIconSelect
     - Scroll bar
     - function loadAllXForms() getFileListAsArray remplacé par getFileListByExtension(JANUS_PATH_XFORMS,['php'])
 
-
-
 version 4.0 - 2024-08-13a - (JJDai - jjdelalandre@orange.fr)
 ================================================================
 mutualisation des fonctionnalités  :
@@ -33,7 +38,6 @@ Création du dépot sur gitHub
     
 Pourquoi Janus ?
 Janus est le dieu romain des commencements et des fins, des choix, du passage et des portes1. Il est bifrons (« à deux visages ») et représenté (voir illustration) avec une face tournée vers le passé, l'autre sur l'avenir. Il est fêté le 1er janvier. Son mois, Januarius (« janvier »), marque le commencement de la fin de l'année dans le calendrier romain2.
-
 Son temple est situé sur le forum de Rome. Il est rituellement ouvert en temps de guerre et fermé en temps de paix. L'une des collines de Rome, le Janicule, lui est consacrée. C'est un dieu de premier rang dans la hiérarchie religieuse romaine, le seul avec Jovis - Jupiter et Mars - Marspiter à être qualifié de « Dieu le père », Januspater.
 
       

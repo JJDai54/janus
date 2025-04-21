@@ -158,14 +158,14 @@ function loadXFormArr($arr){
 /* *******
 
 ****** */
-function loadXForm($name){
-    $name = strtolower($name);
-    $f = JANUS_PATH_XFORMS . "/{$name}/form{$name}.php";
-    if (!file_exists($f))
-      return include_once($f);
-    else
-      return false;
-}
+// function loadXForm($name){
+//     $name = strtolower($name);
+//     $f = JANUS_PATH_XFORMS . "/{$name}/form{$name}.php";
+//     if (!file_exists($f))
+//       return include_once($f);
+//     else
+//       return false;
+// }
 
 /* *******
 * Charge les xforms du framework
@@ -193,10 +193,11 @@ function loadAllXForms(){
 //    echoArray($arr);
 
     foreach ($arr as $key=>$fld){
-        $f = JANUS_PATH_XFORMS . "/" . $fld .  "/form" . $fld . ".php";
-        if (file_exists($f)) include_once($f);
+        //$f = JANUS_PATH_XFORMS . "/" . $fld .  "/form" . $fld . ".php";
+        //if (file_exists($f)) include_once($f);
         //if (!file_exists($f)) echo "{$f}<br>";
         //echo "{$f}<br>";
+        loadXForm($fld);
     }
     
     //chargement des xforms formés d'un seul fichier
@@ -205,10 +206,33 @@ function loadAllXForms(){
     //echoArray($arr);
     foreach ($arr as $key=>$file){
         if ($file === "index.html") continue;
-        $f = JANUS_PATH_XFORMS . "/" . $file;
-        if (file_exists($f)) include_once($f);
+        //$f = JANUS_PATH_XFORMS . "/" . $file;
+        //if (file_exists($f)) include_once($f);
         //if (file_exists($f)) echo "{$f}<br>";
+        loadXForm($file);
     }
 }
+/* ***********************
+$forf : file or folder
+************************** */
+function loadXForm($forf){
+    //xoops_load('XoopsFormLoader');      
+    if(substr($forf, -3) == "php"){
+        $f = JANUS_PATH_XFORMS . "/" . $forf;
+        $css = JANUS_PATH_XFORMS . "/" . $forf;
+    }else{
+        $f = JANUS_PATH_XFORMS . "/" . $forf .  "/form" . $forf . ".php";
+        $css = JANUS_PATH_XFORMS . "/" . $forf .  "/form" . $forf . ".css";
+    }
+    //-----------------------------------------------------
+    if (file_exists($f)) include_once($f);
+    $css = substr($f, 0, -3) . "css";   
+    //echo "<hr>loadXForm : {$css}<hr>";
+    if (file_exists($css)){
+        $url = str_replace(JANUS_PATH_XFORMS, JANUS_URL_XFORMS, $css);
+        $GLOBALS['xoTheme']->addStylesheet( $url, null );
+        //echo "<hr>loadXForm : {$url}<hr>";
+    }
 
+}
 ?>

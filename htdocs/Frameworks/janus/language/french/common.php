@@ -53,6 +53,9 @@ define('_CO_JANUS_MONTH_DAY_3_FR', "Jan,Fév,Mar,Avr,Mai,Jui,Jui,Aoû,Sep,Oct,No
 define('_CO_JANUS_MONTH_DAY_EN', "January,February,March,April,May,June,July,August,September,October,November,December,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday");
 define('_CO_JANUS_MONTH_DAY_FR', "Janvier,Février,Mars,Avril,Mai,Juin,Juillet,Août,Septembre,Octobre,Novembre,Décembre,Lundi,Mardi,Mercredi,Jeudi,Vendredi,Samedi,Dimanche");
 define('_CO_JANUS_NAME_LENGTH', "Longueur des titres");
+
+define('_CO_JANUS_EXPORTER', "Exporter");
+define('_CO_JANUS_NO_PERM', "Vous n'avez pas les permissions pour accéder à cette fonctionalité !");
 define('_CO_JANUS_NO_PERM2', "Vous n'avez pas les permissions pour accéder à cette fonctionalité !<br>mod : %s : Permission=%s ===> %s=%s");
 
 ?>

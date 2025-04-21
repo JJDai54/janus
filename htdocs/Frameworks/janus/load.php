@@ -59,6 +59,7 @@ include_once (JANUS_PATH . "/include/language-functions.php");
  *                  classe du back office
  * *******************************************************************/
 include_once (JANUS_PATH . "/class/About.php");
+include_once (JANUS_PATH . "/class/Feedback.php");
 include_once (JANUS_PATH . "/class/Permissions.php");
 
 /*********************************************************************

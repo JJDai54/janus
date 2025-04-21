@@ -1,0 +1,27 @@
+input[type="button"].xform{
+    background-color: #F3F4F4;
+    color: #AAAAAA;
+    padding: 3px 8px 3px 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 0px solid;
+  -moz-border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  -khtml-border-radius: 8px 8px 8px 8px;
+    border-radius: 8px 8px 8px 8px;
+    
+}
+
+input[type="submit"].xform{
+    background-color: #139EE8;
+    color: #FFFFFF;
+    padding: 3px 8px 3px 8px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: 0px solid;
+  -moz-border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  -khtml-border-radius: 8px 8px 8px 8px;
+    border-radius: 8px 8px 8px 8px;
+    
+}

@@ -37,7 +37,7 @@ var $_backcolor = "#CCFFFF";
 var $_libClose = "";
 var $_libArr=['caption' => '', 'show' => 'show', 'heide'=>'Hide', 'close' => 'close'];
 var $_isOpen = false;
-
+var $_value = null;
 
     /**
      * Constructor

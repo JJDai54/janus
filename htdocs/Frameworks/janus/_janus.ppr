@@ -18,20 +18,8 @@ Extensions=*.*
 [Project tree]
 _janus
 	+janus
-		-class
+		+class
 			+xoopsform
-				+showhide
-					class\xoopsform\showhide\formshowhide.css
-					class\xoopsform\showhide\formshowhide.js
-					class\xoopsform\showhide\formshowhide.php
-					jquery\plugins\showHide.js
-				+textplus
-					class\xoopsform\textplus\formtextplus.css
-					class\xoopsform\textplus\formtextplus.js
-					class\xoopsform\textplus\formtextplus.php
-				+duration
-					class\xoopsform\duration\formduration.js
-					class\xoopsform\duration\formduration.php
 				-admintable
 					-doc
 						-images
@@ -235,6 +223,9 @@ _janus
 					class\xoopsform\doublelist\formdoublelist.php
 					class\xoopsform\doublelist\selection.html
 					class\xoopsform\doublelist\tplDoubleList.html
+				-duration
+					class\xoopsform\duration\formduration.js
+					class\xoopsform\duration\formduration.php
 				-editlist
 					-editlist
 						-doc
@@ -255,7 +246,7 @@ _janus
 						class\xoopsform\editlist\editlist\editlist.js
 					class\xoopsform\editlist\changelog.txt
 					class\xoopsform\editlist\formeditlist.php
-				+iconselect
+				-iconselect
 					+lib
 						class\xoopsform\iconselect\lib\arrow.png
 						class\xoopsform\iconselect\lib\iconselect.css
@@ -655,8 +646,13 @@ _janus
 					class\xoopsform\notation\formnotation.php
 					class\xoopsform\notation\index.html
 					class\xoopsform\notation\modele-notation.php
-				+selectfile
+				-selectfile
 					class\xoopsform\selectfile\formselectfile.php
+				+showhide
+					class\xoopsform\showhide\formshowhide.css
+					class\xoopsform\showhide\formshowhide.js
+					class\xoopsform\showhide\formshowhide.php
+					jquery\plugins\showHide.js
 				-spinmap
 					-spin_map
 						-doc
@@ -748,6 +744,10 @@ _janus
 						class\xoopsform\spinmap\spin_map\spin_map_new.js
 					class\xoopsform\spinmap\formspinmap.php
 					class\xoopsform\spinmap\index.html
+				+textplus
+					class\xoopsform\textplus\formtextplus.css
+					class\xoopsform\textplus\formtextplus.js
+					class\xoopsform\textplus\formtextplus.php
 				class\xoopsform\form_jjd.php
 				class\xoopsform\formbuttontray.php
 				class\xoopsform\formElementTable.php
@@ -763,13 +763,16 @@ _janus
 				class\xoopsform\formtabletray.php
 				class\xoopsform\index.html
 				class\xoopsform\themeformjjd.php
+				class\xoopsform\xform.css
+				class\xoopsform\xformselect.php
+				class\xoopsform\xformtext.php
 			class\About.php
 			class\CloneModule - Copie.php
 			class\CloneModule.php
 			class\index.html
 			class\Permissions.php
 			class\tools.php
-		-css
+		+css
 			css\index.html
 			css\style-item-color.css
 			css\style-item-color-old.css
@@ -785,7 +788,7 @@ _janus
 				Goffy\class\XoopsConfirm.php
 			Goffy\index.html
 			Goffy\read_me.txt
-		+images
+		-images
 			+icons
 				-16
 					images\icons\16\0.png
@@ -1162,7 +1165,7 @@ _janus
 				images\icons\_img.html
 				images\icons\index.html
 			images\index.html
-		-include
+		+include
 			include\cloneModule.php
 			include\constantes.php
 			include\date-functions.php
@@ -1172,7 +1175,7 @@ _janus
 			include\index.html
 			include\language-functions.php
 			include\xform-functions.php
-		-js
+		+js
 			-trierTableauHTML
 				-images
 					-chiffres_Garamond
@@ -1245,61 +1248,54 @@ _janus
 		_janus.ppr
 		back_office.php
 		front_office.php
+		janus.php
 		load.php
-		version.php
+		xoops_version.php
 [Open project files]
 0=docs\changelog.txt
-1=..\..\class\xoopsform\formtext.php
-2=include\constantes.php
-3=class\xoopsform\duration\formduration.php
-4=class\xoopsform\duration\formduration.js
-5=include\fw-functions.php
-6=class\xoopsform\textplus\formtextplus.php
-7=class\xoopsform\textplus\formtextplus.js
-8=class\xoopsform\textplus\formtextplus.css
-9=version.php
-10=class\xoopsform\showhide\formshowhide.css
-11=class\xoopsform\showhide\formshowhide.php
-12=jquery\plugins\showHide.js
+1=janus.php
+2=load.php
+3=include\constantes.php
+4=include\fw-functions.php
+5=class\xoopsform\formtabletray.php
+6=class\xoopsform\formnumber.php
+7=class\xoopsform\formnumber.css
+8=include\xform-functions.php
+9=class\xoopsform\showhide\formshowhide.php
+10=xoops_version.php
 [Selected Project Files]
 Main=
 Selected=docs\changelog.txt
 [docs\changelog.txt]
 TopLine=1
-Caret=1,3
-[..\..\class\xoopsform\formtext.php]
-TopLine=34
-Caret=20,76
+Caret=95,4
+[janus.php]
+TopLine=59
+Caret=24,80
+[load.php]
+TopLine=29
+Caret=1,41
 [include\constantes.php]
 TopLine=1
-Caret=18,17
-[class\xoopsform\duration\formduration.php]
-TopLine=1
-Caret=1,43
-[class\xoopsform\duration\formduration.js]
-TopLine=18
-Caret=94,56
+Caret=25,30
 [include\fw-functions.php]
-TopLine=257
-Caret=28,269
-[class\xoopsform\textplus\formtextplus.php]
-TopLine=36
-Caret=1,64
-[class\xoopsform\textplus\formtextplus.js]
+TopLine=97
+Caret=10,99
+[class\xoopsform\formtabletray.php]
+TopLine=111
+Caret=59,116
+[class\xoopsform\formnumber.php]
+TopLine=191
+Caret=56,232
+[class\xoopsform\formnumber.css]
 TopLine=1
-Caret=7,3
-[class\xoopsform\textplus\formtextplus.css]
-TopLine=1
-Caret=24,1
-[version.php]
-TopLine=1
-Caret=54,37
-[class\xoopsform\showhide\formshowhide.css]
-TopLine=1
-Caret=5,8
+Caret=10,13
+[include\xform-functions.php]
+TopLine=184
+Caret=23,188
 [class\xoopsform\showhide\formshowhide.php]
-TopLine=155
-Caret=12,193
-[jquery\plugins\showHide.js]
-TopLine=11
-Caret=1,24
+TopLine=27
+Caret=20,40
+[xoops_version.php]
+TopLine=1
+Caret=1,1

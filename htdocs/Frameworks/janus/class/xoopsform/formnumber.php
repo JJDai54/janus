@@ -82,13 +82,14 @@ class XoopsFormNumber extends XoopsFormElement
      * @param int    $maxlength Maximum length of text
      * @param string $value     Initial text
      */
-    public function __construct($caption, $name, $size, $maxlength, $value = '')
+    public function __construct($caption, $name, $size, $maxlength, $value = '', $extra = '')
     {
         $this->setCaption($caption);
         $this->setName($name);
         $this->_size      = (int)$size;
         $this->_maxlength = (int)$maxlength;
         $this->setValue($value);
+        $this->setExtra($extra);
         
         //$this->setExtra('style="text-align : right;"');
         
@@ -227,8 +228,8 @@ class XoopsFormNumber extends XoopsFormElement
             $extra = substr($extra, 0, $j) . $styleDefault . substr($extra, $j+1); 
         }
         
-        
-        $ret =  "<input class='form-control' type='number' name='"
+      
+        $ret =  "<input class='formnumber' type='number' name='"
             . $this->getName() . "' title='" . $this->getTitle() . "' id='" . $this->getName()
             . "' size='" . $this->getSize() . "' maxlength='" . $this->getMaxlength()
             . "' value='" . $this->getValue() 

@@ -18,7 +18,7 @@ define('JANUS_URL',  XOOPS_URL       . '/Frameworks/' . JANUS_FW);
 define('JANUS_URL_XFORM', JANUS_URL . '/class/xoopsform');
 define('JANUS_XFORM_URL',  JANUS_URL_XFORM); //obsolete, a virer àa l'occcasion
 
-include_once JANUS_PATH . "/version.php";
+include_once JANUS_PATH . "/xoops_version.php";
 
 define('JANUS_VERSION', $versionArr['version']);
 define('JANUS_DATE_RELEASE', $versionArr['status']);
@@ -27,6 +27,7 @@ define('JANUS_FULL_VERSION', $versionArr['name'] .'-'. JANUS_VERSION .'-'. JANUS
 //------------------------------------------------------------
 
 define('JANUS_PATH_XFORMS', JANUS_PATH . '/class/xoopsform');
+define('JANUS_URL_XFORMS',  JANUS_URL  . '/class/xoopsform');
 define('JANUS_PATH_CSS', JANUS_PATH . '/css');
 //echo"<hr>JANUS_PATH => " . JANUS_PATH . "<br>JANUS_PATH_XFORMS => " . JANUS_PATH_XFORMS . "<hr>";
 

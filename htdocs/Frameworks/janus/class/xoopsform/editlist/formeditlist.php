@@ -41,9 +41,15 @@ class XoopsEditList extends XoopsFormSelect
 /* set here the folder of the clas relative at the root     */
 /*----------------------------------------------------------*/
 //const _EDITLIST_FOLDER = '/class/xoopsform/editlist/editlist';
-const _EDITLIST_VERSION = 1.1;
+const _EDITLIST_VERSION = 1.2;
 
-
+    /**
+     * $_btnArr array of buttons
+     *
+     * @var array
+     * @access private
+     */
+var $_btnArr = [];
 
     /**
      * backcolor ol list
@@ -121,6 +127,24 @@ const _EDITLIST_VERSION = 1.1;
      *
      * @param  $width int
      */
+
+	/**
+	 * XoopsFormButtonTray::setValue()
+	 *
+	 * @param mixed $value
+	 * @return array
+	 */
+	function getButtons() {
+		return $this->_btnArr;
+	}
+
+	function addButton($libelle, $name='', $inputType='button',  $action='') {
+		//if (!$action) $action = "document.getElementById(\"{$this->getName()}\").value=\"\";'";
+		if (!$action && $inputType=='button') $action = "self.value=\"{$this->_idAll}\"";
+        if (!$name) $name = $this->getName() . '_' . count($this->_btnArr);
+		$action = str_replace('self', "document.getElementById(\"{$this->getName()}\")", $action); 
+        $this->_btnArr[] = array('libelle'=>$libelle,'name'=>$name,'type'=>$inputType,'action'=>$action);
+	}
      
     function setWidth($width)
     {
@@ -133,7 +157,7 @@ const _EDITLIST_VERSION = 1.1;
      *
      * @return string HTML
      */
-    function render()
+    function render_list()
     {
     global $xoTheme;
     // $url =  XOOPS_URL . self::_EDITLIST_FOLDER;
@@ -176,6 +200,35 @@ const _EDITLIST_VERSION = 1.1;
    //-------------------------------------------
     return $html;
     }
+    
+    /**********************************************************************/
+    
+    /**
+     * Prepare HTML for output
+     *
+     * @return string HTML
+     */
+    public function render()
+    {
+        global $xoTheme;
+        $xoTheme->addStylesheet(JANUS_URL_XFORM . "/xform.css");
+        //$xoTheme->addScript("{$url}/iconselect.js");
+
+        
+        
+        if (count($this->_btnArr) > 0){
+            $html = '<div style=\'white-space: nowrap;\'>' . $this->render_list();
+            foreach($this->_btnArr AS $key=>$btn){
+                $html .= "<input type='{$btn['type']}' id='{$btn['name']}'  name='{$btn['name']}'value='{$btn['libelle']}' class='xform' onclick='{$btn['action']}'>";
+            }
+            $html .= '</div>';
+            return $html;
+        }else{
+            return $this->render_list();
+        }
+        
+    }
+
 
 /*-----------------------------------------------*/
 /*---          fin de la classe               ---*/

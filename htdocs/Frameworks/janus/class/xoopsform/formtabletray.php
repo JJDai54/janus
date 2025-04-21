@@ -45,6 +45,7 @@ class XoopsFormTableTray extends XoopsFormElement
     var $_hiddens = array();    
     var $_odd = '';    
     var $_even = '';    
+    var $_titles = array();    
 
     /**
      * Constructor
@@ -62,6 +63,12 @@ class XoopsFormTableTray extends XoopsFormElement
 
         if ($extra) $this->setExtra($extra);
     }
+    
+    function addTitle($title){
+        $this->_titles[] = $title;    
+    }
+    
+    
     function setEven($style){
         $this->_even = $style;    
     }
@@ -140,6 +147,16 @@ class XoopsFormTableTray extends XoopsFormElement
         //--------------------------------------------
         //$tHtml[] = "<table class='tblForm' " . implode(' ', $this->_extra) . ">"; 
         $tHtml[] = "<table class='tblForm' " . $this->getExtra() . ">"; 
+
+        if(count($this->_titles) > 0){
+                $tHtml[] = "<tr style='" . $this->_odd . "'>";
+                for ($h = 0; $h < count($this->_titles); $h++){
+                $tHtml[] = "<td style='" . $this->_odd . "'>{$this->_titles[$h]}</td>";
+                }
+                $tHtml[] = "</tr>";
+        }
+
+
 
         $rows = count($this->_elements);      
         for ($row = 0; $row < $rows; $row++){

@@ -39,7 +39,7 @@ var $help = '';
     function addOption($value){
         $this->optionsArr[] = $value;
     }
-    function addOptionArr($arr){
+    function addOptionArray($arr){
         foreach ($arr as $key=>$value){
             $this->addOption($value);
         }
@@ -79,7 +79,8 @@ var $help = '';
         
         }
         if(count($this->optionsArr) > 0){
-            $html[] = "<select name='{$this->getName()}-select' id='{$this->getName()}-select' onchange='XoopsFormTextPlus_setValueTxt(event,\"{$this->getName()}\")'>";
+            $idn = 'xformTextPlus-' . rand(10000,99999);
+            $html[] = "<select name='{$idn}' id='{$idn}' onchange='XoopsFormTextPlus_setValueTxt(event,\"{$this->getName()}\")'>";
             $value = '';
             $html[] = "<option value='{$value}'>{$value}</option>";   
             foreach ($this->optionsArr as $key=>$value){
