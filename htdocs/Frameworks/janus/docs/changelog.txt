@@ -1,8 +1,9 @@
-version 4.8 - 2025-04-21a - (JJDai - jjdelalandre@orange.fr)
+version 4.8 beta 2 - 2025-04-27 - (JJDai - jjdelalandre@orange.fr)
 ================================================================
 fonction loadAllXForms
     appel à la fonction plus générique loasXForm qui charge aussi le css du xForm si il existe
-
+    Ajout de la fonction "addElementOptions" dans la classe "XoopsFormTableTray"
+    
 version 4.6 - 2024-11-05a - (JJDai - jjdelalandre@orange.fr)
 ================================================================
 Ajout de xoopsFormShowHide : permet d'afficher ou de masquer un block.

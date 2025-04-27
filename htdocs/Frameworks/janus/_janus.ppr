@@ -18,7 +18,7 @@ Extensions=*.*
 [Project tree]
 _janus
 	+janus
-		+class
+		-class
 			+xoopsform
 				-admintable
 					-doc
@@ -1262,13 +1262,13 @@ _janus
 7=class\xoopsform\formElementTable.php
 [Selected Project Files]
 Main=
-Selected=class\xoopsform\formtabletray.php
+Selected=docs\changelog.txt
 [xoops_version.php]
 TopLine=1
 Caret=38,33
 [docs\changelog.txt]
 TopLine=1
-Caret=25,1
+Caret=17,1
 [janus.php]
 TopLine=59
 Caret=24,80
@@ -1282,8 +1282,8 @@ Caret=25,30
 TopLine=97
 Caret=10,99
 [class\xoopsform\formtabletray.php]
-TopLine=117
-Caret=54,146
+TopLine=1
+Caret=25,26
 [class\xoopsform\formElementTable.php]
 TopLine=21
 Caret=32,35
