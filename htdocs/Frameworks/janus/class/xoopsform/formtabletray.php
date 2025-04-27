@@ -46,6 +46,7 @@ class XoopsFormTableTray extends XoopsFormElement
     var $_odd = '';    
     var $_even = '';    
     var $_titles = array();    
+    var $_insertBreakBefore = array();    
 
     /**
      * Constructor
@@ -102,8 +103,63 @@ class XoopsFormTableTray extends XoopsFormElement
         $nbRows = count($this->_elements);
         $nbHiddens = count($this->_hiddens);
         //echo "<hr>addElement : row={$numRow} - nbRows={$nbRows} - col={$numCol} - hidden={$nbHiddens}<br>";// . $element->render();
+        if(!isset($this->_insertBreakBefore[$numRow])) $this->_insertBreakBefore[$numRow] = '';
         return true;
     }
+    
+    /**
+     * addElement : ajoute un elements dans le tableau
+     * @element : xoopsform a ajouter
+     * @numCol : numero de colonne de destination
+     * @numRow : numero de ligne de destination
+     * @delimiter : default '<br>' - Delimiteur si plusieurs objets sont dans la même cellule
+     * @return bool
+     */
+    function addElementOptions($element){
+        //if(!$element) return false;
+        $numRow = count($this->_elements);
+        
+        if(is_string($element)){
+            $this->addElement(new \XoopsFormLabel($element),0,$numRow);
+        }else{
+        
+            if($element->getCaption() != ''){
+                $this->addElement(new \XoopsFormLabel($element->getCaption()),0,$numRow);
+                $element->setCaption('');
+            }else{
+                $this->addElement(new \XoopsFormLabel(''),0,$numRow);
+            }
+            
+
+            $this->addElement($element,1,$numRow);
+            
+            if($element->getDescription() != ''){
+                //$this->addElement($element->getDescription(),1,$numRow,'<br>');
+                $this->addElement(new \XoopsFormLabel($element->getDescription()),1,$numRow);
+            }
+        }
+       if(!isset($this->_insertBreakBefore[$numRow])) $this->_insertBreakBefore[$numRow] = '';
+
+    }
+    
+    public function insertLineBreak($extra = null, $numRow = -1, $before=true){
+        $this->insertBreak($extra, $numRow, $before);
+    }
+    
+    public function insertBreak($extra = null, $numRow = -1, $before=true)
+    {
+        if($numRow < 0){
+            $this->_insertBreakBefore[count($this->_elements)] = $extra;
+        }else{
+            $this->_insertBreakBefore[$numRow] = $extra;
+        }
+    }
+    
+//     public function insertEmptyLine($extra = null, $numRow = -1, $before=true)
+//     {
+//       $trayOptions->insertBreak("<div style='background:green;width:100%;height:12px;padding:0px;margin:0px;'></div>");
+//     }
+//     
     
     function addTdStyle($numCol, $tdStyle){
         if(is_null($numCol) || $numCol<0) $numCol = 0;
@@ -118,6 +174,7 @@ class XoopsFormTableTray extends XoopsFormElement
             return '';
     }
     
+    public function addXoopsForm($formElement, $required = false){}
         
     /**
      * Prepare HTML for output
@@ -156,11 +213,23 @@ class XoopsFormTableTray extends XoopsFormElement
                 $tHtml[] = "</tr>";
         }
 
+//echoArray($this->_insertBreakBefore,'_insertBreakBefore');
+//echoArray($this->_elements,'data');
 
-
-        $rows = count($this->_elements);      
+        $rows = count($this->_elements);     
+        
+        $colSpan = 0;
+        for ($row = 0; $row < $rows; $row++){
+            if(count($this->_elements[$row]) > $colSpan) $colSpan = count($this->_elements[$row]);
+        }
+         
         for ($row = 0; $row < $rows; $row++){
         //echo ("<hr>--->render : {$row} / {$rows}<br>");   
+            $cols = count($this->_elements[$row]);
+            if( $this->_insertBreakBefore[$row] != '' ){
+                $tHtml[] = "<tr><td colspan='{$colSpan}' style='padding:0px;margin:0px;'>" . $this->_insertBreakBefore[$row] . "</td></tr>";
+            }          
+
             if(($row % 2 == 0) && $this->_odd){
                 $tHtml[] = "<tr style='" . $this->_odd . "'>";
             }else if($this->_even){
@@ -169,14 +238,15 @@ class XoopsFormTableTray extends XoopsFormElement
                 $tHtml[] = "<tr>";
             };
             
-            $cols = count($this->_elements[$row]);
           
             
             for ($col = 0; $col < $cols; $col++){
+                //echo "===>{$col} ===> {$cols} col<br>";
                 $tHtml[] = "<td " . $this->getTdStyle($col) . ">";
                 $countElements = count($this->_elements[$row][$col]);
                 foreach($this->_elements[$row][$col] as $key=>$elem){
-                  $elemCaption = ($elem[0]->getCaption() ) ? $elem[0]->getCaption() . ' : ' :  '';
+                  $dp = (strpos($elem[0]->getCaption(),':') === false) ? ' : ' : '';  
+                  $elemCaption = ($elem[0]->getCaption() ) ? $elem[0]->getCaption() . $dp :  '';
                   $tHtml[] = $elemCaption . $elem[0]->render();
                   if($key < $countElements-1) $tHtml[] = $elem[1];
                }
@@ -271,4 +341,3 @@ class XoopsFormTableTrayStrict extends XoopsFormElement
     }
 } // fin de la classe
 
-?>
