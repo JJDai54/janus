@@ -100,12 +100,29 @@ class XoopsFormTableTray extends XoopsFormElement
         }else{
           $this->_hiddens[] = $element;
         }
-        $nbRows = count($this->_elements);
-        $nbHiddens = count($this->_hiddens);
+        //$nbRows = count($this->_elements);
+        //$nbHiddens = count($this->_hiddens);
         //echo "<hr>addElement : row={$numRow} - nbRows={$nbRows} - col={$numCol} - hidden={$nbHiddens}<br>";// . $element->render();
         if(!isset($this->_insertBreakBefore[$numRow])) $this->_insertBreakBefore[$numRow] = '';
         return true;
     }
+    function addElementHidden($element)
+    {
+        $this->_hiddens[] = $element;
+        return true;
+    }
+    function addXoopsFormHidden($name, $value, $numCol=-1, $numRow = 0, $delimiter = '<br>')
+    {
+        $element = new XoopsformHidden($name,$value);
+        $this->_hiddens[] = $element;
+        if($numCol >= 0){
+            $element = new XoopsformLabel('',$value);
+            $this->addElement($element, $numCol, $numRow, $delimiter);
+        
+        }
+        return true;
+    }
+
     
     /**
      * addElement : ajoute un elements dans le tableau
@@ -115,7 +132,7 @@ class XoopsFormTableTray extends XoopsFormElement
      * @delimiter : default '<br>' - Delimiteur si plusieurs objets sont dans la même cellule
      * @return bool
      */
-    function addElementOptions($element){
+    function addElementOption($element){
         //if(!$element) return false;
         $numRow = count($this->_elements);
         
@@ -174,7 +191,10 @@ class XoopsFormTableTray extends XoopsFormElement
             return '';
     }
     
-    public function addXoopsForm($formElement, $required = false){}
+    public function addXoopsForm($formElement, $required = false)
+    {
+        $this->addElementOption($formElement);
+    }
         
     /**
      * Prepare HTML for output
@@ -245,8 +265,8 @@ class XoopsFormTableTray extends XoopsFormElement
                 $tHtml[] = "<td " . $this->getTdStyle($col) . ">";
                 $countElements = count($this->_elements[$row][$col]);
                 foreach($this->_elements[$row][$col] as $key=>$elem){
-                  $dp = (strpos($elem[0]->getCaption(),':') === false) ? ' : ' : '';  
-                  $elemCaption = ($elem[0]->getCaption() ) ? $elem[0]->getCaption() . $dp :  '';
+                  $dp ='';//= (strpos($elem[0]->getCaption(),':') === false) ? ' : ' : '';  
+                  $elemCaption = $elem[0]->getCaption(); // ($elem[0]->getCaption() ) ? $elem[0]->getCaption() . $dp :  '';
                   $tHtml[] = $elemCaption . $elem[0]->render();
                   if($key < $countElements-1) $tHtml[] = $elem[1];
                }

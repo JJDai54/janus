@@ -217,6 +217,9 @@ function render(){
   //echo "{$this->imgPath}<br>";
     $imgs = array();
     $indexImg = 0;
+    //echoArray($this->_imgArr);
+    ksort($this->_imgArr, SORT_NATURAL | SORT_FLAG_CASE );
+    //echoArray($this->_imgArr);
     foreach ($this->_imgArr as $k => $img){
       $h = strrpos($k, ".");
       $indexKey = substr($k,0 , $h);

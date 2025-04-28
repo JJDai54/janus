@@ -86,7 +86,7 @@ class XoopsFormNumber extends XoopsFormElement
     {
         $this->setCaption($caption);
         $this->setName($name);
-        $this->_size      = (int)$size;
+        $this->_size = (int)$size;
         $this->_maxlength = (int)$maxlength;
         $this->setValue($value);
         $this->setExtra($extra);

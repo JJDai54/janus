@@ -18,7 +18,7 @@ Extensions=*.*
 [Project tree]
 _janus
 	+janus
-		-class
+		+class
 			+xoopsform
 				-admintable
 					-doc
@@ -246,7 +246,7 @@ _janus
 						class\xoopsform\editlist\editlist\editlist.js
 					class\xoopsform\editlist\changelog.txt
 					class\xoopsform\editlist\formeditlist.php
-				-iconselect
+				+iconselect
 					+lib
 						class\xoopsform\iconselect\lib\arrow.png
 						class\xoopsform\iconselect\lib\iconselect.css
@@ -648,7 +648,7 @@ _janus
 					class\xoopsform\notation\modele-notation.php
 				-selectfile
 					class\xoopsform\selectfile\formselectfile.php
-				+showhide
+				-showhide
 					class\xoopsform\showhide\formshowhide.css
 					class\xoopsform\showhide\formshowhide.js
 					class\xoopsform\showhide\formshowhide.php
@@ -744,7 +744,7 @@ _janus
 						class\xoopsform\spinmap\spin_map\spin_map_new.js
 					class\xoopsform\spinmap\formspinmap.php
 					class\xoopsform\spinmap\index.html
-				+textplus
+				-textplus
 					class\xoopsform\textplus\formtextplus.css
 					class\xoopsform\textplus\formtextplus.js
 					class\xoopsform\textplus\formtextplus.php
@@ -772,7 +772,7 @@ _janus
 			class\index.html
 			class\Permissions.php
 			class\tools.php
-		+css
+		-css
 			css\index.html
 			css\style-item-color.css
 			css\style-item-color-old.css
@@ -1260,6 +1260,9 @@ _janus
 5=include\fw-functions.php
 6=class\xoopsform\formtabletray.php
 7=class\xoopsform\formElementTable.php
+8=class\xoopsform\iconselect\formiconselect.php
+9=class\xoopsform\iconselect\lib\iconselect.js
+10=class\xoopsform\formnumber.php
 [Selected Project Files]
 Main=
 Selected=docs\changelog.txt
@@ -1268,7 +1271,7 @@ TopLine=1
 Caret=38,33
 [docs\changelog.txt]
 TopLine=1
-Caret=17,1
+Caret=32,1
 [janus.php]
 TopLine=59
 Caret=24,80
@@ -1282,8 +1285,17 @@ Caret=25,30
 TopLine=97
 Caret=10,99
 [class\xoopsform\formtabletray.php]
-TopLine=1
-Caret=25,26
+TopLine=86
+Caret=32,114
 [class\xoopsform\formElementTable.php]
 TopLine=21
 Caret=32,35
+[class\xoopsform\iconselect\formiconselect.php]
+TopLine=177
+Caret=7,222
+[class\xoopsform\iconselect\lib\iconselect.js]
+TopLine=27
+Caret=1,1
+[class\xoopsform\formnumber.php]
+TopLine=191
+Caret=37,221

@@ -1,3 +1,7 @@
+version 4.8 beta 3 - 2025-04-28 - (JJDai - jjdelalandre@orange.fr)
+================================================================
+    Ajout des fonctions "addElementHidden"et addXoopsFormHidden  dans la classe "XoopsFormTableTray"
+
 version 4.8 beta 2 - 2025-04-27 - (JJDai - jjdelalandre@orange.fr)
 ================================================================
 fonction loadAllXForms
