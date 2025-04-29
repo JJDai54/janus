@@ -66,7 +66,15 @@ class XoopsFormTableTray extends XoopsFormElement
     }
     
     function addTitle($title){
-        $this->_titles[] = $title;    
+        if(is_array($title)){
+            $this->addTitleArray($title);    
+        }else{
+            $this->_titles[] = $title;    
+        }
+    }
+    function addTitleArray($titleArr){
+        for($h = 0; $h < count($titleArr); $h++)
+            $this->_titles[] = $titleArr[$h];    
     }
     
     
@@ -228,7 +236,7 @@ class XoopsFormTableTray extends XoopsFormElement
         if(count($this->_titles) > 0){
                 $tHtml[] = "<tr style='" . $this->_odd . "'>";
                 for ($h = 0; $h < count($this->_titles); $h++){
-                $tHtml[] = "<td style='" . $this->_odd . "'>{$this->_titles[$h]}</td>";
+                $tHtml[] = "<td style=text-align:center;'" . $this->_odd . "'>{$this->_titles[$h]}</td>";
                 }
                 $tHtml[] = "</tr>";
         }

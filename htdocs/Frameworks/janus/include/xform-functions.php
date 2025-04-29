@@ -219,10 +219,12 @@ function loadXForm($forf){
     //xoops_load('XoopsFormLoader');      
     if(substr($forf, -3) == "php"){
         $f = JANUS_PATH_XFORMS . "/" . $forf;
-        $css = JANUS_PATH_XFORMS . "/" . $forf;
+//         $css = JANUS_PATH_XFORMS . "/" . $forf;
+//         $js = JANUS_PATH_XFORMS  . "/" . $forf;
     }else{
         $f = JANUS_PATH_XFORMS . "/" . $forf .  "/form" . $forf . ".php";
-        $css = JANUS_PATH_XFORMS . "/" . $forf .  "/form" . $forf . ".css";
+//         $css = JANUS_PATH_XFORMS . "/" . $forf .  "/form" . $forf . ".css";
+//         $js = JANUS_PATH_XFORMS . "/" . $forf .  "/form" . $forf . ".js";
     }
     //-----------------------------------------------------
     if (file_exists($f)) include_once($f);
@@ -231,6 +233,12 @@ function loadXForm($forf){
     if (file_exists($css)){
         $url = str_replace(JANUS_PATH_XFORMS, JANUS_URL_XFORMS, $css);
         $GLOBALS['xoTheme']->addStylesheet( $url, null );
+        //echo "<hr>loadXForm : {$url}<hr>";
+    }
+    $js = substr($f, 0, -3) . "js";   
+    if (file_exists($js)){
+        $url = str_replace(JANUS_PATH_XFORMS, JANUS_URL_XFORMS, $js);
+        $GLOBALS['xoTheme']->addScript( $url, null );
         //echo "<hr>loadXForm : {$url}<hr>";
     }
 

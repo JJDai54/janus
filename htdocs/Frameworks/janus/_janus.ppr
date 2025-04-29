@@ -18,7 +18,7 @@ Extensions=*.*
 [Project tree]
 _janus
 	+janus
-		+class
+		-class
 			+xoopsform
 				-admintable
 					-doc
@@ -1259,13 +1259,17 @@ _janus
 4=include\constantes.php
 5=include\fw-functions.php
 6=class\xoopsform\formtabletray.php
-7=class\xoopsform\formElementTable.php
-8=class\xoopsform\iconselect\formiconselect.php
-9=class\xoopsform\iconselect\lib\iconselect.js
+7=class\xoopsform\iconselect\formiconselect.php
+8=class\xoopsform\iconselect\lib\iconselect.js
+9=include\xform-functions.php
 10=class\xoopsform\formnumber.php
+11=class\xoopsform\checkboximage\formcheckboximage.js
+12=class\xoopsform\checkboximage\formcheckboximage.php
+13=J:\Xoops\_JJD\modules-JJD\janus\projet\htdocs\Frameworks\janus\Nouveau1.php
+14=class\xoopsform\checkboximage\formcheckbox.php
 [Selected Project Files]
 Main=
-Selected=docs\changelog.txt
+Selected=class\xoopsform\checkboximage\formcheckboximage.php
 [xoops_version.php]
 TopLine=1
 Caret=38,33
@@ -1285,17 +1289,29 @@ Caret=25,30
 TopLine=97
 Caret=10,99
 [class\xoopsform\formtabletray.php]
-TopLine=86
-Caret=32,114
-[class\xoopsform\formElementTable.php]
-TopLine=21
-Caret=32,35
+TopLine=207
+Caret=1,212
 [class\xoopsform\iconselect\formiconselect.php]
 TopLine=177
 Caret=7,222
 [class\xoopsform\iconselect\lib\iconselect.js]
 TopLine=27
 Caret=1,1
+[include\xform-functions.php]
+TopLine=192
+Caret=34,241
 [class\xoopsform\formnumber.php]
 TopLine=191
 Caret=37,221
+[class\xoopsform\checkboximage\formcheckboximage.js]
+TopLine=1
+Caret=47,10
+[class\xoopsform\checkboximage\formcheckboximage.php]
+TopLine=177
+Caret=56,196
+[J:\Xoops\_JJD\modules-JJD\janus\projet\htdocs\Frameworks\janus\Nouveau1.php]
+TopLine=150
+Caret=1,177
+[class\xoopsform\checkboximage\formcheckbox.php]
+TopLine=108
+Caret=56,72
