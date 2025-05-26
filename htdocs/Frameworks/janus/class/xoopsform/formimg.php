@@ -198,7 +198,7 @@ class XoopsFormImg extends XoopsFormElement
     if ($this->_height > 0) $html = str_replace('{height}', "height={$this->_height}px", $html);
     
     if ($this->_link != '') 
-        $html = "<a href='{$this->_link}' title='{$this->_title}', alt='' " . $this->getExtra() . ">{$html}</a>";
+        $html = "<a href='{$this->_link}' title='{$this->_title}' alt='' " . $this->getExtra() . ">{$html}</a>";
     else
         $html = "<a  title='{$this->_title}', alt='' " . $this->getExtra() . ">{$html}</a>";
     

@@ -72,7 +72,7 @@ class XoopsFormLoadImages extends XoopsFormElement
         if(is_array($names)){
           $this->setValue($names);
         }else{
-          $this->setValue($names);
+          $this->setValue(array($names));
         }
         
 //         $this->_url = $url;

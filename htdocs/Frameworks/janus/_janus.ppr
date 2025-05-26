@@ -6,7 +6,7 @@ Compilator.ProgSaveAll=0
 Compilator.ProgRunSelection=0
 Compilator.LogType=0
 Compilator.LogEncoding=0
-DefaultDir=J:\Xoops\_JJD\modules-JJD\janus\projet\htdocs\Frameworks\janus
+DefaultDir=D:\_JJD-WorkSpace-D\Wamp-Serveur\Sites\xoops-2511b-fr\htdocs\Frameworks\janus
 DefaultCP=0
 LogtoEnd=1
 DontOpen=0
@@ -18,7 +18,7 @@ Extensions=*.*
 [Project tree]
 _janus
 	+janus
-		-class
+		+class
 			+xoopsform
 				-admintable
 					-doc
@@ -27,6 +27,7 @@ _janus
 							class\xoopsform\admintable\doc\images\exemple-02.png
 							class\xoopsform\admintable\doc\images\exemple-03.png
 							class\xoopsform\admintable\doc\images\home.gif
+							class\xoopsform\admintable\doc\images\index.html
 						-ressources
 							class\xoopsform\admintable\doc\ressources\Image 10.png
 							class\xoopsform\admintable\doc\ressources\Image 11.png
@@ -35,19 +36,24 @@ _janus
 							class\xoopsform\admintable\doc\ressources\Image 7.png
 							class\xoopsform\admintable\doc\ressources\Image 8.png
 							class\xoopsform\admintable\doc\ressources\Image 9.png
+							class\xoopsform\admintable\doc\ressources\index.html
 						class\xoopsform\admintable\doc\admintable.html
+						class\xoopsform\admintable\doc\index.html
 						class\xoopsform\admintable\doc\xdoc-jjd.css
 					class\xoopsform\admintable\formadmintable.php
+					class\xoopsform\admintable\index.html
 				-alphabarre
 					-alphabarre
 						-doc
 							class\xoopsform\alphabarre\alphabarre\doc\alphabarre-french.html
+							class\xoopsform\alphabarre\alphabarre\doc\index.html
 						-images
 							-default
 								class\xoopsform\alphabarre\alphabarre\images\default\blank_08.png
 								class\xoopsform\alphabarre\alphabarre\images\default\blank_13.png
 								class\xoopsform\alphabarre\alphabarre\images\default\first_0.png
 								class\xoopsform\alphabarre\alphabarre\images\default\first_1.png
+								class\xoopsform\alphabarre\alphabarre\images\default\index.html
 								class\xoopsform\alphabarre\alphabarre\images\default\last_0.png
 								class\xoopsform\alphabarre\alphabarre\images\default\last_1.png
 								class\xoopsform\alphabarre\alphabarre\images\default\next_0.png
@@ -58,48 +64,60 @@ _janus
 								class\xoopsform\alphabarre\alphabarre\images\default\previous_0.png
 								class\xoopsform\alphabarre\alphabarre\images\default\previous_1.png
 								class\xoopsform\alphabarre\alphabarre\images\default\Thumbs.db
-							-default - Copie
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie\first.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie\last.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie\next.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie\previous.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie\spin_arrows_0.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie\spin_arrows_1.png
-							-default - Copie (2)
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\blank_08.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\blank_13.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\first_0.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\first_1.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\last_0.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\last_1.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\next_0.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\next_1.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\points_0.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\points_1.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\points_2.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\previous_0.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\previous_1.png
-								class\xoopsform\alphabarre\alphabarre\images\default - Copie (2)\Thumbs.db
+							class\xoopsform\alphabarre\alphabarre\images\index.html
 						class\xoopsform\alphabarre\alphabarre\alphabarre.css
 						class\xoopsform\alphabarre\alphabarre\alphabarre.js
+						class\xoopsform\alphabarre\alphabarre\index.html
 					class\xoopsform\alphabarre\formalphabarre.php
 					class\xoopsform\alphabarre\formalphabarre-js.php
+					class\xoopsform\alphabarre\index.html
 				-breakLine
 					class\xoopsform\breakLine\formBreakLine.php
+					class\xoopsform\breakLine\index.html
 				-checkboxall
 					class\xoopsform\checkboxall\changelog.txt
 					class\xoopsform\checkboxall\formcheckboxall.php
+					class\xoopsform\checkboxall\index.html
 				-checkboxbin
 					-checkboxbin
 						class\xoopsform\checkboxbin\checkboxbin\checkboxbin.js
+						class\xoopsform\checkboxbin\checkboxbin\index.html
 					-js
 						class\xoopsform\checkboxbin\js\checkboxbin.js
+						class\xoopsform\checkboxbin\js\index.html
 					class\xoopsform\checkboxbin\formcheckboxbin.php
+					class\xoopsform\checkboxbin\index.html
+				-checkboximage
+					-Skins
+						-button
+							class\xoopsform\checkboximage\Skins\button\coche-00.png
+							class\xoopsform\checkboximage\Skins\button\coche-01.png
+							class\xoopsform\checkboximage\Skins\button\coche-02.png
+						-default
+							class\xoopsform\checkboximage\Skins\default\coche-00.png
+							class\xoopsform\checkboximage\Skins\default\coche-01.png
+							class\xoopsform\checkboximage\Skins\default\coche-02.png
+						-pastille
+							class\xoopsform\checkboximage\Skins\pastille\coche-00.png
+							class\xoopsform\checkboximage\Skins\pastille\coche-01.png
+							class\xoopsform\checkboximage\Skins\pastille\coche-02.png
+						-pingouins
+							class\xoopsform\checkboximage\Skins\pingouins\coche-00.png
+							class\xoopsform\checkboximage\Skins\pingouins\coche-01.png
+							class\xoopsform\checkboximage\Skins\pingouins\coche-02.png
+						-poussoirs
+							class\xoopsform\checkboximage\Skins\poussoirs\coche-00.png
+							class\xoopsform\checkboximage\Skins\poussoirs\coche-01.png
+							class\xoopsform\checkboximage\Skins\poussoirs\coche-02.png
+					class\xoopsform\checkboximage\formcheckbox.php
+					class\xoopsform\checkboximage\formcheckboximage.js
+					class\xoopsform\checkboximage\formcheckboximage.php
 				-chosen
 					-chosen
 						-docsupport
 							class\xoopsform\chosen\chosen\docsupport\chosen.png
 							class\xoopsform\chosen\chosen\docsupport\event.simulate.js
+							class\xoopsform\chosen\chosen\docsupport\index.html
 							class\xoopsform\chosen\chosen\docsupport\oss-credit.png
 							class\xoopsform\chosen\chosen\docsupport\prism.css
 							class\xoopsform\chosen\chosen\docsupport\prism.js
@@ -119,11 +137,14 @@ _janus
 						class\xoopsform\chosen\chosen\package.json
 					class\xoopsform\chosen\formchosen.js
 					class\xoopsform\chosen\formchosen.php
+					class\xoopsform\chosen\index.html
 				-datalist
 					-datalist
 						class\xoopsform\datalist\datalist\datalist.js
+						class\xoopsform\datalist\datalist\index.html
 					class\xoopsform\datalist\formdatalist.php
 					class\xoopsform\datalist\formdatalist-2022-11-21a.php
+					class\xoopsform\datalist\index.html
 				-doublelist
 					-images
 						-blue
@@ -132,6 +153,7 @@ _janus
 							class\xoopsform\doublelist\images\blue\bottom.png
 							class\xoopsform\doublelist\images\blue\down.png
 							class\xoopsform\doublelist\images\blue\empty.png
+							class\xoopsform\doublelist\images\blue\index.html
 							class\xoopsform\doublelist\images\blue\init.png
 							class\xoopsform\doublelist\images\blue\no.png
 							class\xoopsform\doublelist\images\blue\ok.png
@@ -147,6 +169,7 @@ _janus
 							class\xoopsform\doublelist\images\default\bottom.png
 							class\xoopsform\doublelist\images\default\down.png
 							class\xoopsform\doublelist\images\default\empty.png
+							class\xoopsform\doublelist\images\default\index.html
 							class\xoopsform\doublelist\images\default\init.png
 							class\xoopsform\doublelist\images\default\no.png
 							class\xoopsform\doublelist\images\default\ok.png
@@ -162,6 +185,7 @@ _janus
 							class\xoopsform\doublelist\images\green\bottom.png
 							class\xoopsform\doublelist\images\green\down.png
 							class\xoopsform\doublelist\images\green\empty.png
+							class\xoopsform\doublelist\images\green\index.html
 							class\xoopsform\doublelist\images\green\init.png
 							class\xoopsform\doublelist\images\green\no.png
 							class\xoopsform\doublelist\images\green\ok.png
@@ -177,6 +201,7 @@ _janus
 							class\xoopsform\doublelist\images\grey\bottom.png
 							class\xoopsform\doublelist\images\grey\down.png
 							class\xoopsform\doublelist\images\grey\empty.png
+							class\xoopsform\doublelist\images\grey\index.html
 							class\xoopsform\doublelist\images\grey\init.png
 							class\xoopsform\doublelist\images\grey\no.png
 							class\xoopsform\doublelist\images\grey\ok.png
@@ -192,6 +217,7 @@ _janus
 							class\xoopsform\doublelist\images\magenta\bottom.png
 							class\xoopsform\doublelist\images\magenta\down.png
 							class\xoopsform\doublelist\images\magenta\empty.png
+							class\xoopsform\doublelist\images\magenta\index.html
 							class\xoopsform\doublelist\images\magenta\init.png
 							class\xoopsform\doublelist\images\magenta\no.png
 							class\xoopsform\doublelist\images\magenta\ok.png
@@ -201,10 +227,12 @@ _janus
 							class\xoopsform\doublelist\images\magenta\Thumbs.db
 							class\xoopsform\doublelist\images\magenta\top.png
 							class\xoopsform\doublelist\images\magenta\up.png
+						class\xoopsform\doublelist\images\index.html
 						class\xoopsform\doublelist\images\screenshot.jpg
 						class\xoopsform\doublelist\images\screenshot.png
 					-js
 						class\xoopsform\doublelist\js\doublelist.js
+						class\xoopsform\doublelist\js\index.html
 						class\xoopsform\doublelist\js\Issues · harvesthqchosen.URL
 						class\xoopsform\doublelist\js\test01.js
 					-ressources
@@ -212,20 +240,24 @@ _janus
 							class\xoopsform\doublelist\ressources\images\add.png
 							class\xoopsform\doublelist\ressources\images\add_all.png
 							class\xoopsform\doublelist\ressources\images\down.png
+							class\xoopsform\doublelist\ressources\images\index.html
 							class\xoopsform\doublelist\ressources\images\no.png
 							class\xoopsform\doublelist\ressources\images\ok.png
 							class\xoopsform\doublelist\ressources\images\remove.png
 							class\xoopsform\doublelist\ressources\images\remove_all.png
 							class\xoopsform\doublelist\ressources\images\screenshot.png
 							class\xoopsform\doublelist\ressources\images\up.png
+						class\xoopsform\doublelist\ressources\index.html
 						class\xoopsform\doublelist\ressources\selection.html
 					class\xoopsform\doublelist\_doublelist.ppr
 					class\xoopsform\doublelist\formdoublelist.php
+					class\xoopsform\doublelist\index.html
 					class\xoopsform\doublelist\selection.html
 					class\xoopsform\doublelist\tplDoubleList.html
 				-duration
 					class\xoopsform\duration\formduration.js
 					class\xoopsform\duration\formduration.php
+					class\xoopsform\duration\index.html
 				-editlist
 					-editlist
 						-doc
@@ -239,26 +271,32 @@ _janus
 							class\xoopsform\editlist\editlist\doc\editlist-french.html
 							class\xoopsform\editlist\editlist\doc\index.html
 						-images
+							class\xoopsform\editlist\editlist\images\index.html
 							class\xoopsform\editlist\editlist\images\select_arrow.gif
 							class\xoopsform\editlist\editlist\images\select_arrow_down.gif
 							class\xoopsform\editlist\editlist\images\select_arrow_over.gif
 						class\xoopsform\editlist\editlist\editlist.css
 						class\xoopsform\editlist\editlist\editlist.js
+						class\xoopsform\editlist\editlist\index.html
 					class\xoopsform\editlist\changelog.txt
 					class\xoopsform\editlist\formeditlist.php
-				+iconselect
-					+lib
+					class\xoopsform\editlist\index.html
+				-iconselect
+					-lib
 						class\xoopsform\iconselect\lib\arrow.png
 						class\xoopsform\iconselect\lib\iconselect.css
 						class\xoopsform\iconselect\lib\iconselect.js
+						class\xoopsform\iconselect\lib\index.html
 						class\xoopsform\iconselect\lib\iscroll.js
 					class\xoopsform\iconselect\formiconselect.php
-				-loadimages
+					class\xoopsform\iconselect\index.html
+				+loadimages
 					class\xoopsform\loadimages\formfile.php
 					class\xoopsform\loadimages\formfilesimages.php
 					class\xoopsform\loadimages\formloadimages.php
+					class\xoopsform\loadimages\index.html
 				-notation
-					+notation
+					-notation
 						-doc
 							-images
 								class\xoopsform\notation\notation\doc\images\grey.png
@@ -648,11 +686,11 @@ _janus
 					class\xoopsform\notation\modele-notation.php
 				-selectfile
 					class\xoopsform\selectfile\formselectfile.php
+					class\xoopsform\selectfile\index.html
 				-showhide
 					class\xoopsform\showhide\formshowhide.css
 					class\xoopsform\showhide\formshowhide.js
 					class\xoopsform\showhide\formshowhide.php
-					jquery\plugins\showHide.js
 				-spinmap
 					-spin_map
 						-doc
@@ -674,26 +712,32 @@ _janus
 								class\xoopsform\spinmap\spin_map\images\bleu-ud\spin_arrows_0.png
 								class\xoopsform\spinmap\spin_map\images\bleu-ud\spin_arrows_1.png
 							-blue_cadreH
+								class\xoopsform\spinmap\spin_map\images\blue_cadreH\index.html
 								class\xoopsform\spinmap\spin_map\images\blue_cadreH\spin_arrows.ini
 								class\xoopsform\spinmap\spin_map\images\blue_cadreH\spin_arrows_0.png
 								class\xoopsform\spinmap\spin_map\images\blue_cadreH\spin_arrows_1.png
 							-blue_cadreV1
+								class\xoopsform\spinmap\spin_map\images\blue_cadreV1\index.html
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV1\spin_arrows.ini
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV1\spin_arrows_0.png
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV1\spin_arrows_1.png
 							-blue_cadreV2
+								class\xoopsform\spinmap\spin_map\images\blue_cadreV2\index.html
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV2\spin_arrows.ini
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV2\spin_arrows_0.png
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV2\spin_arrows_1.png
 							-blue_cadreV3
+								class\xoopsform\spinmap\spin_map\images\blue_cadreV3\index.html
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV3\spin_arrows.ini
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV3\spin_arrows_0.png
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV3\spin_arrows_1.png
 							-blue_cadreV9
+								class\xoopsform\spinmap\spin_map\images\blue_cadreV9\index.html
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV9\spin_arrows.ini
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV9\spin_arrows_0.png
 								class\xoopsform\spinmap\spin_map\images\blue_cadreV9\spin_arrows_1.png
 							-blue_cadreVud
+								class\xoopsform\spinmap\spin_map\images\blue_cadreVud\index.html
 								class\xoopsform\spinmap\spin_map\images\blue_cadreVud\spin_arrows.ini
 								class\xoopsform\spinmap\spin_map\images\blue_cadreVud\spin_arrows_0.png
 								class\xoopsform\spinmap\spin_map\images\blue_cadreVud\spin_arrows_1.png
@@ -706,11 +750,13 @@ _janus
 										class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\delete.gif
 										class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\html.gif
 										class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\imgmap.css
+										class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\index.html
 										class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\jquery.js
 										class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\jquery-1.js
 										class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\upload.htm
 										class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\zoom.gif
 									class\xoopsform\spinmap\spin_map\images\default\imgMap\index.html
+								class\xoopsform\spinmap\spin_map\images\default\index.html
 								class\xoopsform\spinmap\spin_map\images\default\spin_arrows - Copie.ini
 								class\xoopsform\spinmap\spin_map\images\default\spin_arrows.ini
 								class\xoopsform\spinmap\spin_map\images\default\spin_arrows_0.png
@@ -739,6 +785,7 @@ _janus
 							class\xoopsform\spinmap\spin_map\images\spin_masque.png
 							class\xoopsform\spinmap\spin_map\images\spin_masque-2.png
 						class\xoopsform\spinmap\spin_map\bulle.js
+						class\xoopsform\spinmap\spin_map\index.html
 						class\xoopsform\spinmap\spin_map\spin_map.css
 						class\xoopsform\spinmap\spin_map\spin_map.js
 						class\xoopsform\spinmap\spin_map\spin_map_new.js
@@ -748,6 +795,7 @@ _janus
 					class\xoopsform\textplus\formtextplus.css
 					class\xoopsform\textplus\formtextplus.js
 					class\xoopsform\textplus\formtextplus.php
+					class\xoopsform\textplus\index.html
 				class\xoopsform\form_jjd.php
 				class\xoopsform\formbuttontray.php
 				class\xoopsform\formElementTable.php
@@ -757,6 +805,7 @@ _janus
 				class\xoopsform\formLineBreak.php
 				class\xoopsform\formloadfiles.php
 				class\xoopsform\formloadimages.php
+				class\xoopsform\formnumber.css
 				class\xoopsform\formnumber.php
 				class\xoopsform\formSelectCategory.php
 				class\xoopsform\formselectsystab.php
@@ -769,6 +818,7 @@ _janus
 			class\About.php
 			class\CloneModule - Copie.php
 			class\CloneModule.php
+			class\Feedback.php
 			class\index.html
 			class\Permissions.php
 			class\tools.php
@@ -778,18 +828,18 @@ _janus
 			css\style-item-color-old.css
 			css\style-item-design.css
 			css\style-item-design-old.css
-		+docs
+		-docs
 			docs\changelog.txt
 			docs\index.html
 		-Goffy
-			+class
+			-class
 				Goffy\class\index.html
-				J:\Xoops\_JJD\modules-JJD\janus\projet\htdocs\Frameworks\janus\Goffy\class\Resizer.php
+				Goffy\class\Resizer.php
 				Goffy\class\XoopsConfirm.php
 			Goffy\index.html
 			Goffy\read_me.txt
 		-images
-			+icons
+			-icons
 				-16
 					images\icons\16\0.png
 					images\icons\16\1.png
@@ -1000,7 +1050,7 @@ _janus
 					images\icons\20\watermarks.gif
 					images\icons\20\world.gif
 					images\icons\20\zip.gif
-				+32
+				-32
 					images\icons\32\_img.html
 					images\icons\32\_zzz.png
 					images\icons\32\00004808.png
@@ -1165,7 +1215,8 @@ _janus
 				images\icons\_img.html
 				images\icons\index.html
 			images\index.html
-		+include
+			images\logo-Janus-01.png
+		-include
 			include\cloneModule.php
 			include\constantes.php
 			include\date-functions.php
@@ -1175,7 +1226,12 @@ _janus
 			include\index.html
 			include\language-functions.php
 			include\xform-functions.php
-		+js
+		-jquery
+			-plugins
+				jquery\plugins\index.html
+				jquery\plugins\showHide.js
+			jquery\index.html
+		-js
 			-trierTableauHTML
 				-images
 					-chiffres_Garamond
@@ -1232,86 +1288,69 @@ _janus
 				js\trierTableauHTML\trierTableau.js
 			js\config_highslide.js
 			js\index.html
-		+language
-			+english
+		-language
+			-english
 				language\english\common.php
 				language\english\index.html
-			+french
+			-french
 				language\french\common.php
 				language\french\index.html
 			language\index.html
 		-ressources
+			ressources\index.html
 			ressources\logoModuleVierge.png
 			ressources\VeraBd.ttf
 		-templates
 			templates\admin_about.tpl
+			templates\index.html
 		_janus.ppr
 		back_office.php
 		front_office.php
+		index.html
 		janus.php
 		load.php
 		xoops_version.php
 [Open project files]
-0=xoops_version.php
-1=docs\changelog.txt
-2=janus.php
-3=load.php
-4=include\constantes.php
-5=include\fw-functions.php
-6=class\xoopsform\formtabletray.php
-7=class\xoopsform\iconselect\formiconselect.php
-8=class\xoopsform\iconselect\lib\iconselect.js
-9=include\xform-functions.php
-10=class\xoopsform\formnumber.php
-11=class\xoopsform\checkboximage\formcheckboximage.js
-12=class\xoopsform\checkboximage\formcheckboximage.php
-13=J:\Xoops\_JJD\modules-JJD\janus\projet\htdocs\Frameworks\janus\Nouveau1.php
-14=class\xoopsform\checkboximage\formcheckbox.php
+0=class\xoopsform\formnumber.php
+1=class\xoopsform\formElementTable.php
+2=class\xoopsform\formtabletray.php
+3=include\fw-functions.php
+4=js\config_highslide.js
+5=J:\Xoops\Javascript\highslide\highslide-5.0.0\examples\gallery-controls-in-heading.html
+6=class\xoopsform\formimg.php
+7=class\xoopsform\formimage.php
+8=class\xoopsform\loadimages\formloadimages.php
+9=class\xoopsform\loadimages\formfilesimages.php
 [Selected Project Files]
 Main=
-Selected=class\xoopsform\checkboximage\formcheckboximage.php
-[xoops_version.php]
-TopLine=1
-Caret=38,33
-[docs\changelog.txt]
-TopLine=1
-Caret=32,1
-[janus.php]
-TopLine=59
-Caret=24,80
-[load.php]
-TopLine=29
-Caret=1,41
-[include\constantes.php]
-TopLine=1
-Caret=25,30
-[include\fw-functions.php]
-TopLine=97
-Caret=10,99
-[class\xoopsform\formtabletray.php]
-TopLine=207
-Caret=1,212
-[class\xoopsform\iconselect\formiconselect.php]
-TopLine=177
-Caret=7,222
-[class\xoopsform\iconselect\lib\iconselect.js]
-TopLine=27
-Caret=1,1
-[include\xform-functions.php]
-TopLine=192
-Caret=34,241
+Selected=class\xoopsform\formtabletray.php
 [class\xoopsform\formnumber.php]
 TopLine=191
-Caret=37,221
-[class\xoopsform\checkboximage\formcheckboximage.js]
+Caret=54,232
+[class\xoopsform\formElementTable.php]
 TopLine=1
-Caret=47,10
-[class\xoopsform\checkboximage\formcheckboximage.php]
-TopLine=177
-Caret=56,196
-[J:\Xoops\_JJD\modules-JJD\janus\projet\htdocs\Frameworks\janus\Nouveau1.php]
-TopLine=150
-Caret=1,177
-[class\xoopsform\checkboximage\formcheckbox.php]
-TopLine=108
-Caret=56,72
+Caret=1,1
+[class\xoopsform\formtabletray.php]
+TopLine=230
+Caret=39,275
+[include\fw-functions.php]
+TopLine=251
+Caret=1,257
+[js\config_highslide.js]
+TopLine=1
+Caret=34,25
+[J:\Xoops\Javascript\highslide\highslide-5.0.0\examples\gallery-controls-in-heading.html]
+TopLine=1
+Caret=1,1
+[class\xoopsform\formimg.php]
+TopLine=39
+Caret=1,39
+[class\xoopsform\formimage.php]
+TopLine=34
+Caret=8,34
+[class\xoopsform\loadimages\formloadimages.php]
+TopLine=41
+Caret=1,60
+[class\xoopsform\loadimages\formfilesimages.php]
+TopLine=106
+Caret=7,153

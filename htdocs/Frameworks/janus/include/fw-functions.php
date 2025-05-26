@@ -267,7 +267,7 @@ function include_highslide($options = null, $moduleDirName = ''){
     $link = XOOPS_URL . "/Frameworks/" . $fldHighslide;  
     //echo "===>highslide : <hr>{$link}<hr>";  
     $xoTheme->addStylesheet("{$link}/highslide.css");
-    $xoTheme->addScript("{$link}/highslide.js");
+    $xoTheme->addScript("{$link}/highslide-full.js");
 
     //$xoTheme->addScript('browse.php?modules/slider/assets/js/highslide.js');
     if(file_exists(XOOPS_ROOT_PATH . "/modules/{$moduleDirName}/assets/js/config_highslide.js"))
@@ -279,6 +279,7 @@ function include_highslide($options = null, $moduleDirName = ''){
 
     if (!is_array($options)) $options = array();
     $options['graphicsDir'] = "{$link}/graphics/";
+    //echoArray($options, 'include_highslide');
     \JANUS\array2js('hs', $options, false, true);
 
 }
