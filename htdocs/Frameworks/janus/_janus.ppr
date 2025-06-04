@@ -290,7 +290,7 @@ _janus
 						class\xoopsform\iconselect\lib\iscroll.js
 					class\xoopsform\iconselect\formiconselect.php
 					class\xoopsform\iconselect\index.html
-				+loadimages
+				-loadimages
 					class\xoopsform\loadimages\formfile.php
 					class\xoopsform\loadimages\formfilesimages.php
 					class\xoopsform\loadimages\formloadimages.php
@@ -791,7 +791,7 @@ _janus
 						class\xoopsform\spinmap\spin_map\spin_map_new.js
 					class\xoopsform\spinmap\formspinmap.php
 					class\xoopsform\spinmap\index.html
-				-textplus
+				+textplus
 					class\xoopsform\textplus\formtextplus.css
 					class\xoopsform\textplus\formtextplus.js
 					class\xoopsform\textplus\formtextplus.php
@@ -1216,7 +1216,7 @@ _janus
 				images\icons\index.html
 			images\index.html
 			images\logo-Janus-01.png
-		-include
+		+include
 			include\cloneModule.php
 			include\constantes.php
 			include\date-functions.php
@@ -1321,9 +1321,13 @@ _janus
 7=class\xoopsform\formimage.php
 8=class\xoopsform\loadimages\formloadimages.php
 9=class\xoopsform\loadimages\formfilesimages.php
+10=include\fso.php
+11=class\xoopsform\xformtext.php
+12=class\xoopsform\textplus\formtextplus.php
+13=class\xoopsform\textplus\formtextplus.js
 [Selected Project Files]
 Main=
-Selected=class\xoopsform\formtabletray.php
+Selected=class\xoopsform\textplus\formtextplus.js
 [class\xoopsform\formnumber.php]
 TopLine=191
 Caret=54,232
@@ -1331,8 +1335,8 @@ Caret=54,232
 TopLine=1
 Caret=1,1
 [class\xoopsform\formtabletray.php]
-TopLine=230
-Caret=39,275
+TopLine=142
+Caret=59,170
 [include\fw-functions.php]
 TopLine=251
 Caret=1,257
@@ -1354,3 +1358,15 @@ Caret=1,60
 [class\xoopsform\loadimages\formfilesimages.php]
 TopLine=106
 Caret=7,153
+[include\fso.php]
+TopLine=15
+Caret=5,37
+[class\xoopsform\xformtext.php]
+TopLine=1
+Caret=1,25
+[class\xoopsform\textplus\formtextplus.php]
+TopLine=51
+Caret=1,1
+[class\xoopsform\textplus\formtextplus.js]
+TopLine=1
+Caret=3,7
