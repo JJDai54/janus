@@ -87,7 +87,7 @@ _janus
 						class\xoopsform\checkboxbin\js\index.html
 					class\xoopsform\checkboxbin\formcheckboxbin.php
 					class\xoopsform\checkboxbin\index.html
-				-checkboximage
+				+checkboximage
 					-Skins
 						-button
 							class\xoopsform\checkboximage\Skins\button\coche-00.png
@@ -282,7 +282,7 @@ _janus
 					class\xoopsform\editlist\formeditlist.php
 					class\xoopsform\editlist\index.html
 				-iconselect
-					-lib
+					+lib
 						class\xoopsform\iconselect\lib\arrow.png
 						class\xoopsform\iconselect\lib\iconselect.css
 						class\xoopsform\iconselect\lib\iconselect.js
@@ -684,7 +684,7 @@ _janus
 					class\xoopsform\notation\formnotation.php
 					class\xoopsform\notation\index.html
 					class\xoopsform\notation\modele-notation.php
-				-selectfile
+				+selectfile
 					class\xoopsform\selectfile\formselectfile.php
 					class\xoopsform\selectfile\index.html
 				-showhide
@@ -791,7 +791,7 @@ _janus
 						class\xoopsform\spinmap\spin_map\spin_map_new.js
 					class\xoopsform\spinmap\formspinmap.php
 					class\xoopsform\spinmap\index.html
-				+textplus
+				-textplus
 					class\xoopsform\textplus\formtextplus.css
 					class\xoopsform\textplus\formtextplus.js
 					class\xoopsform\textplus\formtextplus.php
@@ -828,7 +828,7 @@ _janus
 			css\style-item-color-old.css
 			css\style-item-design.css
 			css\style-item-design-old.css
-		-docs
+		+docs
 			docs\changelog.txt
 			docs\index.html
 		-Goffy
@@ -1311,62 +1311,78 @@ _janus
 		load.php
 		xoops_version.php
 [Open project files]
-0=class\xoopsform\formnumber.php
-1=class\xoopsform\formElementTable.php
-2=class\xoopsform\formtabletray.php
-3=include\fw-functions.php
-4=js\config_highslide.js
-5=J:\Xoops\Javascript\highslide\highslide-5.0.0\examples\gallery-controls-in-heading.html
+0=J:\Xoops\Javascript\highslide\highslide-5.0.0\examples\gallery-controls-in-heading.html
+1=include\fso.php
+2=class\xoopsform\iconselect\formiconselect.php
+3=class\xoopsform\iconselect\lib\iconselect.js
+4=docs\changelog.txt
+5=class\Permissions.php
 6=class\xoopsform\formimg.php
 7=class\xoopsform\formimage.php
-8=class\xoopsform\loadimages\formloadimages.php
-9=class\xoopsform\loadimages\formfilesimages.php
-10=include\fso.php
-11=class\xoopsform\xformtext.php
-12=class\xoopsform\textplus\formtextplus.php
-13=class\xoopsform\textplus\formtextplus.js
+8=class\xoopsform\loadimages\formfilesimages.php
+9=class\xoopsform\loadimages\formloadimages.php
+10=class\xoopsform\loadimages\formfile.php
+11=class\xoopsform\formloadimages.php
+12=load.php
+13=include\globales-functions.php
+14=include\constantes.php
+15=class\xoopsform\formloadfiles.php
+16=class\xoopsform\selectfile\formselectfile.php
+17=class\xoopsform\checkboximage\formcheckboximage.php
 [Selected Project Files]
 Main=
-Selected=class\xoopsform\textplus\formtextplus.js
-[class\xoopsform\formnumber.php]
-TopLine=191
-Caret=54,232
-[class\xoopsform\formElementTable.php]
-TopLine=1
-Caret=1,1
-[class\xoopsform\formtabletray.php]
-TopLine=142
-Caret=59,170
-[include\fw-functions.php]
-TopLine=251
-Caret=1,257
-[js\config_highslide.js]
-TopLine=1
-Caret=34,25
+Selected=class\xoopsform\checkboximage\formcheckboximage.php
 [J:\Xoops\Javascript\highslide\highslide-5.0.0\examples\gallery-controls-in-heading.html]
 TopLine=1
 Caret=1,1
-[class\xoopsform\formimg.php]
-TopLine=39
-Caret=1,39
-[class\xoopsform\formimage.php]
-TopLine=34
-Caret=8,34
-[class\xoopsform\loadimages\formloadimages.php]
-TopLine=41
-Caret=1,60
-[class\xoopsform\loadimages\formfilesimages.php]
-TopLine=106
-Caret=7,153
 [include\fso.php]
+TopLine=353
+Caret=1,400
+[class\xoopsform\iconselect\formiconselect.php]
+TopLine=154
+Caret=46,182
+[class\xoopsform\iconselect\lib\iconselect.js]
+TopLine=145
+Caret=44,197
+[docs\changelog.txt]
+TopLine=1
+Caret=37,39
+[class\Permissions.php]
+TopLine=1
+Caret=32,37
+[class\xoopsform\formimg.php]
+TopLine=81
+Caret=1,81
+[class\xoopsform\formimage.php]
+TopLine=112
+Caret=1,125
+[class\xoopsform\loadimages\formfilesimages.php]
+TopLine=58
+Caret=1,58
+[class\xoopsform\loadimages\formloadimages.php]
+TopLine=33
+Caret=1,60
+[class\xoopsform\loadimages\formfile.php]
 TopLine=15
-Caret=5,37
-[class\xoopsform\xformtext.php]
+Caret=1,65
+[class\xoopsform\formloadimages.php]
+TopLine=244
+Caret=1,268
+[load.php]
+TopLine=19
+Caret=34,42
+[include\globales-functions.php]
+TopLine=45
+Caret=10,100
+[include\constantes.php]
 TopLine=1
-Caret=1,25
-[class\xoopsform\textplus\formtextplus.php]
-TopLine=51
-Caret=1,1
-[class\xoopsform\textplus\formtextplus.js]
-TopLine=1
-Caret=3,7
+Caret=19,16
+[class\xoopsform\formloadfiles.php]
+TopLine=147
+Caret=1,175
+[class\xoopsform\selectfile\formselectfile.php]
+TopLine=132
+Caret=1,159
+[class\xoopsform\checkboximage\formcheckboximage.php]
+TopLine=182
+Caret=88,196

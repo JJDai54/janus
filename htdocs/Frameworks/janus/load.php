@@ -39,7 +39,7 @@ namespace JANUS;
 //echo "<hr>janus is charged<hr>";
 
 
-include_once ("include/constantes.php");
+include_once (XOOPS_ROOT_PATH . "/Frameworks/janus/include/constantes.php");
 if (JANUS_DEBUG) echo "<hr>========= " . __FILE__. " =================<hr>";
 
 global $xoopsConfig;

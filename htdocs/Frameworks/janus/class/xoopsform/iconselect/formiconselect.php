@@ -43,6 +43,7 @@ var $_boxIconSpace          =  3;
 var $_vectoralIconNumber    =  0;
 var $_horizontalIconNumber  =  0;
 var $_value  =  1;
+var $_extension  = true; //renvoie lnom de l'image avec ou sans extention
 
 var $_fldImg  =  null;
 var $_imgArr = array();
@@ -91,6 +92,28 @@ var $_imgArr = array();
         $this->_value = $value;
     }
     
+//------------------------------------------------    
+    /**
+     * Get the initial value
+     *
+     * @return bool
+     */
+    public function getExtension()
+    {
+        return $this->_extension;
+    }
+
+    /**
+     * Set the initial value
+     *
+     * @param $value
+     *
+     * @return void
+     */
+    public function setExtension($value)
+    {
+        $this->_extension = $value;
+    }
 //------------------------------------------------    
     /**
      * Get the initial fldImg
@@ -221,8 +244,12 @@ function render(){
     ksort($this->_imgArr, SORT_NATURAL | SORT_FLAG_CASE );
     //echoArray($this->_imgArr);
     foreach ($this->_imgArr as $k => $img){
-      $h = strrpos($k, ".");
-      $indexKey = substr($k,0 , $h);
+      if($this->getExtension()){
+        $indexKey = $k;
+      }else{
+        $h = strrpos($k, ".");
+        $indexKey = substr($k,0 , $h);
+      }
       $imgs[] = "icons.push({'iconFilePath':'{$img}', 'iconValue':'{$indexKey}'});";  
       if ($indexKey == $this->getValue()) $indexImg = count($imgs)-1;
       //echo "{$img}<br>";

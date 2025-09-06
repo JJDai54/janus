@@ -193,7 +193,7 @@ class XoopsFormCheckBoxImage extends XoopsFormCheckBox
                 $currentImg = 'coche-0' . (($checked) ? '1' : '0');
             }
             //$imgStyle = 'style="offset-position: 0% 50%;"';
-            $imgStyle = 'style="margin:0px;padding:0px;offset-position:0% -20px"';
+            $imgStyle = 'style="margin:0px;padding:0px;offset-position:0% -20px;cursor:pointer;"';
             $onclick = "formcheckboximage_onclick(event, 'coche-0', {$this->_switchImage});";
             $htmlImg = "<img src='{$url}/{$currentImg}.png' title='' id='chkimg-{$id}' alt='' height='{$this->_height}px' onclick=\"{$onclick}\" {$imgStyle}>";
             $visibility = " style=\"visibility: hidden;\"";            

@@ -378,4 +378,30 @@ function fieldExists($fieldname, $table)
     return ($xoopsDB->getRowsNum($result) > 0);
 }
 
+/**
+ * @param $file
+ * @param $path
+ *
+ * @return string $newFile
+ */
+function cloneFile($file, $path = null)
+{
+    if(!$path){
+      $path = dirname($file);
+      $file = basename($file);
+    }
+    $fullName = $path . '/' . $file;
+    if (!file_exists($fullName)) return '';
+    
+    $suffix = rand(10000, 99999);
+    $h = strrpos($file, '.');
+    $newFile = substr($file,0,$h-1) . '-' . $suffix . substr($file, $h);
+    $newFullName =  $path . '/' . $newFile;
+    copy($fullName, $newFullName);
+    
+    return $newFile;
+    
+}
+    
+    
 ?>

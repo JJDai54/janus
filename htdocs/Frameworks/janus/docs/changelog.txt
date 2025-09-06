@@ -1,6 +1,10 @@
 version 4.8 beta 3 - 2025-04-28 - (JJDai - jjdelalandre@orange.fr)
 ================================================================
-    Ajout des fonctions "addElementHidden"et addXoopsFormHidden  dans la classe "XoopsFormTableTray"
+Ajout des fonctions "addElementHidden"et addXoopsFormHidden  dans la classe "XoopsFormTableTray".
+xoopsForm iconSelect :
+    ajout de la propriété "extension" qui permet le retour avec ou sans l'extension de l'image.
+    valeur par defaut = true.
+    Permet d'associer une image à un dossier par exemple sans être obligé de supprimer l'extension à postériori.    
 
 version 4.8 beta 2 - 2025-04-27 - (JJDai - jjdelalandre@orange.fr)
 ================================================================
