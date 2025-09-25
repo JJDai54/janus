@@ -37,6 +37,7 @@ class XoopsFormCheckBoxImage extends XoopsFormCheckBox
     public $_height = 30;
     public $_showCaption = true;
     public $_switchImage = false;
+    public $_imgArr = array(0, 1); // numero des images du skin
 
 
     public function __construct($caption, $name, $value = null, $delimeter = '&nbsp;')
@@ -70,7 +71,7 @@ class XoopsFormCheckBoxImage extends XoopsFormCheckBox
      */
     public function setSkin($skin)
     {
-        //todo : ahiouter un controle du dossier image si il existe
+        //todo : ajouter un controle du dossier image si il existe
         $this->_skin = $skin;
     }
 
@@ -82,7 +83,7 @@ class XoopsFormCheckBoxImage extends XoopsFormCheckBox
      */
     public function getHeight()
     {
-        return $this->_theight;
+        return $this->_height;
     }
 
     /**
@@ -147,8 +148,11 @@ class XoopsFormCheckBoxImage extends XoopsFormCheckBox
     }
     public function switchImage($switchImage)
     {
-        //todo : ahiouter un controle de la hauteur
+        //todo : ajouter un controle de la hauteur
         $this->_switchImage = $switchImage;
+    }
+    public function setImgArr($valueFalse = 0, $valueTrue = 1){
+        $this->_imgArr = array($valueFalse, $valueTrue);
     }
     //------------------------------------------------------------------
     /**
@@ -188,14 +192,18 @@ class XoopsFormCheckBoxImage extends XoopsFormCheckBox
             $id = $ele_id . $id_ele;
             $checked = (count($ele_value) > 0 && in_array($value, $ele_value)) ? ' checked ' : '';
             if($this->_switchImage){
-                $currentImg = 'coche-0' . (($checked) ? '0' : '1');
+                $currentImg = 'coche-0' . (($checked) ? $this->_imgArr[0] : $this->_imgArr[1]);
             }else{
-                $currentImg = 'coche-0' . (($checked) ? '1' : '0');
+                $currentImg = 'coche-0' . (($checked) ? $this->_imgArr[1] : $this->_imgArr[0]);
             }
             //$imgStyle = 'style="offset-position: 0% 50%;"';
-            $imgStyle = 'style="margin:0px;padding:0px;offset-position:0% -20px;cursor:pointer;"';
-            $onclick = "formcheckboximage_onclick(event, 'coche-0', {$this->_switchImage});";
-            $htmlImg = "<img src='{$url}/{$currentImg}.png' title='' id='chkimg-{$id}' alt='' height='{$this->_height}px' onclick=\"{$onclick}\" {$imgStyle}>";
+            $marginBottom= intval($this->_height/3);
+            $imgStyle = "style='height:{$this->_height}px;margin:0px 0px -{$marginBottom}px 0px;padding:3px;offset-position:0% -20px;cursor:pointer'";
+            //$switchImage = ($this->_switchImage) ? 'true' : 'False';
+            $switchImage = ($this->_switchImage) ? 1 : 0;
+            $onclick = "formcheckboximage_onclick(event, 'coche-0', {$switchImage}, {$this->_imgArr[0]},{$this->_imgArr[1]});";
+
+            $htmlImg = "<img src='{$url}/{$currentImg}.png' title='' id='chkimg-{$id}' alt=''  onclick=\"{$onclick}\" {$imgStyle}>";
             $visibility = " style=\"visibility: hidden;\"";            
             
 
@@ -214,9 +222,11 @@ class XoopsFormCheckBoxImage extends XoopsFormCheckBox
             
             if ($this->_showCaption){
                 $ret .= "<label name='xolb_{$ele_name}' id='chklab-{$id}' for='chkimg-{$id}'"
-                     . " onclick=\"{$onclick}\">{$name}</label>";            
+                     . " onclick=\"{$onclick}\" >{$name}</label>";            
             }
-            $ret .= $ele_delimiter;            
+            
+            //ajout du separateur si ce n'est pas le dernier element
+            if($id_ele < count($ele_options)) $ret .=$ele_delimiter ;            
 
 
 //             $ret .= $checkbox . $htmlImg .'<label name="xolb_' . $ele_name . '" for="chkimg-'

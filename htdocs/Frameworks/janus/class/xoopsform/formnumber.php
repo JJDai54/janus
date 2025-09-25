@@ -59,10 +59,18 @@ class XoopsFormNumber extends XoopsFormElement
     /**
      * Initial text
      *
-     * @var string
+     * @var int
      * @access private
      */
     public $_max = 100;
+
+    /**
+     * Initial int
+     *
+     * @var int
+     * @access private
+     */
+    public $_step = 1; // can be 0.1 for example
 
     /**
      * Initial text
@@ -156,6 +164,28 @@ class XoopsFormNumber extends XoopsFormElement
     {
         $this->_min = $min;
     }
+////////////////////////////
+    /**
+     * Get initial content
+     *
+     * @param  bool $encode To sanitizer the text? Default value should be "true"; however we have to set "false" for backward compatibility
+     * @return string
+     */
+    public function getStep($encode = false)
+    {
+        //return $encode ? htmlspecialchars($this->_min, ENT_QUOTES) : $this->_step;
+        return $this->_step;
+    }
+
+    /**
+     * Set initial text value
+     *
+     * @param string $value
+     */
+    public function setStep($step)
+    {
+        $this->_step = $step;
+    }
 
     /**
      * Get initial content
@@ -183,11 +213,12 @@ class XoopsFormNumber extends XoopsFormElement
      *
      * @param string $value
      */
-    public function setMinMax($min, $max, $unit = '')
+    public function setMinMax($min, $max, $unit = '', $step=null)
     {
         $this->_min = $min;
         $this->_max = $max;
-        $this->_unit = $unit;        
+        $this->_unit = $unit;  
+        if($step) $this->setStep($step);     
     }
 
     /**
@@ -235,7 +266,7 @@ class XoopsFormNumber extends XoopsFormElement
             . "' value='" . $this->getValue() 
             . "' min='" . $this->getMin() 
             . "' max='" . $this->getMax() 
-            . "'" . $extra . ' />';
+            . "'" . $extra . " step='{$this->getStep()}'" . ' />';
         if($this->_unit){
             $ret .= '&nbsp;' . $this->_unit;
         }

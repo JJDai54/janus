@@ -261,7 +261,7 @@ class XoopsFormLoadImages0 extends XoopsFormLoadFiles
         
         $tHtml = array();
         $tHtml[] = "<table>";
-        $maxFileSize = $this->getMaxFileSize() * count($tValues);
+        $maxFileSize = $this->getMaxFileSize(); //* count($tValues);
         $chkDelete = array();
         
         $tHtml[] = "<tr>";

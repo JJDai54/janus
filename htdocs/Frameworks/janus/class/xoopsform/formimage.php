@@ -25,19 +25,27 @@ defined('XOOPS_ROOT_PATH') or die('Restricted access');
  */
 class XoopsFormImage extends XoopsFormElement
 {
-    
+
     /**
-     * Initial text
+     * Value
      *
      * @var string
      * @access private
      */
-    var $_value;
+    public $_value;
+    
+    /**
+     * Maximum size for an uploaded file
+     *
+     * @var int
+     * @access private
+     */
+    public $_maxFileSize;
+
     var $_local_description;    
     var $_url='';    
-    var $_files;    
-    var $_title;    
-    var $_alt;    
+    var $_file;    
+    var $_height = 120;    
     /**
      * Constructor
      *
@@ -47,122 +55,179 @@ class XoopsFormImage extends XoopsFormElement
      * @param int $maxlength Maximum length of text
      * @param string $value Initial text
      */
-    function __construct($caption , $files, $title='', $alt='')
+     
+    function __construct($caption , $name, $maxfilesize, $value, $url='')
     {
-        
-//         $myts =& MyTextSanitizer::getInstance();
-//         $this->setValue($myts->htmlspecialchars($value));                         
-        
-        //$this->setValue($value);  
+       
+        $this->setValue($value);  
         $this->setCaption($caption);  
+        $this->setName($name);
+        $this->_maxFileSize = (int)$maxfilesize;
+        $this->_url = $url;
         
-//         $this->_url = $url;
-        if(is_array($files)){
-          $this->_files = $files;
-        }else{
-          $this->_files = array($files);
-        }
-                             
-
     }
     
-    
+
     /**
-     * Get initial content
+     * Get the "value" attribute
      *
-     * @param bool $encode To sanitizer the text? Default value should be "true"; however we have to set "false" for backward compat
+     * @param  bool $encode To sanitizer the text?
      * @return string
      */
-    function getValue($encode = false)
+    public function getValue($encode = false)
     {
         return $encode ? htmlspecialchars($this->_value, ENT_QUOTES) : $this->_value;
     }
-    
+
     /**
-     * Set initial text value
+     * Sets the "value" attribute
      *
-     * @param  $value string
+     * @patam $value    string
+     * @param $value
      */
-    function setValue($value)
+    public function setValue($value)
     {
         $this->_value = $value;
     }
     
-//     /**
-//      * Get initial content
-//      *
-//      * @param bool $encode To sanitizer the text? Default value should be "true"; however we have to set "false" for backward compat
-//      * @return string
-//      */
-//     function getDescription($encode = false)
-//     {
-//         return $encode ? htmlspecialchars($this->_local_description, ENT_QUOTES) : $this->_local_description;
-//     }
-//     
-//     /**
-//      * Set initial text value
-//      *
-//      * @param  $value string
-//      */
-//     function setDescription($description)
-//     {
-//         //XoopsFormElement::setDescription(null);
-//         //$parent->setDescription(null);
-//         $this->_local_description = $description;
-//     }
-//     function getTitle(){return false;}
-//     function getCaption(){return false;}     
-//     
-     
-    
-    
+
+    /**
+     * Get the "height" attribute
+     *
+     * @param  integer 
+     * @return integer
+     */
+    public function getHeight()
+    {
+        return $this->_height;
+    }
+
+    /**
+     * Sets the "height" attribute
+     *
+     * @patam $value    integer
+     * @param =void
+     */
+    public function setHeight($value)
+    {
+        $this->_height = $value;
+    }
+   
     
     /**
      * Prepare HTML for output
      *
      * @return string HTML
      */
+
     function render()
     {
-      
-    //$this->setFormType(false);    
-    //global $config;
-//         $myts =& MyTextSanitizer::getInstance();
-//                     //$form->insertBreak($title);
-//         $class = $myts->htmlspecialchars($config[$i]->getConfValueForOutput());
-//         $class = ($class != '') ? " class='" . preg_replace('/[^A-Za-z0-9\s\s_-]/i', '', $class) . "'" : '';
-//       $html = '<tr><td colspan="2" ' . $class . '>'
-      
-//         if($this->getDescription() != ''){
-//           $this->_local_description = $this->getDescription(); 
-//           $this->setDescription('');
-//         }
+        $imageUrl = $this->_url . '/' . $this->getValue();
+        $file_tray = new XoopsFormElementTray($this->getCaption(), '<br>');        
         
-        if (strpos($this->_url,'//' )===false){
-          $this->_url = XOOPS_URL . '/' . $this->_url;
+        
+        if (!empty($imageUrl)) {
+          if (strcmp(substr($imageUrl,0,strlen(XOOPS_URL)), XOOPS_URL) == 0) {
+            $file_tray->addElement(new XoopsFormLabel('', "<img src='" .  $imageUrl . "' name='image' id='image' height='{$this->getHeight()}' alt=''><br><br>"));
+            $check_del_img = new XoopsFormCheckBox('', 'delimg1');
+            $check_del_img->addOption(1, "del image");
+            $file_tray->addElement($check_del_img);
+          }
+        } 
+        
+        
+
+      $file_img = new XoopsFormFile('', $this->getName(), $this->_maxFileSize);
+      $file_img->setExtra("size ='40'");
+      $file_tray->addElement($file_img);
+        
+//         $msg        = sprintf("%s ko max - largeur et/ou hauteur: %s pixels max", (int)(400728 / 1000), 500, 500);        
+//         $file_label = new XoopsFormLabel('', '<br>' . $msg);
+//         $file_tray->addElement($file_label);
+//         
+        $file_tray->addElement(new XoopsFormHidden('file1', $this->getValue()));
+        
+        return $file_tray->render();    
+    }
+
+}
+////////////////////////////////////////////////////////////
+/* *************************************************
+
+*************************************************** */
+class XoopsFormSaveImage extends XoopsFormElement
+{
+var $uploaderErrors = '';
+
+    function __construct()
+    {
+       
+    }
+
+public function save($formName, $path, $optionsArr, &$nameOrg = ''){
+echoArray($optionsArr, 'options');
+    if(!$_POST['xoops_upload_file']) return false;    
+    if(!$_FILES[$formName]['name']) return '';
+    include_once XOOPS_ROOT_PATH . '/class/uploader.php';    
+    $prefix = (isset($optionsArr['prefix'])) ? $optionsArr['prefix'] : '';
+    $renameImage = (isset($optionsArr['renameImage'])) ? $optionsArr['renameImage'] : false;
+
+    $nameOrg = '';
+    $keyFile = array_search($formName, $_POST['xoops_upload_file']);    
+    $savedFilename = '';
+    //$uploaderErrors = '';
+    $uploader = new \XoopsMediaUploader($path , $optionsArr['mimetypes_image'], $optionsArr['maxsize_image'], null, null);
+
+
+    if ($uploader->fetchMedia($_POST['xoops_upload_file'][$keyFile])) {
+
+        $uploader->setPrefix($prefix);
+        $uploader->fetchMedia($_POST['xoops_upload_file'][$keyFile]);
+        if (!$uploader->upload()) {
+            $this->uploaderErrors = $uploader->getErrors();
+//     echo "<hr>save_images : uploaderErrors ===> {$this->uploaderErrors}<hr>";
+//     exit('ici');
+        } else {
+            $savedFilename = $uploader->getSavedFileName();
+
+            $this->nameOrg = $_FILES[$_POST['xoops_upload_file'][$keyFile]]['name'];       
+            if($renameImage){
+                //echo "===>savedFilename : {$savedFilename}<br>";  
+                //modification du nom pour les repérer dans le dossier   
+                $newName = $prefix . '-' . sanitiseFileName($this->nameOrg);
+                rename($path.'/'. $savedFilename,  $path.'/' . $newName);
+                $savedFilename = $newName;
+            }
+            //retire l'extension et remplace les _ par des espaces
+            $h= strrpos($this->nameOrg,'.');
+            $i=0;
+            $this->nameOrg = str_replace('_', ' ', substr($this->nameOrg, $i, $h));
+
         }
-        if (substr($this->_url, -1) !='/') $this->_url .= '/';
-        
-        
-      
-        $tHtml = array();
-        $description = $this->getDescription();
-        
-
-        
-        foreach($this->_files as $f){
-// echo $f . '<br />';         
-          //$tHtml[] = "<img src='{$this->_url}{$f}' width='150px' title='{$this->_title}' alt='{$this->_alt}' />";
-          $tHtml[] = "<img src='{$f}' width='150px' title='{$this->_title}' alt='{$this->_alt}' />";
-        }
-
-        $html = implode('', $tHtml);
-        return $html;
 
 
+    } else {
 
+        $this->uploaderErrors = $uploader->getErrors();
+        $savedFilename = '';
+    }
+    //exit ($savedFilename);
+    //echo "<hr>save_images : uploaderErrors ===> {$this->uploaderErrors}<hr>";
+    //exit;
+    return $savedFilename;
+}
+public function isError(){
+    return $this->uploaderErrors != '';
+}
 
+public function getError($style = "color:red;"){
+    if($style){
+        return "<span style='{$style}'>" .  $this->uploaderErrors . "<span>";
+    }else{
+        return $this->uploaderErrors;
     }
 }
+
+} // ============= fin de la classe ========================
 
 ?>
