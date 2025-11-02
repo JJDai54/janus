@@ -71,7 +71,7 @@ class XoopsFormCheckboxAll extends XoopsFormCheckBox
      * @param string $caption
      * @param string $pos (-1: in first, 0: none, 1:in last)
      * 
-     * doit etre appeler juste après le nes, avant le addOptionArray et le addOption
+     * doit etre appeler juste après le new, avant le addOptionArray et le addOption
      */
     function addOptionChecboxkAll($value, $name = '', $pos=-1, $checked=false, $color='')
     {

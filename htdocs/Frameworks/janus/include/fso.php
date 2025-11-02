@@ -364,6 +364,34 @@ function saveTexte2File2($fullName, $content, $mod = 0000){
     
 }
 
+/*
+*/
+/**
+ * @param $table
+ *
+ * @return array
+ */
+function getFieldsFromTable($table, $asObject = false, $fldArrToEexclude=array())
+{ global $xoopsDB;
+     $result = $xoopsDB->query("SHOW COLUMNS FROM ". $xoopsDB->prefix($table));
+
+     if ($result) {
+      $fieldsArr = array();
+        while (false !== ($row = $xoopsDB->fetchArray($result))) {
+            if(!in_array($row['Field'], $fldArrToEexclude)){
+                if($asObject){
+                    $fieldsArr[$row['Field']] = $row;
+                }else{
+                }
+                    $fieldsArr[$row['Field']] = $row['Field'];
+            }
+            
+        }
+    }else{$fieldsArr = null;}
+     //-----------------------------------------------------------------------
+    return $fieldsArr;
+}
+
 /**
  * @param $fieldname
  * @param $table
@@ -377,6 +405,31 @@ function fieldExists($fieldname, $table)
 
     return ($xoopsDB->getRowsNum($result) > 0);
 }
+
+/**
+ * @param $fieldname
+ * @param $table
+ *
+ * @return bool
+ */
+	function comaList($table, $fieldName, $criteria = null, $orderBy="", $separator=",")	{
+    global $xoopsDB;
+     if(!$separator) $separator = ',';   
+     $clauseSeparator = " SEPARATOR '{$separator}'"; 
+             
+	   $sql = "SELECT GROUP_CONCAT(`{$fieldName}` {$clauseSeparator}) as comaList FROM " . $xoopsDB->prefix($table); 
+	   if (!is_null($criteria))
+	     $sql .= " WHERE " . $criteria->render();
+     if ($orderBy != '')  
+	    $sql .= " ORDER BY {$orderBy}";
+
+      
+	   $rst = $xoopsDB->query($sql);
+	   list($comaList) = $xoopsDB->fetchRow($rst);
+//echo ">>> comaList : " . $sql . "<br>>>>".$criteria->render()."<br>{$comaList}<br>";      
+		 return $comaList; 
+  }
+  
 
 /**
  * @param $file

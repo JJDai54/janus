@@ -122,14 +122,15 @@ class XoopsFormImage extends XoopsFormElement
 
     function render()
     {
+        
         $imageUrl = $this->_url . '/' . $this->getValue();
         $file_tray = new XoopsFormElementTray($this->getCaption(), '<br>');        
         
-        
-        if (!empty($imageUrl)) {
+//echo "<hr>image ===>" . $this->getValue() . "<hr>";      
+        if (!empty($this->getValue())) {
           if (strcmp(substr($imageUrl,0,strlen(XOOPS_URL)), XOOPS_URL) == 0) {
             $file_tray->addElement(new XoopsFormLabel('', "<img src='" .  $imageUrl . "' name='image' id='image' height='{$this->getHeight()}' alt=''><br><br>"));
-            $check_del_img = new XoopsFormCheckBox('', 'delimg1');
+            $check_del_img = new XoopsFormCheckBox('', 'del_' . $this->getName());
             $check_del_img->addOption(1, "del image");
             $file_tray->addElement($check_del_img);
           }
@@ -178,15 +179,14 @@ echoArray($optionsArr, 'options');
     //$uploaderErrors = '';
     $uploader = new \XoopsMediaUploader($path , $optionsArr['mimetypes_image'], $optionsArr['maxsize_image'], null, null);
 
-
     if ($uploader->fetchMedia($_POST['xoops_upload_file'][$keyFile])) {
 
         $uploader->setPrefix($prefix);
         $uploader->fetchMedia($_POST['xoops_upload_file'][$keyFile]);
         if (!$uploader->upload()) {
             $this->uploaderErrors = $uploader->getErrors();
-//     echo "<hr>save_images : uploaderErrors ===> {$this->uploaderErrors}<hr>";
-//     exit('ici');
+//          echo "<hr>save_images : uploaderErrors ===> {$this->uploaderErrors}<hr>";
+//          exit('ici');
         } else {
             $savedFilename = $uploader->getSavedFileName();
 
@@ -216,6 +216,7 @@ echoArray($optionsArr, 'options');
     //exit;
     return $savedFilename;
 }
+
 public function isError(){
     return $this->uploaderErrors != '';
 }

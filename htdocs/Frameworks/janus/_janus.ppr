@@ -74,7 +74,7 @@ _janus
 				-breakLine
 					class\xoopsform\breakLine\formBreakLine.php
 					class\xoopsform\breakLine\index.html
-				-checkboxall
+				+checkboxall
 					class\xoopsform\checkboxall\changelog.txt
 					class\xoopsform\checkboxall\formcheckboxall.php
 					class\xoopsform\checkboxall\index.html
@@ -87,7 +87,7 @@ _janus
 						class\xoopsform\checkboxbin\js\index.html
 					class\xoopsform\checkboxbin\formcheckboxbin.php
 					class\xoopsform\checkboxbin\index.html
-				+checkboximage
+				-checkboximage
 					-Skins
 						-button
 							class\xoopsform\checkboximage\Skins\button\coche-00.png
@@ -290,7 +290,7 @@ _janus
 						class\xoopsform\iconselect\lib\iscroll.js
 					class\xoopsform\iconselect\formiconselect.php
 					class\xoopsform\iconselect\index.html
-				+loadimages
+				-loadimages
 					class\xoopsform\loadimages\formfile.php
 					class\xoopsform\loadimages\formfilesimages.php
 					class\xoopsform\loadimages\formloadimages.php
@@ -1326,12 +1326,18 @@ _janus
 12=class\xoopsform\formloadimages.php
 13=class\xoopsform\loadimages\formloadimages.php
 14=class\xoopsform\loadimages\formfile.php
+15=class\xoopsform\loadimages\formfilesimages.php
+16=class\xoopsform\themeformjjd.php
+17=class\xoopsform\formLineBreak.php
+18=class\xoopsform\formtabletray.php
+19=include\fso.php
+20=class\xoopsform\checkboxall\formcheckboxall.php
 [Selected Project Files]
 Main=
-Selected=class\xoopsform\formimage.php
+Selected=class\xoopsform\checkboxall\formcheckboxall.php
 [class\Permissions.php]
 TopLine=44
-Caret=80,76
+Caret=30,72
 [class\xoopsform\iconselect\formiconselect.php]
 TopLine=204
 Caret=1,237
@@ -1357,8 +1363,8 @@ Caret=1,28
 TopLine=192
 Caret=41,221
 [class\xoopsform\formimage.php]
-TopLine=144
-Caret=34,187
+TopLine=109
+Caret=81,133
 [class\xoopsform\formimg.php]
 TopLine=153
 Caret=1,1
@@ -1369,8 +1375,26 @@ Caret=1,1
 TopLine=209
 Caret=37,234
 [class\xoopsform\loadimages\formloadimages.php]
-TopLine=175
+TopLine=179
 Caret=1,226
 [class\xoopsform\loadimages\formfile.php]
-TopLine=39
+TopLine=31
 Caret=1,78
+[class\xoopsform\loadimages\formfilesimages.php]
+TopLine=150
+Caret=60,176
+[class\xoopsform\themeformjjd.php]
+TopLine=13
+Caret=24,29
+[class\xoopsform\formLineBreak.php]
+TopLine=95
+Caret=1,1
+[class\xoopsform\formtabletray.php]
+TopLine=143
+Caret=1,143
+[include\fso.php]
+TopLine=398
+Caret=3,429
+[class\xoopsform\checkboxall\formcheckboxall.php]
+TopLine=60
+Caret=44,74
