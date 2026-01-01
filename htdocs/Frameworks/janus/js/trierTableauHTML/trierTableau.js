@@ -159,71 +159,71 @@ function tth_trierTableau(idTbl, defautCol2sort = 0, cols2sort = "", sRoot = "")
   //parcours des colonnes et affectation de l'evennement click
   thx.forEach(function(th){
 
-  //remplace le sépaateur par |
-  cols2sort = cols2sort.replace(/\-/gi,"|").replace(/\,/gi,"|").replace(/\;/gi,"|").replace(/\//gi,"|");
-  var tCols2sort = cols2sort.split('|');
+    //remplace le sépaateur par |
+    cols2sort = cols2sort.replace(/\-/gi,"|").replace(/\,/gi,"|").replace(/\;/gi,"|").replace(/\//gi,"|");
+    var tCols2sort = cols2sort.split('|');
 
-  var allCols = (cols2sort == ""); //toutes les colonnes si cols2sort est vide
-//alert(tCols2sort[0] + "|" + tth_options['old_th']);
-  tth_options['old_th'] = Array.from(thx).indexOf(th) + 1;
-  th.style.cursor = 'pointer';  //affichge d'un curseur sur le titre des colonnes
-  if (defautCol2sort == tth_options['old_th']) th2sort = th; // met de côté la colonne de tri par défaut
-  //initialise les colonnes de tri et leur affecte l'evennement "click()"
-  if (tCols2sort.find(element => element == tth_options['old_th'] )  !== undefined || allCols)   
-  {
+    var allCols = (cols2sort == ""); //toutes les colonnes si cols2sort est vide
+  //alert(tCols2sort[0] + "|" + tth_options['old_th']);
+    tth_options['old_th'] = Array.from(thx).indexOf(th) + 1;
+    th.style.cursor = 'pointer';  //affichge d'un curseur sur le titre des colonnes
+    if (defautCol2sort == tth_options['old_th']) th2sort = th; // met de côté la colonne de tri par défaut
+    //initialise les colonnes de tri et leur affecte l'evennement "click()"
+    if (tCols2sort.find(element => element == tth_options['old_th'] )  !== undefined || allCols)   
+    {
 
-      th.appendChild( tth_getNewImg2Sort(ico_blank)); //icone transparent avant pour laisser un espace
-      //this.asc = tth_options['asc'];
-      //===========================================================    
-      //evennement ajouté à chaque colonne de tri
-      //===========================================================    
-      th.addEventListener('click', function(){
-      newIndexOfTH = Array.from(thx).indexOf(th)+1;
+        th.appendChild( tth_getNewImg2Sort(ico_blank)); //icone transparent avant pour laisser un espace
+        //this.asc = tth_options['asc'];
+        //===========================================================    
+        //evennement ajouté à chaque colonne de tri
+        //===========================================================    
+        th.addEventListener('click', function(){
+        newIndexOfTH = Array.from(thx).indexOf(th)+1;
 
-      //détermine l'image up_off ou down_off aux colonnes de tri uniquement  
-      
-      if(tth_options['last_asc'] && !tth_options['isFirstTH']){ //cas a revoir
-        if(newIndexOfTH == tth_options['old_th']){
-          this.asc = (newIndexOfTH == tth_options['old_th']) ? !this.asc : this.asc;   
-          img = (this.asc) ? tth_options['arrows'][ico_down_off] : tth_options['arrows'][ico_up_off];    
-          tth_options['asc'] = !tth_options['asc'];    
-          //alert('meme colonne');
+        //détermine l'image up_off ou down_off aux colonnes de tri uniquement  
+        
+        if(tth_options['last_asc'] && !tth_options['isFirstTH']){ //cas a revoir
+          if(newIndexOfTH == tth_options['old_th']){
+            this.asc = (newIndexOfTH == tth_options['old_th']) ? !this.asc : this.asc;   
+            img = (this.asc) ? tth_options['arrows'][ico_down_off] : tth_options['arrows'][ico_up_off];    
+            tth_options['asc'] = !tth_options['asc'];    
+            //alert('meme colonne');
+          }else{
+            this.asc = (newIndexOfTH == tth_options['old_th']) ? !this.asc : tth_options['asc'];   
+            img = (tth_options['asc']) ? tth_options['arrows'][ico_down_off] : tth_options['arrows'][ico_up_off];  
+            //alert('colonne differente');
+          }
         }else{
           this.asc = (newIndexOfTH == tth_options['old_th']) ? !this.asc : tth_options['asc'];   
           img = (tth_options['asc']) ? tth_options['arrows'][ico_down_off] : tth_options['arrows'][ico_up_off];  
-          //alert('colonne differente');
-        }
-      }else{
-        this.asc = (newIndexOfTH == tth_options['old_th']) ? !this.asc : tth_options['asc'];   
-        img = (tth_options['asc']) ? tth_options['arrows'][ico_down_off] : tth_options['arrows'][ico_up_off];  
-        tth_options['isFirstTH'] = false;
-        //alert("isFirstTH");
-      }  
-      
-      //affecte l'icone gris à tutes les colonnes y compris celle cliquée
-      thx.forEach(function(th){
-        if(th.getElementsByTagName("img").length > 0){
-          oImg = th.getElementsByTagName("img")[0];         
-          oImg.src = tth_options['imgSkin'] + img;
-        }
-      })
-      //-----------------------------------------
-      //trTries stocke les références des lignes triées  
-      let trTries = Array.from(trxb).sort(tth_compare(Array.from(thx).indexOf(th), this.asc));
-      img = (this.asc) ? tth_options['arrows'][ico_down_on] : tth_options['arrows'][ico_up_on] ;         
-      oImg = th.getElementsByTagName("img")[0];         
-      oImg.src = tth_options['imgSkin'] + img;
-      
-      //déplace les lignes du tableau dans l'ordre de tri  
-      trTries.forEach(function(tr){
-         tbody.appendChild(tr)
-      });
-      
-      //-------------------------------------------------
-      // colonne mise de coté pour vérifier au prochain clique si on est toujours sur la m^me colonne  
-      tth_options['old_th'] = newIndexOfTH;
+          tth_options['isFirstTH'] = false;
+          //alert("isFirstTH");
+        }  
+        
+        //affecte l'icone gris à toutes les colonnes y compris celle cliquée
+        thx.forEach(function(th){
+          if(th.getElementsByTagName("img").length > 0){
+            oImg = th.getElementsByTagName("img")[0];         
+            oImg.src = tth_options['imgSkin'] + img;
+          }
+        })
+        //-----------------------------------------
+        //trTries stocke les références des lignes triées  
+        let trTries = Array.from(trxb).sort(tth_compare(Array.from(thx).indexOf(th), this.asc));
+        img = (this.asc) ? tth_options['arrows'][ico_down_on] : tth_options['arrows'][ico_up_on] ;         
+        oImg = th.getElementsByTagName("img")[0];         
+        oImg.src = tth_options['imgSkin'] + img;
+        
+        //déplace les lignes du tableau dans l'ordre de tri  
+        trTries.forEach(function(tr){
+           tbody.appendChild(tr)
+        });
+        
+        //-------------------------------------------------
+        // colonne mise de coté pour vérifier au prochain clique si on est toujours sur la même colonne  
+        tth_options['old_th'] = newIndexOfTH;
 
-    })
+      })
   }
   });
 if (th2sort) th2sort.click();

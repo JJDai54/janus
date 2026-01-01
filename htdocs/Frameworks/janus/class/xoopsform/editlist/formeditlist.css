@@ -12,13 +12,14 @@
 	
 	
 	.selectBoxArrow{
-		margin-top:1px;
+		margin-top:-2px;
 		float:left;
 		position:absolute;
-		right:1px;
-		
-
+		right:-8px;
+        min-width:24px;
+        min-height:24px;
 	}	
+
 	.selectBoxInput{
 		border:0px;
 		padding-left:1px;
@@ -30,7 +31,7 @@
 
 	.selectBox{
 		border:1px solid #7f9db9;
-		height:20px;	
+		height:18px;	
 	
 	}
 	.selectBoxOptionContainer{
@@ -46,11 +47,16 @@
 	}
 	.selectBoxAnOption{
 		font-family:arial;
-		font-size:12px;
+		font-size:1.1em;
 		cursor:default;
 		margin:1px;
 		overflow:hidden;
 		white-space:nowrap;
+        height:1.3em;
+	}
+	.selectBoxOptions{
+		font-size:1.5em;	
+	
 	}
 	.selectBoxIframe{
 		position:absolute;
@@ -58,3 +64,14 @@
 		border:0px;
 		z-index:999;
 	}	
+    
+/* ajout JJDai */
+.XoopsFormEditList_btn{
+    margin-top:8px;
+    color:red;
+}
+
+.XoopsFormEditList_help{
+    color:blue;
+    font-style: italic;
+}

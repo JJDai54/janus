@@ -57,6 +57,13 @@ Renvoie la valeur d'un bit préciser par un index dans la valeur binaire
 
 
   }
+	/**
+	 * @public function isAdmin
+	 * @return true si est admin
+	 */
+    function isAdmin(){
+        return $this->isUserAdmin;
+    }
 
 
 	/**

@@ -1,16 +1,16 @@
 .formnumber{
   text-align: right;
   border: 1px solid silver;
-margin:1px;
-padding:1px;
+  margin:1px;
+  padding:1px;
 }
 
 .formnumber:hover{
    background: rgb(204,204,204);
    font-weight: bold;
    color:blue;
-margin:1px;
-padding:1px;
+  margin:1px;
+  padding:1px;
 } 
 
 

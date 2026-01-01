@@ -20,6 +20,10 @@ _janus
 	+janus
 		+class
 			+xoopsform
+				-palette
+					class\xoopsform\palette\formpalette.css
+					class\xoopsform\palette\formpalette.js
+					class\xoopsform\palette\formpalette.php
 				-admintable
 					-doc
 						-images
@@ -74,7 +78,7 @@ _janus
 				-breakLine
 					class\xoopsform\breakLine\formBreakLine.php
 					class\xoopsform\breakLine\index.html
-				+checkboxall
+				-checkboxall
 					class\xoopsform\checkboxall\changelog.txt
 					class\xoopsform\checkboxall\formcheckboxall.php
 					class\xoopsform\checkboxall\index.html
@@ -259,30 +263,18 @@ _janus
 					class\xoopsform\duration\formduration.php
 					class\xoopsform\duration\index.html
 				-editlist
-					-editlist
-						-doc
-							-images
-								class\xoopsform\editlist\editlist\doc\images\home.gif
-								class\xoopsform\editlist\editlist\doc\images\index.html
-								class\xoopsform\editlist\editlist\doc\images\installation-01.png
-								class\xoopsform\editlist\editlist\doc\images\presentation.png
-								class\xoopsform\editlist\editlist\doc\images\Thumbs.db
-							class\xoopsform\editlist\editlist\doc\doc_code.css
-							class\xoopsform\editlist\editlist\doc\editlist-french.html
-							class\xoopsform\editlist\editlist\doc\index.html
-						-images
-							class\xoopsform\editlist\editlist\images\index.html
-							class\xoopsform\editlist\editlist\images\select_arrow.gif
-							class\xoopsform\editlist\editlist\images\select_arrow_down.gif
-							class\xoopsform\editlist\editlist\images\select_arrow_over.gif
-						class\xoopsform\editlist\editlist\editlist.css
-						class\xoopsform\editlist\editlist\editlist.js
-						class\xoopsform\editlist\editlist\index.html
+					-images
+						class\xoopsform\editlist\images\index.html
+						class\xoopsform\editlist\images\select_arrow.gif
+						class\xoopsform\editlist\images\select_arrow_down.gif
+						class\xoopsform\editlist\images\select_arrow_over.gif
 					class\xoopsform\editlist\changelog.txt
+					class\xoopsform\editlist\formeditlist.css
+					class\xoopsform\editlist\formeditlist.js
 					class\xoopsform\editlist\formeditlist.php
 					class\xoopsform\editlist\index.html
 				-iconselect
-					+lib
+					-lib
 						class\xoopsform\iconselect\lib\arrow.png
 						class\xoopsform\iconselect\lib\iconselect.css
 						class\xoopsform\iconselect\lib\iconselect.js
@@ -290,12 +282,16 @@ _janus
 						class\xoopsform\iconselect\lib\iscroll.js
 					class\xoopsform\iconselect\formiconselect.php
 					class\xoopsform\iconselect\index.html
+				-json
+					class\xoopsform\json\formjson.css
+					class\xoopsform\json\formjson.js
+					class\xoopsform\json\formjson.php
 				-loadimages
 					class\xoopsform\loadimages\formfile.php
 					class\xoopsform\loadimages\formfilesimages.php
 					class\xoopsform\loadimages\formloadimages.php
 					class\xoopsform\loadimages\index.html
-				-notation
+				+notation
 					-notation
 						-doc
 							-images
@@ -310,8 +306,8 @@ _janus
 							class\xoopsform\notation\notation\doc\doc.css
 							class\xoopsform\notation\notation\doc\index.html
 							class\xoopsform\notation\notation\doc\notation-french.html
-						-images
-							-icons
+						+images
+							+icons
 								-_temp
 									-img=11x14
 										class\xoopsform\notation\notation\images\icons\_temp\img=11x14\blanck.png
@@ -433,7 +429,7 @@ _janus
 									class\xoopsform\notation\notation\images\icons\coeur=32x32\coeur-rouge.gif
 									class\xoopsform\notation\notation\images\icons\coeur=32x32\index.html
 									class\xoopsform\notation\notation\images\icons\coeur=32x32\Thumbs.db
-								-Copie de img=11x14
+								+Copie de img=11x14
 									class\xoopsform\notation\notation\images\icons\Copie de img=11x14\Copie de etoile-bleue.png
 									class\xoopsform\notation\notation\images\icons\Copie de img=11x14\diag0.png
 									class\xoopsform\notation\notation\images\icons\Copie de img=11x14\diag1.png
@@ -791,11 +787,6 @@ _janus
 						class\xoopsform\spinmap\spin_map\spin_map_new.js
 					class\xoopsform\spinmap\formspinmap.php
 					class\xoopsform\spinmap\index.html
-				-textplus
-					class\xoopsform\textplus\formtextplus.css
-					class\xoopsform\textplus\formtextplus.js
-					class\xoopsform\textplus\formtextplus.php
-					class\xoopsform\textplus\index.html
 				class\xoopsform\form_jjd.php
 				class\xoopsform\formbuttontray.php
 				class\xoopsform\formElementTable.php
@@ -1216,7 +1207,7 @@ _janus
 				images\icons\index.html
 			images\index.html
 			images\logo-Janus-01.png
-		+include
+		-include
 			include\cloneModule.php
 			include\constantes.php
 			include\date-functions.php
@@ -1288,6 +1279,7 @@ _janus
 				js\trierTableauHTML\trierTableau.js
 			js\config_highslide.js
 			js\index.html
+			js\Multiple gallery layouts in the same page_ - Page 2 - Highcharts official support forum.url
 		-language
 			-english
 				language\english\common.php
@@ -1309,92 +1301,53 @@ _janus
 		index.html
 		janus.php
 		load.php
+		Nouveau1.php
 		xoops_version.php
 [Open project files]
-0=class\Permissions.php
-1=class\xoopsform\iconselect\formiconselect.php
-2=include\constantes.php
-3=load.php
-4=class\xoopsform\xformtext.php
-5=class\xoopsform\textplus\formtextplus.php
-6=class\xoopsform\checkboximage\formcheckboximage.php
-7=class\xoopsform\checkboximage\formcheckboximage.js
-8=class\xoopsform\formnumber.php
-9=class\xoopsform\formimage.php
-10=class\xoopsform\formimg.php
-11=class\xoopsform\formloadfiles.php
-12=class\xoopsform\formloadimages.php
-13=class\xoopsform\loadimages\formloadimages.php
-14=class\xoopsform\loadimages\formfile.php
-15=class\xoopsform\loadimages\formfilesimages.php
-16=class\xoopsform\themeformjjd.php
-17=class\xoopsform\formLineBreak.php
-18=class\xoopsform\formtabletray.php
-19=include\fso.php
-20=class\xoopsform\checkboxall\formcheckboxall.php
+0=class\xoopsform\json\formjson.php
+1=class\xoopsform\json\formjson.js
+2=class\xoopsform\json\formjson.css
+3=class\xoopsform\formimage.php
+4=class\xoopsform\palette\formpalette.php
+5=class\xoopsform\palette\formpalette.js
+6=class\xoopsform\palette\formpalette.css
+7=docs\changelog.txt
+8=xoops_version.php
+9=class\xoopsform\notation\modele-notation.php
+10=class\xoopsform\notation\formnotation.php
 [Selected Project Files]
 Main=
-Selected=class\xoopsform\checkboxall\formcheckboxall.php
-[class\Permissions.php]
-TopLine=44
-Caret=30,72
-[class\xoopsform\iconselect\formiconselect.php]
-TopLine=204
-Caret=1,237
-[include\constantes.php]
+Selected=class\xoopsform\notation\formnotation.php
+[class\xoopsform\json\formjson.php]
+TopLine=105
+Caret=42,140
+[class\xoopsform\json\formjson.js]
+TopLine=200
+Caret=60,255
+[class\xoopsform\json\formjson.css]
 TopLine=1
-Caret=9,18
-[load.php]
-TopLine=29
-Caret=15,42
-[class\xoopsform\xformtext.php]
-TopLine=7
-Caret=20,25
-[class\xoopsform\textplus\formtextplus.php]
-TopLine=1
-Caret=24,25
-[class\xoopsform\checkboximage\formcheckboximage.php]
-TopLine=186
-Caret=11,206
-[class\xoopsform\checkboximage\formcheckboximage.js]
-TopLine=1
-Caret=1,28
-[class\xoopsform\formnumber.php]
-TopLine=192
-Caret=41,221
+Caret=24,28
 [class\xoopsform\formimage.php]
-TopLine=109
-Caret=81,133
-[class\xoopsform\formimg.php]
-TopLine=153
-Caret=1,1
-[class\xoopsform\formloadfiles.php]
+TopLine=127
+Caret=72,127
+[class\xoopsform\palette\formpalette.php]
+TopLine=165
+Caret=1,200
+[class\xoopsform\palette\formpalette.js]
+TopLine=155
+Caret=14,174
+[class\xoopsform\palette\formpalette.css]
 TopLine=1
-Caret=1,1
-[class\xoopsform\formloadimages.php]
-TopLine=209
-Caret=37,234
-[class\xoopsform\loadimages\formloadimages.php]
-TopLine=179
-Caret=1,226
-[class\xoopsform\loadimages\formfile.php]
-TopLine=31
-Caret=1,78
-[class\xoopsform\loadimages\formfilesimages.php]
-TopLine=150
-Caret=60,176
-[class\xoopsform\themeformjjd.php]
-TopLine=13
-Caret=24,29
-[class\xoopsform\formLineBreak.php]
-TopLine=95
-Caret=1,1
-[class\xoopsform\formtabletray.php]
-TopLine=143
-Caret=1,143
-[include\fso.php]
-TopLine=398
-Caret=3,429
-[class\xoopsform\checkboxall\formcheckboxall.php]
-TopLine=60
-Caret=44,74
+Caret=2,22
+[docs\changelog.txt]
+TopLine=1
+Caret=1,5
+[xoops_version.php]
+TopLine=1
+Caret=38,33
+[class\xoopsform\notation\modele-notation.php]
+TopLine=1
+Caret=16,26
+[class\xoopsform\notation\formnotation.php]
+TopLine=554
+Caret=12,634

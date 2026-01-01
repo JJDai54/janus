@@ -258,6 +258,7 @@ function render(){
 
     //par defaut le nombre d'icones en largeur egal le nombre de fichier trouves
     if($this->_horizontalIconNumber == 0 ) $this->_horizontalIconNumber = count($imgs);
+    if($this->_horizontalIconNumber == 0 ) $this->_horizontalIconNumber = 5;
     if($this->_vectoralIconNumber == 0 ) { 
         $this->_vectoralIconNumber = intval(count($this->_imgArr) / $this->_horizontalIconNumber);
         $maxRow = 3;

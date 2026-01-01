@@ -50,6 +50,9 @@ const _EDITLIST_VERSION = 1.2;
      * @access private
      */
 var $_btnArr = [];
+var $_addBtnClear = '';
+var $_help = '';
+
 
     /**
      * backcolor ol list
@@ -65,7 +68,7 @@ var $_btnArr = [];
      * @var string
      * @access private
      */
-    var $_height = 100;
+    var $_height = 22; //hauteur des lignes des optioins
     
     /**
      * width
@@ -75,7 +78,19 @@ var $_btnArr = [];
      */
     var $_width = 0;
     /**********************************************************************/
-    /*-----------------------------------------------------------------*/
+
+    /**
+     *  addList : ajoute une liste d'items aux options, la cle sera l'index du tableau
+     *  
+     * @$list string : list d'options à ajouter séparer pa $sep
+     * @$sep string : separateur d'exprion de $list
+     */
+    function addList($list, $sep=','){
+        $arr = explode($sep, $list);
+        foreach ($arr as $key=>$value){
+            $this->addOption($value);
+        }
+    }
     /**
      * Get the values
      */
@@ -116,40 +131,60 @@ var $_btnArr = [];
     /*-----------------------------------------------------------------*/
     /**
      * Get the values
+     * return string
      */
     function getWidth()
     {
         return $this->_width;
     }
-
+    
     /**
      * Set the value
      *
      * @param  $width int
      */
-
-	/**
-	 * XoopsFormButtonTray::setValue()
-	 *
-	 * @param mixed $value
-	 * @return array
-	 */
-	function getButtons() {
-		return $this->_btnArr;
-	}
-
-	function addButton($libelle, $name='', $inputType='button',  $action='') {
-		//if (!$action) $action = "document.getElementById(\"{$this->getName()}\").value=\"\";'";
-		if (!$action && $inputType=='button') $action = "self.value=\"{$this->_idAll}\"";
-        if (!$name) $name = $this->getName() . '_' . count($this->_btnArr);
-		$action = str_replace('self', "document.getElementById(\"{$this->getName()}\")", $action); 
-        $this->_btnArr[] = array('libelle'=>$libelle,'name'=>$name,'type'=>$inputType,'action'=>$action);
-	}
-     
     function setWidth($width)
     {
        $this->_width = $width;
     }
+    
+    function getHelp(){
+        return $this->_help;
+    }
+    function setHelp($value){
+        $this->_help = $value;
+    }
+    
+
+	function getButtons() {
+		return $this->_btnArr;
+	}
+
+
+    function addBtnClear($caption){
+        $this->_addBtnClear = $caption;
+    }
+    
+    function addBtn($value){
+        $this->_btnArr[] = $value;
+    }
+    function addBtnArray($btnArr){
+        foreach($btnArr as $value)
+            $this->_btnArr[] = $value;
+    }
+    //----------------------------------------
+    //pout compatibilite
+    function addButtonClear($caption){
+        $this->_addBtnClear = $caption;
+    }
+    function addButton($value){
+        $this->_btnArr[] = $value;
+    }
+    function addButtonArray($btnArr){
+        foreach($btnArr as $value)
+            $this->_btnArr[] = $value;
+    }
+    
     /**********************************************************************/
     
     /**
@@ -162,7 +197,7 @@ var $_btnArr = [];
     global $xoTheme;
     // $url =  XOOPS_URL . self::_EDITLIST_FOLDER;
     $path = str_replace('\\','/',dirname(__file__));
-    $url = str_replace(XOOPS_ROOT_PATH, XOOPS_URL, $path) . '/editlist';
+    $url = str_replace(XOOPS_ROOT_PATH, XOOPS_URL, $path); // . '/editlist';
    // echo $path.'<br>'.$url.'<hr>'.XOOPS_ROOT_PATH;
 //const _EDITLIST_FOLDER = '/class/xoopsform/editlist/editlist';
 
@@ -173,14 +208,24 @@ var $_btnArr = [];
      $name = $this->getName();
     
      //$tHtml[] = "<div>"; //  style='position:absolute'
-     $xoTheme->addStylesheet($url . '/editlist.css');
-     $xoTheme->addScript($url . '/editlist.js');
+//      $xoTheme->addStylesheet($url . '/editlist.css');
+//      $xoTheme->addScript($url . '/editlist.js');
 
      $tOptions = $this->getOptions();
      $options = implode (';', $tOptions);
-     $style = ($this->_width == 0) ?''
-               :"STYLE='width:{$this->_width}px;'";
-     $tHtml[] = "<input type='text' name='{$name}' value='{$value}' selectBoxOptions='{$options}' idOption='0'  {$style}"
+
+
+
+     $styleArr = array();
+     if($this->_width != 0) $styleArr[] = "width:{$this->_width}px;";
+     //if($this->_height != 0) $styleArr[] = "height:{$this->_height}px;";
+     $styleArr[] = "height:10px;";
+     $styleArr[] = "margin-top:-2px;";
+     if($this->_background != '') $styleArr[] = "background:{$this->_background};";
+     $style = (count($styleArr)>0) ? "style='" . implode('', $styleArr) . "'" :  '';
+     
+
+     $tHtml[] = "<input type='text' id='{$name}' name='{$name}' value='{$value}' selectBoxOptions='{$options}' idOption='0'  {$style}"
               . "size='" . $this->getSize() ."' " 
               . $this->getExtra() 
               . " onClick=\"selectBox_select_all('{$name}');\" >";
@@ -189,7 +234,9 @@ var $_btnArr = [];
      $tHtml[] = "var editListUrl = '{$url}/';";
      $tHtml[] = "params=new Array();";
      $tHtml[] = "params['bgColor']='{$this->_background}';";
-     $tHtml[] = "params['height']='{$this->_height}';";
+     //$tHtml[] = "params['height']='{$this->_height}';";
+     $nbMaxOptions = (count($tOptions) > 12) ? 12 : count($tOptions);
+     $tHtml[] = "params['height']=" . ($this->_height * $nbMaxOptions);     //'{$this->_height}';";
      $tHtml[] = "createEditableSelectByName('{$name}',params);";
      $tHtml[] = "</script>";
 
@@ -200,7 +247,25 @@ var $_btnArr = [];
    //-------------------------------------------
     return $html;
     }
-    
+
+
+    /**
+     * Prepare HTML for output
+     *
+     * @return string HTML
+     */
+    function render_textbox()
+    {
+        $values = $this->getValue();
+        $value  = $values[0];     
+        $name = $this->getName();
+        $style='';
+        $html = "<input type='text' id='{$name}' name='{$name}' value='{$value}' {$style}"
+              . "size='" . $this->getSize() ."' " 
+              . $this->getExtra() . " >";
+
+        return $html;
+    }    
     /**********************************************************************/
     
     /**
@@ -211,25 +276,41 @@ var $_btnArr = [];
     public function render()
     {
         global $xoTheme;
-        $xoTheme->addStylesheet(JANUS_URL_XFORM . "/xform.css");
-        //$xoTheme->addScript("{$url}/iconselect.js");
-
-        
-        
-        if (count($this->_btnArr) > 0){
-            $html = '<div style=\'white-space: nowrap;\'>' . $this->render_list();
-            foreach($this->_btnArr AS $key=>$btn){
-                $html .= "<input type='{$btn['type']}' id='{$btn['name']}'  name='{$btn['name']}'value='{$btn['libelle']}' class='xform' onclick='{$btn['action']}'>";
-            }
-            $html .= '</div>';
-            return $html;
+        $fld = JANUS_URL_XFORM . "/" . basename(dirname(__FILE__));
+        //echo "<hr>" . $fld . '/formtextplus.js' . "<hr>";
+        $xoTheme->addScript($fld . '/formeditlist.js');
+        $xoTheme->addStylesheet($fld . '/formeditlist.css');
+        $html = array();
+            $html[] = "<table><tr>";        
+//$html[] = "<div style='white-space: nowrap;'>";        
+        if(count($this->_options) > 0){
+            $html[] = "<td style='width:5%'>" . $this->render_list() . "</td>"; 
         }else{
-            return $this->render_list();
+            $html[] = "<td style='width:5%'>" . $this->render_textbox() . "</td>"; 
+
+            
+        }
+        //---------------------------------------------------
+        $html[] = '<td>';        
+        $styleBtn = "style='margin-top:8px'";
+        if($this->_addBtnClear){
+            $html[] = "<input type='button' {$styleBtn} value='X' onclick='XoopsFormeEditList_clear(event,\"{$this->getName()}\")'>";   
+
+        }
+        foreach ($this->_btnArr as $key=>$value){
+            $html[] = "<input type='button' {$styleBtn} value='{$value}' onclick='XoopsFormeEditList_setValue(event,\"{$this->getName()}\", \"{$value}\")'>";   
+        
+        }
+            $html[] = '</td>';        
+            $html[] = '</tr></table>';        
+
+        if($this->_help){
+            $html[] = "<span class='XoopsFormEditList_help'>{$this->_help}</span>";
         }
         
+            return implode("\n", $html); 
+        
     }
-
-
 /*-----------------------------------------------*/
 /*---          fin de la classe               ---*/
 /*-----------------------------------------------*/

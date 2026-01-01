@@ -1,0 +1,46 @@
+
+.formJson_mask{
+  position:absolute;
+  display:block; 
+  visibility:visible;
+  left:0px;
+  top:0px;
+  height:5000px;
+  width:2000px;
+  background:#E0E0E0;
+  opacity:50%;
+}
+
+.formJson_form{
+  display:block; 
+  visibility:visible;
+  margin:0px;
+  padding:12px;
+  border:2px solid red;
+  background:#FFE100;
+  opacity:100%;
+}
+
+.formJson_picker{
+    position:absolute;
+    display:none;
+    
+    background: #EFEFEF;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding:5px;
+}
+
+.formJson_gridColor{
+    float:left;
+    margin: 0px 5px 5px 0px;
+    padding:0px;
+    -moz-border-radius: 0px 0px 0px 0px;
+    -webkit-border-radius: 0px 0px 0px 0px;
+    -khtml-border-radius: 0px 0px 0px 0px;
+    border-radius: 0px 0px 0px 0px;
+    border: 0px solid transparent;
+    cursor:pointer;
+}
+
+

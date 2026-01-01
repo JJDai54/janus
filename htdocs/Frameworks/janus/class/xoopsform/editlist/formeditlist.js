@@ -25,14 +25,14 @@
 	************************************************************************************************************/	
 
 /****************************************************
- * Modifications apportÃ©es par Jean-Jacques DELALANDRE
+ * Modifications apportées par Jean-Jacques DELALANDRE
  * - Selection du texte lors d'un click sur la zone opur permttre une nouvelle saisi directe
  * - Fermeture de la liste sur clicke de la zone de texte
  * - Parametrage de la coleur de font de la liste
  * - Enregistrement de l'id du composant dans l'attribut 'idOption' de la zone de text
  * - Parametrage de la largeur du composant, zone de texte et liste deroulante
  * - Parametrage de la hauteur de la liste deroulante     
- * - Parametrage de l'url des images pour intÃ©gration dans xoops 
+ * - Parametrage de l'url des images pour intégration dans xoops 
  ****************************************************/
 	// Path to arrow images
 	var arrowImage = '';	// Regular arrow
@@ -111,6 +111,7 @@
 		currentSelectedId = numId;
 		//alert ('currentSelectedId = ' + currentSelectedId);
 		var optionDiv = document.getElementById('selectBoxOptions' + numId);
+        //optionDiv.classList.add('selectBoxOptions');
 		if(optionDiv.style.display=='block'){
 			optionDiv.style.display='none';
 			if(navigator.userAgent.indexOf('MSIE')>=0)document.getElementById('selectBoxIframe' + numId).style.display='none';
@@ -303,3 +304,24 @@ function selectBox_select_all(sName)
     optionBtn.src = arrowImageOver;	
 
 }
+
+/* ************ ajout fonction JJDai ******************************/
+
+function XoopsFormeEditList_clear(event, xfId){
+    document.getElementById(xfId).value = '';
+    document.getElementById(xfId).focus();
+}
+
+function XoopsFormeEditList_setValue(event, xfId, exp){
+//console.log(`XoopsFormTextPlus_setValue : exp = ${exp}`);
+    document.getElementById(xfId).value = exp;
+    document.getElementById(xfId).focus();
+}
+
+function XoopsFormeEditList_setValueTxt(ev, xfId){
+//console.log(`XoopsFormTextPlus_setValueTxt : exp = ${ev.currentTarget.value}`);
+    document.getElementById(xfId).value = ev.currentTarget.value;
+    document.getElementById(xfId).focus();
+    ev.currentTarget.value = '';
+}
+
