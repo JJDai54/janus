@@ -147,6 +147,7 @@ function json_buildForm(isForm = true){
   
     var obInp = null;
     var htmlArr = [];
+    var hiddenArr = [];
     htmlArr.push("<table>");
     
     for(var attKey in allAtt.inputArr)
@@ -156,18 +157,32 @@ function json_buildForm(isForm = true){
         case 'number':   obInp = json_getInpNumber(attribut);    break;
         case 'color':    obInp = json_getInpColor(attribut);     break;
         case 'palette':  obInp = json_getInpPalette(attribut);   break;
+        case 'listbox':  attribut.type='list';
         case 'list':     obInp = json_getInpList(attribut);      break;
         case 'radio':    obInp = json_getInpRadio(attribut);     break;
         case 'checkbox': obInp = json_getInpCheckbox(attribut);  break;
+        case 'hidden':   obInp = json_getInpHidden(attribut);    break;
         default:
         case 'textbox': obInp = json_getInpTextbox(attribut);   break;
       }
-      //$caption = (attribut['_caption_']) ? attribut['_caption_'] : attribut.name;      
-      var caption = (attribut._caption_) ? attribut._caption_ : attribut.name;
-      htmlArr.push(`<tr><td  style='text-align:right;padding-right:8px;'>${caption} :</td><td style='text-align:left;'>${obInp}</td></tr>`);
+      //$caption = (attribut['_caption_']) ? attribut['_caption_'] : attribut.name;   
+      if (attribut.type == 'hidden'){
+        //si ce sont des balise hidden on le met apres le tableau pour eviter de gnérer des ligne de table vide
+        hiddenArr.push(obInp);
+      }else{
+        var caption = (attribut._caption_) ? attribut._caption_ : attribut.name;
+        htmlArr.push(`<tr><td  style='text-align:right;padding-right:8px;'>${caption} :</td><td style='text-align:left;'>${obInp}</td></tr>`);
+      }   
       
     }
     htmlArr.push('</table>');
+    
+    //ajout des balise hidden si il y en a
+    if(hiddenArr.length > 0){
+        htmlArr.push ("\n" + hiddenArr.join("\n"));
+    }
+    
+    
     if(isForm){
         htmlArr.push(json_getBtnSubmit());
     }
@@ -289,25 +304,33 @@ function json_getInpList(attribut, preview = false){
    
 }
 function json_getInpRadio(attribut, preview = false){
+    //alert(`json_getInpRadio : attribut = ${attribut.options}`);
     if(preview){
     }else{
     }
     var name = attribut.name + '-radio';
     var itemSelected = '';
+    var label = '';
+    var value= '';
+    
     //$style='pading:0px;margin:0px;width:32px';
     var options = attribut.options.split(',');
     var html = ``;
     
     for (var h=0; h < options.length; h++){
-        itemSelected = (options[h] == attribut.value) ? 'checked' : '';
+        //si il y a le signe egal, recuperer la valeur sinon utiliser options[h]
+        var itemArr = json_getOptionAtt(options[h],attribut.value, attribut.type);
+        //alert(`{itemArr.value} === ${attribut.value}`)
         var id   = attribut.name + '-' + h;
-        html += `<input type="radio" id="${id}" name="${name}" value="${options[h]}" ${itemSelected} />`;
-        html += `<label for="${id}">${options[h]}</label>`
+        html += `<input type="radio" id="${id}" name="${name}" value="${itemArr.value}" ${itemArr.selected} />`;
+        html += `<label for="${id}">${itemArr.label}</label>`
     }
 
     return html
    
 }
+
+
 function json_getInpCheckbox(attribut, preview = false){
     var name = attribut.name + '-checkbox';
     var itemSelected = '';
@@ -319,16 +342,60 @@ function json_getInpCheckbox(attribut, preview = false){
     
     
     for (var h=0; h < options.length; h++){
-        itemSelected = (itemsSelected.indexOf(options[h]) >= 0) ? 'checked' : '';
+        var itemArr = json_getOptionAtt(options[h],attribut.value, attribut.type);
         var id   = attribut.name + '-' + h;
-        html += `<input type="checkbox" id="${id}" name="${name}" value="${options[h]}" ${itemSelected} />`;
-        html += `<label for="${id}">${options[h]}</label>`
+        html += `<input type="checkbox" id="${id}" name="${name}" value="${itemArr.value}" ${itemArr.selected} />`;
+        html += `<label for="${id}">${itemArr.label}</label>`
     }
 
     return html
    
 }
 
+function json_getInpHidden(attribut, preview = false){
+    if(preview){
+    }else{
+    }
+    var name = allAtt.idSource + '-all[]';
+    var id   = allAtt.idSource + '-' + attribut.name;
+    var html = `<input type="hidden" name="${name}"  id="${id}" value="${attribut.value}">`;
+    return html;
+}
+
+function json_getOptionAtt(exp, currentValue, inputType){
+        //si il y a le signe egal, recuperer la valeur sinon utiliser options[h]
+        var label = '';
+        var value = '';
+        var itemArr = exp.split('=');
+        
+        if (itemArr. length > 1){
+            label = itemArr[0];
+            value = itemArr[1];
+        }else{
+            label = exp;
+            value = exp;
+        }
+        var selectAtt = (inputType == 'list') ? 'selected' : 'checked' ;
+        var itemSelected = (value == currentValue) ? selectAtt : '';
+//alert(`json_getOptionAtt : |${value}| => |${currentValue}| => ${inputType} => ${itemSelected}`);
+        return {'label':label, 'value': value, 'selected': itemSelected};
+}
+
+function json_getOptionAtt2(exp){
+        //si il y a le signe egal, recuperer la valeur sinon utiliser options[h]
+        var label = '';
+        var value = '';
+        var itemArr = exp.split('=');
+        
+        if (itemArr. length > 1){
+            label = itemArr[0];
+            value = itemArr[1];
+        }else{
+            label = exp;
+            value = exp;
+        }
+        return {'label':label, 'value': value};
+}
 
 function json_toString(inputArr){
   

@@ -18,7 +18,7 @@ Extensions=*.*
 [Project tree]
 _janus
 	+janus
-		+class
+		-class
 			+xoopsform
 				-palette
 					class\xoopsform\palette\formpalette.css
@@ -258,7 +258,7 @@ _janus
 					class\xoopsform\doublelist\index.html
 					class\xoopsform\doublelist\selection.html
 					class\xoopsform\doublelist\tplDoubleList.html
-				-duration
+				+duration
 					class\xoopsform\duration\formduration.js
 					class\xoopsform\duration\formduration.php
 					class\xoopsform\duration\index.html
@@ -282,7 +282,7 @@ _janus
 						class\xoopsform\iconselect\lib\iscroll.js
 					class\xoopsform\iconselect\formiconselect.php
 					class\xoopsform\iconselect\index.html
-				-json
+				+json
 					class\xoopsform\json\formjson.css
 					class\xoopsform\json\formjson.js
 					class\xoopsform\json\formjson.php
@@ -291,7 +291,7 @@ _janus
 					class\xoopsform\loadimages\formfilesimages.php
 					class\xoopsform\loadimages\formloadimages.php
 					class\xoopsform\loadimages\index.html
-				+notation
+				-notation
 					-notation
 						-doc
 							-images
@@ -1307,47 +1307,27 @@ _janus
 0=class\xoopsform\json\formjson.php
 1=class\xoopsform\json\formjson.js
 2=class\xoopsform\json\formjson.css
-3=class\xoopsform\formimage.php
-4=class\xoopsform\palette\formpalette.php
-5=class\xoopsform\palette\formpalette.js
-6=class\xoopsform\palette\formpalette.css
-7=docs\changelog.txt
-8=xoops_version.php
-9=class\xoopsform\notation\modele-notation.php
-10=class\xoopsform\notation\formnotation.php
+3=class\xoopsform\duration\formduration.php
+4=docs\changelog.txt
+5=xoops_version.php
 [Selected Project Files]
 Main=
-Selected=class\xoopsform\notation\formnotation.php
+Selected=xoops_version.php
 [class\xoopsform\json\formjson.php]
-TopLine=105
-Caret=42,140
+TopLine=143
+Caret=36,171
 [class\xoopsform\json\formjson.js]
-TopLine=200
-Caret=60,255
+TopLine=49
+Caret=1,104
 [class\xoopsform\json\formjson.css]
 TopLine=1
 Caret=24,28
-[class\xoopsform\formimage.php]
-TopLine=127
-Caret=72,127
-[class\xoopsform\palette\formpalette.php]
-TopLine=165
-Caret=1,200
-[class\xoopsform\palette\formpalette.js]
-TopLine=155
-Caret=14,174
-[class\xoopsform\palette\formpalette.css]
-TopLine=1
-Caret=2,22
+[class\xoopsform\duration\formduration.php]
+TopLine=123
+Caret=56,166
 [docs\changelog.txt]
 TopLine=1
-Caret=1,5
+Caret=7,7
 [xoops_version.php]
 TopLine=1
-Caret=38,33
-[class\xoopsform\notation\modele-notation.php]
-TopLine=1
-Caret=16,26
-[class\xoopsform\notation\formnotation.php]
-TopLine=554
-Caret=12,634
+Caret=36,37

@@ -163,7 +163,7 @@ public function getInputNumber ($arr, $unit){
          . " value='{$arr[$unit]}'" 
          . " min='{$min}'" 
          . " max='{$max}'"
-         . " style='text-align:right;{$this->extra}'  {$ev}/> {$this->units[$unit]} ";
+         . " style='text-align:right;{$this->getExtra()}'  {$ev}/> {$this->units[$unit]} ";
     return $inp;
 }
 

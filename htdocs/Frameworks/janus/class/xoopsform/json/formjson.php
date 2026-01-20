@@ -53,6 +53,7 @@ class XoopsFormJson extends XoopsFormTextArea
     public $_openAsForm = true;
     public $_width = 350;
     public $isNew = false;
+    public $_order = null;
     
     
     /**
@@ -197,6 +198,7 @@ class XoopsFormJson extends XoopsFormTextArea
      */
     public function addNewOption($name, $value, $type, $arr = null) 
     {
+    //echoArray($arr, "{$name} : addNewOption");
         //si la clé existe déjà elle n'est pas modifiée
         //pour forcer de nouvelles valeur utiliser "addOption"
         if(array_key_exists($name, $this->_attributs)) return false;
@@ -278,6 +280,44 @@ class XoopsFormJson extends XoopsFormTextArea
     
 ////////////////////////////////
     /**
+     * Set initial $_order
+     *
+     * @param string $value - ordre des attributs pour l'affichage
+     */
+    public function setOrder($value)
+    {
+        $this->_order = $value;
+    }
+    
+    /**
+     * get initial $_order
+     *
+     * @param string $value
+     */
+    public function getOrder()
+    {
+        return $this->_order;
+    }
+    
+    private function orderAttributs(){
+        if (!$this->_order) return true;
+        if(is_array($this->_order)){
+            $orderArr = $this->_order;
+        }else{
+            $orderArr = explode(',', $this->_order);
+        } 
+        
+        $newArr = [];
+        for ($h = 0; $h < count($orderArr); $h++){
+            $key = $orderArr[$h];
+            $newArr[$key] = $this->_attributs[$key];
+            unset($this->_attributs[$key]);
+        }
+        //si toute les cles ne sont pas dnas le tableau _order on ajoute les dernières come elles viennent
+        $this->_attributs = array_merge($newArr, $this->_attributs);
+    }
+////////////////////////////////
+    /**
      * Set initial button caption
      *
      * @param string $value
@@ -352,6 +392,8 @@ class XoopsFormJson extends XoopsFormTextArea
     }
 
     function render_preview(){
+        $this->orderAttributs();
+//echoArray($this->_attributs, 'render_preview');
         $tplRow = "<tr><td>%s</td><td>%s</td><td>%s</td></tr>";
         $html= array();
         $htmlArr[] = ("<table>");
@@ -387,7 +429,9 @@ class XoopsFormJson extends XoopsFormTextArea
      */
     public function render()
     {   
-    
+    //echoArray($this->_attributs, 'render');
+        $this->orderAttributs();
+        
         $mainId = $this->getName();
         $html = '';
         
