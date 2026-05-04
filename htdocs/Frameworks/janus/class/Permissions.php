@@ -189,7 +189,7 @@ Renvoie la valeur d'un bit préciser par un index dans la valeur binaire
         $fullPermName = $this->module->getVar('dirname') . '_' . $permName; 
         $my_group_ids = $this->getGroupIds($adminOk);
 
-        return $this->grouppermHandler->checkRight($fullPermName, $itemId, $my_group_ids, $mid, false);
+        return $this->grouppermHandler->checkRight($fullPermName, $itemId, $my_group_ids, $mid, $adminOk);
 //         if ($this->grouppermHandler->checkRight($fullPermName, $itemId, $my_group_ids, $mid, false)) {
 // 			return true;
 // 		}

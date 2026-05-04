@@ -25,6 +25,7 @@ if (JANUS_DEBUG) echo "<hr>========= " . __FILE__. " =================<hr>";
  */
 
 //impossible d'utiliser xoopsFormHidden a cause des doubles quote de json
+//testArea sert a stocker le tableau json
 class XoopsFormJson extends XoopsFormTextArea
 {
     public $_value;
@@ -51,10 +52,10 @@ class XoopsFormJson extends XoopsFormTextArea
     public $_textBoxVisible = false;
     public $_previewVisible = false;
     public $_openAsForm = true;
-    public $_width = 350;
     public $isNew = false;
     public $_order = null;
-    
+    public $_orderArr = array();
+    public $_styleArr = array();    
     
     /**
      * Constructor
@@ -87,6 +88,13 @@ class XoopsFormJson extends XoopsFormTextArea
         //$this->parseAttributes($value);
         //echoArray($this->_attributs, '__construct');
         //$this->parseAttributes($value);
+        //$this->_styleArr['border'] = '1px solid blue;';
+        //$this->_styleArr['background'] = '#FFE100';
+        $this->_styleArr['width'] = '300px';
+        $this->_styleArr['background'] = '#CCFFFF';
+        $this->_styleArr['borderColor'] = 'blue';
+        $this->_styleArr['borderWidth'] = '1px';
+
     }
 
 
@@ -166,18 +174,32 @@ class XoopsFormJson extends XoopsFormTextArea
     /**
      * add attribute to array
      *
-     * @param string $value
+     * @param string $name : nom de l'attribut ou clé
+     * @param string $value : valeur par défaut
+     * @param string $type : type de xoopsForm (textbox, llist, nulber, radio, checkbox, ...)
+     * @param string $arr : tableau de paramètre suplémentaire notamment pour le type number
      */
     public function addOption($name, $value, $type, $arr = null) 
     {
-          $this->_attributs[$name]['name'] = $name;
-          $this->_attributs[$name]['value'] = $value;
-          $this->_attributs[$name]['type'] = $type;
-          
-          if(!is_array($arr)) return true;
-          foreach($arr as $key=>$value){
-            $this->_attributs[$name][$key] = $value;
-          }
+        if(isset($this->_attributs[$name])){
+            $value = $this->_attributs[$name]['value'];
+        }else{
+            $this->_attributs[$name]['name'] = $name;
+        }
+        $this->_attributs[$name]['value'] = $value;
+        $this->_attributs[$name]['type'] = $type;
+        $this->_orderArr[] = $name;
+        
+        if(is_array($arr)) {
+            foreach($arr as $key=>$value){
+              $this->_attributs[$name][$key] = $value;
+            }
+        }
+        
+        //pour des raisons de compatibilités avec une version antérieure
+        if(isset($this->_attributs[$name]['_caption_'])){
+            $this->_attributs[$name]['caption'] = $this->_attributs[$name]['_caption_'];
+        }     
     }
     
     /**
@@ -195,24 +217,37 @@ class XoopsFormJson extends XoopsFormTextArea
      * add attribute to array
      *
      * @param string $value
-     */
     public function addNewOption($name, $value, $type, $arr = null) 
     {
     //echoArray($arr, "{$name} : addNewOption");
         //si la clé existe déjà elle n'est pas modifiée
         //pour forcer de nouvelles valeur utiliser "addOption"
-        if(array_key_exists($name, $this->_attributs)) return false;
+        if(array_key_exists($name, $this->_attributs)) {
+            $this->_orderArr[] = $name;
+            return false;
+        }
         $this->addOption($name, $value, $type, $arr);
     }
+     */
     
-    
+    /**
+    a revoir
+    */
     public function addOptionArr($attArr, $force = true)
     {
+        for($h = 0; $h < count($attArr); $h++){
+            $item = $attArr[$h];
+            $arr = (isset($item['arr'])) ? $item['arr'] : null;
+            $this->addOption($item['name'], $item['value'], $item['type'], $arr);
+       }
+/*
         if(array_key_exists($name, $this->_attributs) && !$force) return false;
           $key = $attArr['name'];  
           $this->_attributs[$key] = $attArr;
-    }
+*/
     
+    }
+
     /**
      * Set initial text value
      *
@@ -259,23 +294,23 @@ class XoopsFormJson extends XoopsFormTextArea
     
 ////////////////////////////////
     /**
-     * Set initial button caption
+     * Set initial style div
      *
      * @param string $value
      */
-    public function setWidth($value)
+    public function setStyle($att, $value)
     {
-        $this->_width = $value;
+        $this->_styleArr[$att] = $value;
     }
     
     /**
-     * get initial button caption
+     * get initial style div
      *
      * @param string $value
      */
-    public function getWidth()
+    public function getStyle($att)
     {
-        return $this->_width;
+        return $this->_styleArr[$att];
     }
     
 ////////////////////////////////
@@ -286,7 +321,7 @@ class XoopsFormJson extends XoopsFormTextArea
      */
     public function setOrder($value)
     {
-        $this->_order = $value;
+        $this->_orderArr = explode(',', $value);
     }
     
     /**
@@ -296,25 +331,27 @@ class XoopsFormJson extends XoopsFormTextArea
      */
     public function getOrder()
     {
-        return $this->_order;
+        return implode(',', $this->_orderArr);
     }
     
     private function orderAttributs(){
-        if (!$this->_order) return true;
-        if(is_array($this->_order)){
-            $orderArr = $this->_order;
-        }else{
-            $orderArr = explode(',', $this->_order);
-        } 
+//         if (!$this->_order) return true;
+//         if(is_array($this->_order)){
+//             $orderArr = $this->_order;
+//         }else{
+//             $orderArr = explode(',', $this->_order);
+//         } 
         
         $newArr = [];
-        for ($h = 0; $h < count($orderArr); $h++){
-            $key = $orderArr[$h];
+        for ($h = 0; $h < count($this->_orderArr); $h++){
+            $key = $this->_orderArr[$h];
             $newArr[$key] = $this->_attributs[$key];
             unset($this->_attributs[$key]);
         }
-        //si toute les cles ne sont pas dnas le tableau _order on ajoute les dernières come elles viennent
-        $this->_attributs = array_merge($newArr, $this->_attributs);
+        
+        //si toute les cles ne sont pas dans le tableau _order on ajoute les dernières come elles viennent
+        //$this->_attributs = array_merge($newArr, $this->_attributs);
+        $this->_attributs = $newArr;
     }
 ////////////////////////////////
     /**
@@ -434,26 +471,33 @@ class XoopsFormJson extends XoopsFormTextArea
         
         $mainId = $this->getName();
         $html = '';
-        
         $this->setValue(json_encode($this->_attributs));
         if($this->_textBoxVisible){
             $this->setExtra("readonly style='background:#DFDFDF;width:{$this->_size }px;'");
         }else{
             $this->setExtra("style='visibility:hidden;display:none;position:relative;width:{$this->_size }px;'");
         }
+        //contient le tableau json des options
         //echo "<hr>{$this->getValue()}<hr>";exit;
         $html .= parent::render() ;
         //----------------------------------------------
+        $jasonDivStyle = json_encode($this->_styleArr);
+//exit($jasonDivStyle);
         if($this->getOpenAsForm()){
+            //bouton d'ouverture de la boite de dialog
             $inpBtn = new \XoopsFormButton('', $mainId . '-editBtn', $this->getCaptionArr('edit')); 
-            $inpBtn->setExtra("onclick='json_getForm(event, \"{$mainId}\")'");
-          
+            //$inpBtn->setExtra("onclick='json_getForm(event, \"{$mainId}\", \"{$jasonDivStyle}\");'");
+            $inpBtn->setExtra("onclick='json_getForm(event, \"{$mainId}\", `{$jasonDivStyle}`)'");
+            
+            //traansfert des contante de langue          
             $inpSubmitCaption = new \XoopsFormHidden($mainId . '-submitCaption', $this->getCaptionArr('submit')); 
             $inpCancelSubmitCaption = new \XoopsFormHidden($mainId . '-cancelCaption', $this->getCaptionArr('cancel')); 
             $html .= $inpBtn->render() . $inpSubmitCaption->render() . $inpCancelSubmitCaption->render();
         }else{
-            $html .= "<div id='formInSitu' style='display:flex;'></div>";
-            $html .= "<script>json_showInSitu('{$mainId}',{$this->getWidth()});</script>";        
+            $divInsitu = $mainId . '-divInSitu';
+            $html .= "<div id='{$divInsitu}' style='display:block;'></div>";
+            $html .= "<script>json_showInSitu('{$mainId}', '{$divInsitu}','{$jasonDivStyle}');</script>";        
+            //$html .= "<script>var zzz = new jsonForm('{$mainId}', '{$divInsitu}',{$this->getWidth()});</script>";        
         }
         
         

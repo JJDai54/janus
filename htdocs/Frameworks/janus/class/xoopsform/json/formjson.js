@@ -1,32 +1,49 @@
+//alert(`xFormJason`);
 
-const allAtt = {
-    inputArr : null,
-    idSource : '',
-    obSource : null,
-    version : "1.00 beta 1",
-    zindex : 20000
-}   
- 
-function json_getForm(ev, idSource){
-//alert("formStyleCss : ");
-    allAtt.idSource = idSource;
-    var obSource = document.getElementById(idSource);
-    allAtt.obSource = obSource;
-    allAtt.inputArr = JSON.parse(obSource.value);    
+class clsJsonForm {
+    inputArr = null;
+    idSource = '';
+    obSource = null;
+    currentTarget = null;
+    version = "1.00 beta 1";
+    zIndex = 20000;
     
-    
-    obSource.parentNode.appendChild(json_getMask());
-    var obForm = json_getFormContent(ev.currentTarget);
-    obSource.parentNode.appendChild(obForm);
-    //obSource.parentNode.appendChild(json_getHtmlPicker());
+    constructor(idSource){
+        this.idSource = idSource;
+        this.obSource = document.getElementById(idSource);
+        //alert(idSource + "\n-------------\n" + this.obSource.value);
+        this.inputArr = JSON.parse(this.obSource.value);  
+        this.zIndex = this.obSource.zIndex + 10;
+     }      
+}
 
-     
-    //obForm.innerHTML = "formStyleCss : " + obSource.id + "<br>===>" + obSource.value;
-    
-    //obForm.innerHTML = "formStyleCss : " + obSource.id + "<br>===>" + obSource.value + "<br>" +  json_arrToString(obSource.value);
-    //obForm.innerHTML = "formStyleCss : " + obSource.id + "<br>===>" + obSource.value + "<br>" +  json_buildForm();
-    obForm.innerHTML = json_buildForm();
+var jsonFormArr = new Array();
+var lastIdSource = '';
 
+/* ******************************************* */
+/*                           */
+/* ******************************************* */
+function json_getJsonForm(idSource){
+    if(!jsonFormArr[idSource]){
+        jsonFormArr[idSource] = new clsJsonForm(idSource);
+    }
+    return jsonFormArr[idSource];
+}
+/* ******************************************* */
+/*                           */
+/* ******************************************* */
+function json_getForm(ev, idSource, divStyle=''){
+//alert(`json_getForm : idSource = ${idSource}`);
+    var jsonForm = json_getJsonForm(idSource);
+    jsonForm.currentTarget = ev.currentTarget;
+ /*
+ */
+    jsonForm.obSource.parentNode.appendChild(json_getMask(jsonForm));
+    var obForm = json_getFormContent(jsonForm, true, divStyle);
+    jsonForm.obSource.parentNode.appendChild(obForm);
+
+    obForm.innerHTML = json_buildForm(idSource,true);
+    lastIdSource = idSource;
 //alert("formStyleCss : " + obSource.id);
 //return obForm.innerHTML ;
 document.onkeydown = json_applyKey;
@@ -34,28 +51,27 @@ document.onkeydown = json_applyKey;
 }
 
 /* ******************************************* */
-/*     Events                     */
+/*                           */
 /* ******************************************* */
-function json_showInSitu(idSource, width=300){
-//alert("json_showInSitu : " + idSource);
-    allAtt.idSource = idSource;
-    var obSource = document.getElementById(idSource);
-//alert(obSource.value);
-    allAtt.obSource = obSource;
-    allAtt.inputArr = JSON.parse(obSource.value);    
-    var obForm = json_getFormContent(obSource, false, width);
-    obForm.innerHTML = json_buildForm(false);
+function json_showInSitu(idSource, divInsitu, divStyle=''){
+//     if(!jsonFormArr[idSource]){
+//         jsonFormArr[idSource] = new clsJsonForm(idSource);
+//     }
+//     var jsonForm = jsonFormArr[idSource];
+    var jsonForm = json_getJsonForm(idSource);
+
+
+    var obForm = json_getFormContent(jsonForm, false, divStyle);
+    obForm.innerHTML = json_buildForm(idSource,false);
     //obSource.parentNode.appendChild(obForm);
     //obSource.parentNode.appendChild(json_getHtmlPicker());
 
-     
-
-    var obInSitu = document.getElementById('formInSitu');
+    var obInSitu = document.getElementById(divInsitu);
     obInSitu.appendChild(obForm);
     //obSource.innerHTML = json_buildForm();
     //alert(obForm.innerHTML);
     //obInSitu.innerHTML = "zzz" + obForm.innerHTML;
-    json_update();
+    json_update(idSource);
 
 }
 
@@ -65,14 +81,14 @@ function json_showInSitu(idSource, width=300){
 
 
 
-function json_getFormContent(currentTarget, isForm = true, width=300){
-//alert("formStyleCss : ");
+function json_getFormContent(jsonForm, isForm = false, divStyle){
     var obDiv = document.createElement('div');
-    
+    var styleArr =  JSON.parse(divStyle);
+     
     if(isForm){
-    obDiv.id = allAtt.idSource + '-main';
+    obDiv.id = jsonForm.idSource + '-main';
         //position = json_getAbsolutePosition(allAtt.idSource + '-btn');
-        position = json_getAbsolutePosition(currentTarget);
+        position = json_getAbsolutePosition(jsonForm.currentTarget);
             
         obDiv.style.position = 'absolute';
         obDiv.classList.add('formJson_form');
@@ -82,11 +98,22 @@ function json_getFormContent(currentTarget, isForm = true, width=300){
 
     //     obDiv.style.left = (position.x + 100) + "px";
     //     obDiv.style.top =  (position.y + allAtt.obSource.offsetHeight) + "px";
-        obDiv.style.zIndex = allAtt.zindex + 10;
+        //obDiv.style.zIndex = jsonForm.zIndex + 100;
+        obDiv.style.zIndex = document.getElementById(jsonForm.idSource + '-mask').style.zIndex + 10;
+        var zIndex = document.getElementById(jsonForm.idSource + '-mask').style.zIndex;
+        //alert(`zIndex : ${zIndex} - ${obDiv.style.zIndex }`);
     }else{
         obDiv.classList.add('formJson_form');
-        obDiv.style.width = width  + "px";
-        addEventListener("change", function(){ test("Hello World!"); }); 
+        //obDiv.style.width = width  + "px";
+        //obDiv.style.background = styleArr['background'];
+        //obDiv.style.borderColor = '#00CC00';
+        //obDiv.style['borderColor'] = 'blue';
+        for(var att in styleArr){
+            obDiv.style[att] = styleArr[att];
+        }
+                
+        addEventListener("change", function(){ json_update(jsonForm.obSource.id); }); 
+    //    addEventListener("change", function(){ json_test(currentTarget.id, "Hello World!"); }); 
     //     obDiv.style.left = (position.x + 100) + "px";
     //     obDiv.style.top =  (position.y + allAtt.obSource.offsetHeight) + "px";
 
@@ -97,16 +124,16 @@ function json_getFormContent(currentTarget, isForm = true, width=300){
     return obDiv;
 
 }
-function test(exp = 'test'){
+function json_test(idSource, exp){
     //alert(exp);
-    json_update();
+    json_update(idSource);
 }
 
-function json_getMask(){
+function json_getMask(jsonForm){
     var obDiv = document.createElement('div');
-    obDiv.id = allAtt.idSource + '-mask';
+    obDiv.id = jsonForm.idSource + '-mask';
     obDiv.classList.add('formJson_mask');
-    obDiv.style.zIndex = allAtt.zindex;
+    obDiv.style.zIndex = jsonForm.zIndex;
     
     let scrollHeight = Math.max(
       document.body.scrollHeight, document.documentElement.scrollHeight,
@@ -139,38 +166,41 @@ function json_applyKey (_event_){
 // alert("intCtrlKey : " + intCtrlKey);	
   
   if(intKeyCode == 27){
-    json_close(_event_);
+    json_close(_event_, lastIdSource);
   }
 }
 
-function json_buildForm(isForm = true){
-  
+function json_buildForm(idSource, isForm = true){
+    var jsonForm = jsonFormArr[idSource];
+    var prefix = jsonForm.idSource;
+// alert(`json_buildForm :\n idSource = ${idSource} \n prefix  = ${prefix}`);   
     var obInp = null;
     var htmlArr = [];
     var hiddenArr = [];
     htmlArr.push("<table>");
     
-    for(var attKey in allAtt.inputArr)
+    for(var attKey in jsonForm.inputArr)
     {
-      var attribut = allAtt.inputArr[attKey];
+      var attribut = jsonForm.inputArr[attKey];
       switch(attribut.type){
-        case 'number':   obInp = json_getInpNumber(attribut);    break;
-        case 'color':    obInp = json_getInpColor(attribut);     break;
-        case 'palette':  obInp = json_getInpPalette(attribut);   break;
+        case 'number':   obInp = json_getInpNumber(prefix, attribut);    break;
+        case 'color':    obInp = json_getInpColor(prefix, attribut);     break;
+        case 'palette':  obInp = json_getInpPalette(prefix, attribut);   break;
         case 'listbox':  attribut.type='list';
-        case 'list':     obInp = json_getInpList(attribut);      break;
-        case 'radio':    obInp = json_getInpRadio(attribut);     break;
-        case 'checkbox': obInp = json_getInpCheckbox(attribut);  break;
-        case 'hidden':   obInp = json_getInpHidden(attribut);    break;
+        case 'list':     obInp = json_getInpList(prefix, attribut);      break;
+        case 'radio':    obInp = json_getInpRadio(prefix, attribut);     break;
+        case 'checkbox': obInp = json_getInpCheckbox(prefix, attribut);  break;
+        case 'hidden':   obInp = json_getInpHidden(prefix, attribut);    break;
         default:
-        case 'textbox': obInp = json_getInpTextbox(attribut);   break;
+        case 'textbox': obInp = json_getInpTextbox(prefix, attribut);   break;
       }
-      //$caption = (attribut['_caption_']) ? attribut['_caption_'] : attribut.name;   
+   
       if (attribut.type == 'hidden'){
-        //si ce sont des balise hidden on le met apres le tableau pour eviter de gnérer des ligne de table vide
+        //si ce sont des balises hidden on le met apres le tableau pour eviter de générer des lignes de table vide
         hiddenArr.push(obInp);
       }else{
-        var caption = (attribut._caption_) ? attribut._caption_ : attribut.name;
+        //var caption = (attribut._caption_) ? attribut._caption_ : attribut.name;
+        var caption = (attribut.caption) ? attribut.caption : attribut.name;
         htmlArr.push(`<tr><td  style='text-align:right;padding-right:8px;'>${caption} :</td><td style='text-align:left;'>${obInp}</td></tr>`);
       }   
       
@@ -184,182 +214,9 @@ function json_buildForm(isForm = true){
     
     
     if(isForm){
-        htmlArr.push(json_getBtnSubmit());
+        htmlArr.push(json_getBtnSubmit(idSource));
     }
     return htmlArr.join("\n");
-}
-
-/* ******************************************* */
-/*     creation des inputs                     */
-/* ******************************************* */
-
-function json_getBtnSubmit(){
-    var name = '';
-    var id   = allAtt.idSource + '-submit';
-    var submitcaption = document.getElementById(allAtt.idSource + '-submitCaption').value;
-    var CancelCaption = document.getElementById(allAtt.idSource + '-cancelCaption').value;
-    var onclickSubmit = "onclick='json_submit(event)'";
-    var onclickCancel = "onclick='json_close(event)'";
-    var html = `<center>`
-             + `<input type="button" name="${name}"  title="" value="${CancelCaption}" ${onclickCancel}>`
-             + `<input type="button" name="${name}"  title="" value="${submitcaption}" ${onclickSubmit}></center>`;
-    return html;
-}
-
-
-function json_getInpTextbox(attribut, preview = false){
-    if(preview){
-    }else{
-    }
-    var name = allAtt.idSource + '-all[]';
-    var id   = allAtt.idSource + '-' + attribut.name;
-    var html = `<input type="text" name="${name}"  id="${id}" title="" size="50" maxlength="50" value="${attribut.value}">`;
-    return html;
-}
-
-function json_getInpNumber(attribut, preview = false){
-    if(preview){
-    }else{
-    }
-    var name = allAtt.idSource + '-all[]';
-    var step = (attribut.unit == 'em') ? 0.1 : 1;
-    var id   = allAtt.idSource + '-' + attribut.name;
-    if(attribut.value < attribut.min){
-            attribut.value = attribut.min;
-    }else if(attribut.value > attribut.max){
-            attribut.value = attribut.max;
-    }
-    var html = `<input type="number" name="${name}" id="${id}"`
-             + ` title="" size="${attribut.size}" maxlength="${attribut.size}" value="${attribut.value}"`
-             + ` step="${step}" min="${attribut.min}" max="${attribut.max}" style="text-align:right;background:#FFCC99;">`
-             + ` ${attribut.unit}`;
-    return html;
-    
-    //<input type="number" name="quest_timer" title="" id="quest_timer" size="8" maxlength="8" value="0"">
-}
-/*
-    if(preview){
-    }else{
-    }
-*/
-function json_getInpColor(attribut, preview = false){
-    var style='pading:0px;margin:0px;width:32px;';
-    
-    if(preview){
-        var html = `<input type="button"`
-                 + ` value="${attribut.value}" style="${style}">`;
-    }else{
-    var name = allAtt.idSource + '-all[]';
-        var id   = allAtt.idSource + '-' + attribut.name;
-        var html = `<input type="color" name="${name}" id="${id}"`
-                 + ` value="${attribut.value}" style="{style}">`;
-    }
-    return html;
-
-}
-function json_getInpPalette(attribut, preview = false){
-    if(preview){
-    }else{
-    }
-    var name = allAtt.idSource + '-all[]';
-    var id   = allAtt.idSource + '-' + attribut.name;
-        var btnName  = id + '-button';
-    
-    var style=`pading:0px;margin:0px;background:${attribut.value};width:80px;height:24px;`;
-    //var onClick = `json_showPicker(event,'${json_getId('picker')}',1)`;
-    var palette= (attribut.palette) ? attribut.palette : '';
-    var onClick = `palette_showPicker(event, '${attribut.palette}')`;
-
-
-
-    
-    var html = `<input type="button" name="${btnName}" id="${btnName}" xformId="${id}"`
-             + ` value="${attribut.value}" style="${style}" onclick="${onClick}">`;
-
-    html += `<input type='hidden' name='${id}' id='${id}' value='${attribut.value}' onclick='json_update()' >`;
-
-             
-    return html;
-
-}
-
-function json_getInpList(attribut, preview = false){
-    if(preview){
-    }else{
-    }
-    var name = allAtt.idSource + '-all[]';
-    var id   = allAtt.idSource + '-' + attribut.name;
-    var itemSelected = '';
-    //$style='pading:0px;margin:0px;width:32px';
-    var options = attribut.options.split(',');
-    //alert(attribut.options);
-    var html = `<select name="${name}" id="${id}">`;
-    for (var h=0; h < options.length; h++){
-        itemSelected = (options[h] == attribut.value) ? 'selected' : '';
-        html += `<option value="${options[h]}" ${itemSelected}>${options[h]}</option>`;
-    }
-
-    html += `</select>`;
-    return html
-   
-}
-function json_getInpRadio(attribut, preview = false){
-    //alert(`json_getInpRadio : attribut = ${attribut.options}`);
-    if(preview){
-    }else{
-    }
-    var name = attribut.name + '-radio';
-    var itemSelected = '';
-    var label = '';
-    var value= '';
-    
-    //$style='pading:0px;margin:0px;width:32px';
-    var options = attribut.options.split(',');
-    var html = ``;
-    
-    for (var h=0; h < options.length; h++){
-        //si il y a le signe egal, recuperer la valeur sinon utiliser options[h]
-        var itemArr = json_getOptionAtt(options[h],attribut.value, attribut.type);
-        //alert(`{itemArr.value} === ${attribut.value}`)
-        var id   = attribut.name + '-' + h;
-        html += `<input type="radio" id="${id}" name="${name}" value="${itemArr.value}" ${itemArr.selected} />`;
-        html += `<label for="${id}">${itemArr.label}</label>`
-    }
-
-    return html
-   
-}
-
-
-function json_getInpCheckbox(attribut, preview = false){
-    var name = attribut.name + '-checkbox';
-    var itemSelected = '';
-    //$style='pading:0px;margin:0px;width:32px';
-    var options = attribut.options.split(',');
-    
-    var html = ``;
-    var itemsSelected = attribut.value.split(',');
-    
-    
-    for (var h=0; h < options.length; h++){
-        var itemArr = json_getOptionAtt(options[h],attribut.value, attribut.type);
-        var id   = attribut.name + '-' + h;
-        html += `<input type="checkbox" id="${id}" name="${name}" value="${itemArr.value}" ${itemArr.selected} />`;
-        html += `<label for="${id}">${itemArr.label}</label>`
-    }
-
-    return html
-   
-}
-
-function json_getInpHidden(attribut, preview = false){
-    if(preview){
-    }else{
-    }
-    var name = allAtt.idSource + '-all[]';
-    var id   = allAtt.idSource + '-' + attribut.name;
-    var html = `<input type="hidden" name="${name}"  id="${id}" value="${attribut.value}">`;
-    return html;
 }
 
 function json_getOptionAtt(exp, currentValue, inputType){
@@ -413,52 +270,55 @@ function json_toString(inputArr){
 /* ******************************************* */
 /*     Events                     */
 /* ******************************************* */
-function json_submit(ev){
-    json_update();
+function json_submit(ev, idSource){
+    json_update(idSource);
     
     //destruction du form
-    json_close(ev);
+    json_close(ev, idSource);
     //alert('json_submit');
 }
 
 /* ******************************************* */
 /*     Events                     */
-// document.querySelectorAll(".checkbox"); 
-//     var selector = `${balise}[name=${name}]`;
 /* ******************************************* */
-function json_update(){
-
-    for(var attKey in allAtt.inputArr)
+function json_update(idSource){
+    var jsonForm = jsonFormArr[idSource];
+console.log(`json_update : idSource = ${idSource}`)  ;  
+    for(var attKey in jsonForm.inputArr)
     {
-      var attribut = allAtt.inputArr[attKey];
-      var inpId = allAtt.idSource + '-' + attribut.name;
+      var attribut = jsonForm.inputArr[attKey];
+      var inpId = jsonForm.idSource + '-' + attribut.name;
     
       switch(attribut.type){
-        case 'radio':   obInp = json_getInpRadio(attribut);     
-        var obRadioChecked = document.querySelectorAll(`input[name=${attribut.name}-radio]:checked`); 
-        //alert(obRadioChecked.length);
-        if (obRadioChecked){
-            attribut.value = obRadioChecked[0].value;
-        }else{
-            attribut.value = '';
-        }
-        //alert(obRadioChecked[0].value);
-        break;
-        
-        case 'checkbox':   obInp = json_getInpRadio(attribut);     
-        var obChecked = document.querySelectorAll(`input[name=${attribut.name}-checkbox]:checked`); 
-        if (obChecked){
-            var itemsChecked = [];
-            for(var h=0; h < obChecked.length; h++){
-                itemsChecked.push(obChecked[h].value);
+        case 'radio':   obInp = json_getInpRadio(jsonForm.idSource, attribut);     
+    //alert(`json_update : attKey = ${attKey}\n type = ${attribut.type} \n value = ${attribut.value}`);
+            var selector = `input[name=${idSource}-${attribut.name}-radio]:checked`;
+            var obRadioChecked = document.querySelectorAll(selector);
+    // alert(`selector = ${selector}\n nb radio = ${obRadioChecked.length}`) ;
+            //alert(obRadioChecked.length);
+            if (obRadioChecked){
+                attribut.value = obRadioChecked[0].value;
+            }else{
+                attribut.value = '';
             }
-            attribut.value = itemsChecked.join(',');
-        }else{
-            attribut.value = '';
-        }
-        //alert(obChecked.length);
-        //alert(obChecked[0].value);
-        break;
+            //alert(obRadioChecked[0].value);
+            break;
+        
+        case 'checkbox':   obInp = json_getInpRadio(jsonForm.idSource, attribut); 
+            var selector = `input[name=${idSource}-${attribut.name}-checkbox]:checked`;
+            var obChecked = document.querySelectorAll(selector); 
+            if (obChecked){
+                var itemsChecked = [];
+                for(var h=0; h < obChecked.length; h++){
+                    itemsChecked.push(obChecked[h].value);
+                }
+                attribut.value = itemsChecked.join(',');
+            }else{
+                attribut.value = '';
+            }
+            //alert(obChecked.length);
+            //alert(obChecked[0].value);
+            break;
         
         case 'palette': 
         case 'number':     
@@ -466,42 +326,21 @@ function json_update(){
         case 'list':     
         default:
         case 'textbox':  
-      obInp = document.getElementById(inpId);
-      attribut.value = obInp.value;
+        console.log(`inpId = ${inpId}`);
+          obInp = document.getElementById(inpId);
+          attribut.value = obInp.value;
       }
     
     
     
     }
-
-    allAtt.obSource.value = JSON.stringify(allAtt.inputArr);
-    //alert(allAtt.obSource.value);
-    if(document.getElementById(allAtt.idSource + '-preview')){
-        document.getElementById(allAtt.idSource + '-preview').value = json_toString(allAtt.inputArr); 
+console.log(jsonForm.obSource.value );
+    jsonForm.obSource.value = JSON.stringify(jsonForm.inputArr);
+    //alert(jsonForm.obSource.value);
+    if(document.getElementById(jsonForm.idSource + '-preview')){
+        document.getElementById(jsonForm.idSource + '-preview').value = json_toString(jsonForm.inputArr); 
     }
-    json_showPreview(allAtt.idSource);
-}
-
-/* ******************************************* */
-/*     Events                     */
-/* ******************************************* */
-function json_update2(){
-
-    for(var attKey in allAtt.inputArr)
-    {
-
-      var attribut = allAtt.inputArr[attKey];
-      var inpId = allAtt.idSource + '-' + attribut.name;
-      obInp = document.getElementById(inpId);
-      attribut.value = obInp.value;
-    }
-
-    allAtt.obSource.value = JSON.stringify(allAtt.inputArr);
-    //alert(allAtt.obSource.value);
-    if(document.getElementById(allAtt.idSource + '-preview')){
-        document.getElementById(allAtt.idSource + '-preview').value = json_toString(allAtt.inputArr); 
-    }
-    json_showPreview(allAtt.idSource);
+    json_showPreview(jsonForm.idSource);
 }
 
 /* ******************************************* */
@@ -524,10 +363,12 @@ function json_showPreview(idSource){
 /* ******************************************* */
 /*     Events                     */
 /* ******************************************* */
-function json_close(ev){
+function json_close(ev, idSource){
     //destruction du form
-    allAtt.obSource.parentNode.removeChild(document.getElementById(allAtt.idSource + '-mask'));
-    allAtt.obSource.parentNode.removeChild(document.getElementById(allAtt.idSource + '-main'));
+    jsonForm = jsonFormArr[idSource];
+    
+    jsonForm.obSource.parentNode.removeChild(document.getElementById(jsonForm.idSource + '-mask'));
+    jsonForm.obSource.parentNode.removeChild(document.getElementById(jsonForm.idSource + '-main'));
     document.onkeydown = '';
     //alert('json_submit');
 }

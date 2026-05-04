@@ -84,6 +84,11 @@ class XoopsFormTableTray extends XoopsFormElement
     function setOdd($style){
         $this->_odd = $style;    
     }
+    function setBgRowsColors($evenColor, $oddColor){
+        $this->setOdd("background:{$evenColor}");
+        $this->setEven("background:{$oddColor}");
+    
+    }
     
     function addGlobalTdStyle($globalTdStyle){
         //ajoute un ";" si il n'est pas présent
@@ -98,7 +103,7 @@ class XoopsFormTableTray extends XoopsFormElement
      * @return bool
      */
     function addElement($element, $numCol, $numRow = 0, $delimiter = '<br>')
-    {
+    {  
         if(is_null($numRow)) $numRow = 0;
         if(is_null($numCol)) $numCol = 0;
         
@@ -114,6 +119,13 @@ class XoopsFormTableTray extends XoopsFormElement
         if(!isset($this->_insertBreakBefore[$numRow])) $this->_insertBreakBefore[$numRow] = '';
         return true;
     }
+    function addXoopsLabel($name, $value, $numCol, $numRow = 0, $delimiter = '<br>')
+    {
+        $element = new XoopsformLabel($name, $value);
+        $this->addElement($element, $numCol, $numRow, $delimiter);
+        return true;
+    }
+    
     function addElementHidden($element)
     {
         $this->_hiddens[] = $element;
@@ -204,6 +216,10 @@ class XoopsFormTableTray extends XoopsFormElement
         $this->addElementOption($formElement);
     }
         
+    public function countElements()
+    {
+        return count($this->_elements);
+    }
     /**
      * Prepare HTML for output
      *
@@ -276,7 +292,7 @@ class XoopsFormTableTray extends XoopsFormElement
                   $dp ='';//= (strpos($elem[0]->getCaption(),':') === false) ? ' : ' : '';  
                   $elemCaption = $elem[0]->getCaption(); // ($elem[0]->getCaption() ) ? $elem[0]->getCaption() . $dp :  '';
                   $tHtml[] = $elemCaption . $elem[0]->render();
-                  if($key < $countElements-1) $tHtml[] = $elem[1];
+                  if($key < $countElements-1 && isset($elem[1])) $tHtml[] = $elem[1];
                }
                 $tHtml[] = "</td>";
             }

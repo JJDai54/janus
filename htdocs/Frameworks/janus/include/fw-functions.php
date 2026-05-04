@@ -190,10 +190,13 @@ function zipReccurssiveDir($source, $destination)
     }
 
     $source = str_replace('\\', '/', realpath($source));
+    \JANUS\FSO\setChmodRecursif($source, 0777);
+    
     $lgSource = strlen($source) + 1;  //pas de slash en début de chaine
     
     if (is_dir($source) === true)
     {
+    chmod ($source, 0777);
         $allFiles = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($source), RecursiveIteratorIterator::SELF_FIRST);
 
         foreach ($allFiles as $file)
@@ -340,14 +343,22 @@ function array2urlParams($params, $addPrefix = '', $url = ''){
 * *********************************************** */
 function sanityseNameForFile($exp){
     
+    $carSubst = '_';
+    $reponse = $exp;
+    
+    //suppressions des entités indésirables pouvant perturber une URL
+    $reponse = str_replace(array('/', chr(92), chr(34), '&#034;', chr(39),'&#039;'), $carSubst, $reponse);
+    //$reponse = str_replace(array('(', ')'), $carSubst, $reponse);
+    
     //suppressioin de tous les caracteres inerdits dans les noms de fichier
-    $reponse = str_replace(array('/', chr(92), ':', '*', '?', chr(34), '&#034;', '<', '>',  '|'), "_", $exp);
+    $reponse = str_replace(array(':', '*', '?', '<', '>',  '|'), $carSubst, $reponse);
     
     //suppressions de tous les caractères indésirables pouvant perturber une URL
-    $reponse = str_replace(array(" ", ',' , ';', '#', chr(39),'&#039;'), "_", $reponse);
+    $reponse = str_replace(array(" ", ',' , ';', '#'), $carSubst, $reponse);
     
     //avec tout ça on supprime les unerscore qui sont doublés ou triplés
-    $reponse = str_replace(array("__",'__','__'), "_", $reponse); //des fois qu'il y ait '___' ou '__'
+    $reponse = str_replace(array("__",'__','__'), $carSubst, $reponse); //des fois qu'il y ait '___' ou '__'
+  
   
   //pour finir suppression de tous les caractères accentués remplacés par les caracteres non accentués  
   $a = array('À', 'Á', 'Â', 'Ã', 'Ä', 'Å', 'Æ', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð',

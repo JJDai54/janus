@@ -9,7 +9,7 @@ function palette_showPicker(e, palette){
     var obDivSource =  e.currentTarget;
     var xformId = obDivSource.getAttribute('xformId');
     
-    var obPicker = palette_getHtmlPicker(xformId, palette);
+    var obPicker = palette_getHtmlPicker(obDivSource, xformId, palette);
     document.body.appendChild(obPicker);
     var position = palette_getAbsolutePosition(obDivSource);   
 //alert('palette_showPicker : obDivSource = ' + obDivSource.id);
@@ -29,7 +29,7 @@ function palette_showPicker(e, palette){
 /* ******************************************* */
 /*     ColorPicker                             */
 /* ******************************************* */
-function palette_getHtmlPicker(xformId, paletteId='16c'){
+function palette_getHtmlPicker(obDivSource, xformId, paletteId='16c'){
  //palette='FFFFFF,C0C0C0,808080,000000,FF0000,800000,FFFF00,808000,00FF00,008000,00FFFF,008080,0000FF,000080,FF00FF,800080';
  //alert('palette_getHtmlPicker : paletteId = ' + paletteId)
     if(!paletteId) paletteId = 'full';
@@ -41,7 +41,9 @@ function palette_getHtmlPicker(xformId, paletteId='16c'){
     obPicker.id = idPicker;
     obPicker.setAttribute('picker','0');
     obPicker.classList.add('formPalette_picker');
-    obPicker.style.zIndex = allAtt.zindex + 20;
+    //obPicker.style.zIndex = allAtt.zindex + 20;
+    var zIndex = (obDivSource.zIndex) ? obDivSource.zIndex*1 + 1000 : 10000;
+    obPicker.style.zIndex = zIndex;
     obPicker.addEventListener('mouseleave', function (event){palette_pickerColor_close(event);});
     
     var onClick = `palette_pickerSelectColor(event,"${idPicker}", "${xformId}");`;
@@ -55,6 +57,7 @@ function palette_getHtmlPicker(xformId, paletteId='16c'){
 
     var html = '';
     var colorArr = paletteArr.palette.split(',');
+    //alert(`palette = ${paletteArr.palette}\nnb couleurs = ${colorArr.length}`);
       for(k = 0; k < colorArr.length; k++ ){
          html += divColor.replaceAll('{color}' , colorArr[k])
                          .replace('{gridColor}', colorArr[k])

@@ -215,7 +215,7 @@ function loadAllXForms(){
 /* ***********************
 $forf : file or folder
 ************************** */
-function loadXForm($forf){
+function loadXForm_old($forf){
     //xoops_load('XoopsFormLoader');      
     if(substr($forf, -3) == "php"){
         $f = JANUS_PATH_XFORMS . "/" . $forf;
@@ -243,4 +243,48 @@ function loadXForm($forf){
     }
 
 }
+/*
+*/
+function loadXForm($forf){
+    //xoops_load('XoopsFormLoader');      
+    
+    if(substr($forf, -3) == "php"){
+        $name = basename($forf, '.php');
+        $rootPath = JANUS_PATH_XFORMS . "/" . $name;
+        $rootUrl =  JANUS_URL_XFORMS . "/" . $name;
+    }else{
+        $name = $forf;
+        $rootPath = JANUS_PATH_XFORMS . "/" . $forf .  "/form" . $name;
+        $rootUrl = JANUS_URL_XFORMS . "/" . $forf .  "/form" . $name;
+    }   
+    //echo "<br>===>rootPath : {$rootPath}";
+    //echo "<br>===>rootUrl  : {$rootUrl}";
+    
+    $ext = $rootPath . '.php';
+    if (file_exists($ext)) include_once($ext);    
+    //echo "<hr>loadXForm : {$ext}<hr>";
+        
+    $ext = '.css';
+    if (file_exists($rootPath . $ext)){
+        $GLOBALS['xoTheme']->addStylesheet($rootUrl . $ext, null );
+        //echo "<hr>loadXForm : {$rootUrl}{$ext}<hr>";
+    }
+    
+    $ext = '.js';
+    if (file_exists($rootPath . $ext)){
+        $GLOBALS['xoTheme']->addScript($rootUrl . $ext, null );
+        //echo "<hr>loadXForm : {$rootUrl}{$ext}<hr>";
+    }
+    
+    $ext = '-fnc.js';
+    if (file_exists($rootPath . $ext)){
+        $GLOBALS['xoTheme']->addScript($rootUrl . $ext, null );
+        //echo "<hr>loadXForm : {$rootUrl}{$ext}<hr>";
+    }
+    
+    //-----------------------------------------------------
+
+
+}
+
 ?>

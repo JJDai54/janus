@@ -1,10 +1,10 @@
-version 5.0 beta 1 - 2025-12-12 - (JJDai - jjdelalandre@orange.fr)
+version 5.1 beta 1 - 2026-01-20 - (JJDai - jjdelalandre@orange.fr)
 ================================================================
 - Ajout de XoopsFormPalette 
-- Ajout de XoopsFormJson
-- Classe XoopsFormJson : 
-    - ajout d'une fonction de tri des attributs. Elle recoit une chaine de clés ou un tableau de clés
-    - 
+- Ajout de de la classe XoopsFormJson qui permet d'afficher un champ de tale qui contient un tableau json.
+    créé à la base pour sctocker les attributs CSS d'un objet sans avoir a créer des champs de table pour chacun.
+    todo : documentation
+ 
 version 4.8 beta 3 - 2025-04-28 - (JJDai - jjdelalandre@orange.fr)
 ================================================================
 Ajout des fonctions "addElementHidden"et addXoopsFormHidden  dans la classe "XoopsFormTableTray".

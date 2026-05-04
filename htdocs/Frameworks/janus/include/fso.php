@@ -173,10 +173,12 @@ function getFolder2 ($folder, $fullName = true, $pattern = '*'){
 function isFolder($path, $bCreate = false, $m = 0777){
 //echo "===>isFolder<br />{$path}<br />";
 if ($path=='') return false;
- $m = 0777;
+ //$m = 0777;
  
   $path = str_replace('\\', '/', $path.'/');
   $path = str_replace('//', '/', $path);  
+
+ //if(substr($path,-1,1) == '/') $path = (substr($path,0, -1));   
   $r = false;
   $om = umask ( $m);    
   
@@ -455,6 +457,61 @@ function cloneFile($file, $path = null)
     return $newFile;
     
 }
-    
+
+    /**
+     * Remove files and (sub)directories
+     *
+     * @param string $src source directory to delete
+     *
+     * @return bool true on success
+     * @uses \Xmf\Module\Helper::isUserAdmin()
+     *
+     * @uses \Xmf\Module\Helper::getHelper()
+     */
+function killDirectory($src, $force = false){
+    return deleteDirectory($src, $force);
+}
+function deleteDirectory($src, $force = false){
+global $xoopsUser;
+        // Only continue if user is a 'global' Admin
+        //echo "===>deleteDirectory : src = {$src}<br>";
+        if (!$xoopsUser->isAdmin()) {
+            return false;
+        }
+        if(!is_dir($src)){
+            // input is not a valid directory
+            return false;
+        }
+        //----------------------------------------------------------
+        if($force) chmod($src, 0777);
+        $success = true;
+        // remove old files
+
+        $fileList = array_diff(scandir($src, SCANDIR_SORT_NONE), ['..', '.']);
+        foreach ($fileList as $k => $v) {
+            $f = "{$src}" . ((substr($src,-1,1) == '/') ? '' : '/') . "{$v}";
+            if($force) {chmod($f, 0777);}
+
+            if (is_dir($f)) {
+                // recursively handle subdirectories
+                if (!$success = deleteDirectory($f, $force)) {
+                    break;
+                }
+            } else {
+                // delete the file
+                if (!($success = unlink($f))) {
+                    break;
+                }
+            }
+        }
+        // now delete this (sub)directory if all the files are gone
+        if ($success) {
+            $success = rmdir($src);
+        }
+        
+    return $success;
+    //return true;
+}
+
     
 ?>

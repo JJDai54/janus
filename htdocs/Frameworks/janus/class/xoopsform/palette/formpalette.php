@@ -207,8 +207,18 @@ function setUserPalette($userPalette, $nbColonnes = 8 , $divColorSize = 16)
              . " value='{$value}' style='{$style}' onclick=\"{$onClick}\" xformId='{$name}'>";
 
     $html .= "<input type='hidden' name='{$name}' id='{$name}' value='{$value}' >";
-
-    $html .= "<input type='hidden' name='{$name}-userPalette'  id='{$name}-userPalette'  value='{$this->_userPalette}'  disabled >";
+    
+    $userPalette = str_replace(' ', '', $this->_userPalette); 
+    $userPalette = str_replace("\n\r", "+", $userPalette); 
+    $userPalette = str_replace("\n", "+", $userPalette); 
+    $userPalette = str_replace("\r", '+', $userPalette); 
+    $userPalette = str_replace("++", ',', $userPalette); 
+    $userPalette = str_replace("+", ',', $userPalette); 
+    $userPalette = str_replace(['|','-'], ',', $userPalette); 
+    //$userPalette = $this->_userPalette; 
+    
+    //echo "userPalette = {$userPalette}"; exit;
+    $html .= "<input type='hidden' name='{$name}-userPalette'  id='{$name}-userPalette'  value='{$userPalette}'  disabled >";
     $html .= "<input type='hidden' name='{$name}-nbColonnes'   id='{$name}-nbColonnes'   value='{$this->_nbColonnes}'   disabled >";    
     $html .= "<input type='hidden' name='{$name}-divColorSize' id='{$name}-divColorSize' value='{$this->_divColorSize}' disabled >";    
     

@@ -20,10 +20,6 @@ _janus
 	+janus
 		-class
 			+xoopsform
-				-palette
-					class\xoopsform\palette\formpalette.css
-					class\xoopsform\palette\formpalette.js
-					class\xoopsform\palette\formpalette.php
 				-admintable
 					-doc
 						-images
@@ -258,7 +254,7 @@ _janus
 					class\xoopsform\doublelist\index.html
 					class\xoopsform\doublelist\selection.html
 					class\xoopsform\doublelist\tplDoubleList.html
-				+duration
+				-duration
 					class\xoopsform\duration\formduration.js
 					class\xoopsform\duration\formduration.php
 					class\xoopsform\duration\index.html
@@ -286,6 +282,7 @@ _janus
 					class\xoopsform\json\formjson.css
 					class\xoopsform\json\formjson.js
 					class\xoopsform\json\formjson.php
+					class\xoopsform\json\formjson-fnc.js
 				-loadimages
 					class\xoopsform\loadimages\formfile.php
 					class\xoopsform\loadimages\formfilesimages.php
@@ -680,6 +677,10 @@ _janus
 					class\xoopsform\notation\formnotation.php
 					class\xoopsform\notation\index.html
 					class\xoopsform\notation\modele-notation.php
+				+palette
+					class\xoopsform\palette\formpalette.css
+					class\xoopsform\palette\formpalette.js
+					class\xoopsform\palette\formpalette.php
 				-selectfile
 					class\xoopsform\selectfile\formselectfile.php
 					class\xoopsform\selectfile\index.html
@@ -1207,7 +1208,7 @@ _janus
 				images\icons\index.html
 			images\index.html
 			images\logo-Janus-01.png
-		-include
+		+include
 			include\cloneModule.php
 			include\constantes.php
 			include\date-functions.php
@@ -1304,30 +1305,50 @@ _janus
 		Nouveau1.php
 		xoops_version.php
 [Open project files]
-0=class\xoopsform\json\formjson.php
-1=class\xoopsform\json\formjson.js
+0=include\xform-functions.php
+1=class\xoopsform\json\formjson.php
 2=class\xoopsform\json\formjson.css
-3=class\xoopsform\duration\formduration.php
-4=docs\changelog.txt
-5=xoops_version.php
+3=class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\default_interface.js
+4=..\_old\janus\class\xoopsform\json\formjson.php
+5=class\xoopsform\json\formjson.js
+6=class\xoopsform\json\formjson-fnc.js
+7=class\xoopsform\palette\formpalette.js
+8=docs\changelog.txt
+9=include\globales-functions.php
+10=include\fw-functions.php
 [Selected Project Files]
 Main=
-Selected=xoops_version.php
+Selected=include\fw-functions.php
+[include\xform-functions.php]
+TopLine=236
+Caret=7,260
 [class\xoopsform\json\formjson.php]
-TopLine=143
-Caret=36,171
-[class\xoopsform\json\formjson.js]
-TopLine=49
-Caret=1,104
+TopLine=429
+Caret=1,460
 [class\xoopsform\json\formjson.css]
 TopLine=1
-Caret=24,28
-[class\xoopsform\duration\formduration.php]
-TopLine=123
-Caret=56,166
+Caret=1,21
+[class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\default_interface.js]
+TopLine=588
+Caret=4,643
+[..\_old\janus\class\xoopsform\json\formjson.php]
+TopLine=411
+Caret=1,430
+[class\xoopsform\json\formjson.js]
+TopLine=262
+Caret=1,283
+[class\xoopsform\json\formjson-fnc.js]
+TopLine=55
+Caret=1,71
+[class\xoopsform\palette\formpalette.js]
+TopLine=23
+Caret=5,48
 [docs\changelog.txt]
 TopLine=1
-Caret=7,7
-[xoops_version.php]
-TopLine=1
-Caret=36,37
+Caret=1,6
+[include\globales-functions.php]
+TopLine=129
+Caret=1,124
+[include\fw-functions.php]
+TopLine=72
+Caret=18,99

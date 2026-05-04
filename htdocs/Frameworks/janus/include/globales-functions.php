@@ -25,6 +25,7 @@ function echoArray($t, $title='', $bolExit = false){
   }else{
     echo "<hr>{$title}<hr><code><pre>{$tr}</pre></code>";
   }
+  echo "nb items = ". count($t) . "<hr>";
   if ($bolExit) exit();
 }
 
@@ -43,9 +44,9 @@ function echoGPF($arr = 'GPF' ,$title = '',  $bolExit = false)
    $arr = strtoupper($arr);
    echo "<hr>";
    if ($title) echo "message : {$title}<br>";
-   if (strPos($arr,'G') !== false) echo "_GET   : <pre>" . print_r($_GET, true)   . "</pre><hr>";
-   if (strPos($arr,'P') !== false) echo "_POST  : <pre>" . print_r($_POST, true)  . "</pre><hr>";
-   if (strPos($arr,'F') !== false) echo "_FILES : <pre>" . print_r($_FILES, true) . "</pre><hr>";
+   if (strPos($arr,'G') !== false && count($_GET) > 0)   echo "_GET   : <pre>" . print_r($_GET, true)   . "</pre><hr>";
+   if (strPos($arr,'P') !== false && count($_POST) > 0)  echo "_POST  : <pre>" . print_r($_POST, true)  . "</pre><hr>";
+   if (strPos($arr,'F') !== false && count($_FILES) > 0) echo "_FILES : <pre>" . print_r($_FILES, true) . "</pre><hr>";
 
    if($bolExit) exit($title);
    return true;
@@ -172,6 +173,44 @@ function returnBytes($val)
         default:
             return $val;
     }
+}
+
+/**
+ * getUserByEmail : renvoie un objet euser qui correspond à l'mail en parametre
+ * @param $email string : email a rechercher
+ * @return object
+function getUserByEmail($email){
+        if (!$email) return null;
+        
+        $usershandler = xoops_getHandler('user');        
+        $criteria = new Criteria('email', $email);
+        $users = $usershandler->getObjects($criteria);
+        if(count($users) > 0){
+            return array_shift($users);
+        }else{
+            return null;
+        }
+
+}
+ */
+ 
+/**
+ * getUserByEmail : renvoie un objet euser qui correspond à l'mail en parametre
+ * @param $email string : email a rechercher
+ * @return object
+ */
+function getUser($search, $field='email'){
+        if (!$search) return null;
+        
+        $usershandler = xoops_getHandler('user');        
+        $criteria = new Criteria($field, $search);
+        $users = $usershandler->getObjects($criteria);
+        if(count($users) > 0){
+            return array_shift($users);
+        }else{
+            return null;
+        }
+
 }
 
           
