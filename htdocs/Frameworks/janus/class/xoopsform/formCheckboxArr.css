@@ -1,0 +1,53 @@
+
+
+.formCheckboxArr table {
+    border-collapse: collapse;
+    margin-top: 0px;
+    width:100%;
+  }
+
+.formCheckboxArr th {
+    /* Largeur fixe nécessaire pour le rendu */
+    width: 10px;
+    height: 200px;
+    border: 0px solid #ccc;
+    padding: 0px 0px 0px 12px;
+    vertical-align: bottom; /* Aligne le point d'origine en bas */
+    background:transparent;
+    color:black;
+    max-width:30px;
+      }
+
+.formCheckboxArr th span {
+    display: inline-block;
+    /* Rotation de 45 degrés vers la gauche */
+    transform: rotate(-60deg);
+    /* Définit le point de pivot de la rotation en bas à gauche */
+    transform-origin: left bottom;
+    white-space: nowrap;
+   /* width: 30px;  Force une largeur pour éviter le chevauchement */
+  }
+  
+.formCheckboxArr td[libelle] {
+    padding : 5px 0px 5px 0px;
+    text-align:right;
+    white-space: nowrap;
+}
+.formCheckboxArr td[checkbox] {
+    width: 10px;
+    padding : 5px 0px 5px 0px;
+    text-align:center;
+}
+
+.formCheckboxArr [even] 
+{
+ background-color: #dee3e7;
+ padding: 5px;
+}
+
+.formCheckboxArr [odd] 
+{
+ background-color: #E9E9E9;
+ padding: 5px;
+}
+

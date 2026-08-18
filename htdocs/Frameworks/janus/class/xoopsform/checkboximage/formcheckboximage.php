@@ -258,7 +258,7 @@ class XoopsFormCheckBoxImage extends XoopsFormCheckBox
     {
         // render custom validation code if any
         if (!empty($this->customValidationCode)) {
-            return implode(NWLINE, $this->customValidationCode);
+            return implode(NEWLINE, $this->customValidationCode);
             // generate validation code if required
         } elseif ($this->isRequired()) {
             $eltname    = $this->getName();
@@ -266,7 +266,7 @@ class XoopsFormCheckBoxImage extends XoopsFormCheckBox
             $eltmsg     = empty($eltcaption) ? sprintf(_FORM_ENTER, $eltname) : sprintf(_FORM_ENTER, $eltcaption);
             $eltmsg     = str_replace('"', '\"', stripslashes($eltmsg));
 
-            return NWLINE . "var hasChecked = false; var checkBox = myform.elements['{$eltname}']; if (checkBox.length) {for (var i = 0; i < checkBox.length; i++) {if (checkBox[i].checked == true) {hasChecked = true; break;}}} else {if (checkBox.checked == true) {hasChecked = true;}}if (!hasChecked) {window.alert(\"{$eltmsg}\");if (checkBox.length) {checkBox[0].focus();} else {checkBox.focus();}return false;}";
+            return NEWLINE . "var hasChecked = false; var checkBox = myform.elements['{$eltname}']; if (checkBox.length) {for (var i = 0; i < checkBox.length; i++) {if (checkBox[i].checked == true) {hasChecked = true; break;}}} else {if (checkBox.checked == true) {hasChecked = true;}}if (!hasChecked) {window.alert(\"{$eltmsg}\");if (checkBox.length) {checkBox[0].focus();} else {checkBox.focus();}return false;}";
         }
 
         return '';

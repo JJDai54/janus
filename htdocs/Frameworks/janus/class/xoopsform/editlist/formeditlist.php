@@ -228,7 +228,7 @@ var $_help = '';
      $tHtml[] = "<input type='text' id='{$name}' name='{$name}' value='{$value}' selectBoxOptions='{$options}' idOption='0'  {$style}"
               . "size='" . $this->getSize() ."' " 
               . $this->getExtra() 
-              . " onClick=\"selectBox_select_all('{$name}');\" >";
+              . " onDblClick=\"selectBox_select_all('{$name}');\" >";
 
      $tHtml[] = "<script type='text/javascript'>";
      $tHtml[] = "var editListUrl = '{$url}/';";

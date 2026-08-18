@@ -18,7 +18,7 @@ Extensions=*.*
 [Project tree]
 _janus
 	+janus
-		-class
+		+class
 			+xoopsform
 				-admintable
 					-doc
@@ -269,7 +269,7 @@ _janus
 					class\xoopsform\editlist\formeditlist.js
 					class\xoopsform\editlist\formeditlist.php
 					class\xoopsform\editlist\index.html
-				-iconselect
+				+iconselect
 					-lib
 						class\xoopsform\iconselect\lib\arrow.png
 						class\xoopsform\iconselect\lib\iconselect.css
@@ -278,7 +278,7 @@ _janus
 						class\xoopsform\iconselect\lib\iscroll.js
 					class\xoopsform\iconselect\formiconselect.php
 					class\xoopsform\iconselect\index.html
-				+json
+				-json
 					class\xoopsform\json\formjson.css
 					class\xoopsform\json\formjson.js
 					class\xoopsform\json\formjson.php
@@ -677,7 +677,7 @@ _janus
 					class\xoopsform\notation\formnotation.php
 					class\xoopsform\notation\index.html
 					class\xoopsform\notation\modele-notation.php
-				+palette
+				-palette
 					class\xoopsform\palette\formpalette.css
 					class\xoopsform\palette\formpalette.js
 					class\xoopsform\palette\formpalette.php
@@ -790,10 +790,13 @@ _janus
 					class\xoopsform\spinmap\index.html
 				class\xoopsform\form_jjd.php
 				class\xoopsform\formbuttontray.php
+				class\xoopsform\formCheckboxArr.css
+				class\xoopsform\formCheckboxArr.php
 				class\xoopsform\formElementTable.php
 				class\xoopsform\FormFileCheckBox.php
 				class\xoopsform\formimage.php
 				class\xoopsform\formimg.php
+				class\xoopsform\formJanus.php
 				class\xoopsform\formLineBreak.php
 				class\xoopsform\formloadfiles.php
 				class\xoopsform\formloadimages.php
@@ -808,19 +811,18 @@ _janus
 				class\xoopsform\xformselect.php
 				class\xoopsform\xformtext.php
 			class\About.php
-			class\CloneModule - Copie.php
 			class\CloneModule.php
 			class\Feedback.php
+			class\ImageBuilder.php
 			class\index.html
 			class\Permissions.php
-			class\tools.php
 		-css
 			css\index.html
 			css\style-item-color.css
 			css\style-item-color-old.css
 			css\style-item-design.css
 			css\style-item-design-old.css
-		+docs
+		-docs
 			docs\changelog.txt
 			docs\index.html
 		-Goffy
@@ -1209,6 +1211,7 @@ _janus
 			images\index.html
 			images\logo-Janus-01.png
 		+include
+			include\binary-fnc.php
 			include\cloneModule.php
 			include\constantes.php
 			include\date-functions.php
@@ -1217,6 +1220,7 @@ _janus
 			include\globales-functions.php
 			include\index.html
 			include\language-functions.php
+			class\tools.php
 			include\xform-functions.php
 		-jquery
 			-plugins
@@ -1296,7 +1300,6 @@ _janus
 		-templates
 			templates\admin_about.tpl
 			templates\index.html
-		_janus.ppr
 		back_office.php
 		front_office.php
 		index.html
@@ -1305,50 +1308,46 @@ _janus
 		Nouveau1.php
 		xoops_version.php
 [Open project files]
-0=include\xform-functions.php
-1=class\xoopsform\json\formjson.php
-2=class\xoopsform\json\formjson.css
-3=class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\default_interface.js
-4=..\_old\janus\class\xoopsform\json\formjson.php
-5=class\xoopsform\json\formjson.js
-6=class\xoopsform\json\formjson-fnc.js
-7=class\xoopsform\palette\formpalette.js
-8=docs\changelog.txt
-9=include\globales-functions.php
-10=include\fw-functions.php
+0=include\globales-functions.php
+1=include\binary-fnc.php
+2=include\fw-functions.php
+3=include\language-functions.php
+4=class\tools.php
+5=class\xoopsform\formJanus.php
+6=Nouveau1.php
+7=..\..\_jjd\svg-01\index-e.html
+8=..\..\_jjd\svg-01\gemini-code-1785774270914.html
+9=..\..\_jjd\svg-01\gemini-code-1785774529541.html
 [Selected Project Files]
 Main=
-Selected=include\fw-functions.php
-[include\xform-functions.php]
-TopLine=236
-Caret=7,260
-[class\xoopsform\json\formjson.php]
-TopLine=429
-Caret=1,460
-[class\xoopsform\json\formjson.css]
-TopLine=1
-Caret=1,21
-[class\xoopsform\spinmap\spin_map\images\default\imgMap\index_fichiers\default_interface.js]
-TopLine=588
-Caret=4,643
-[..\_old\janus\class\xoopsform\json\formjson.php]
-TopLine=411
-Caret=1,430
-[class\xoopsform\json\formjson.js]
-TopLine=262
-Caret=1,283
-[class\xoopsform\json\formjson-fnc.js]
-TopLine=55
-Caret=1,71
-[class\xoopsform\palette\formpalette.js]
-TopLine=23
-Caret=5,48
-[docs\changelog.txt]
-TopLine=1
-Caret=1,6
+Selected=class\xoopsform\formJanus.php
 [include\globales-functions.php]
-TopLine=129
-Caret=1,124
+TopLine=91
+Caret=52,112
+[include\binary-fnc.php]
+TopLine=12
+Caret=21,49
 [include\fw-functions.php]
-TopLine=72
-Caret=18,99
+TopLine=1
+Caret=1,1
+[include\language-functions.php]
+TopLine=1
+Caret=1,1
+[class\tools.php]
+TopLine=3
+Caret=19,20
+[class\xoopsform\formJanus.php]
+TopLine=109
+Caret=1,130
+[Nouveau1.php]
+TopLine=1
+Caret=1,1
+[..\..\_jjd\svg-01\index-e.html]
+TopLine=82
+Caret=4,119
+[..\..\_jjd\svg-01\gemini-code-1785774270914.html]
+TopLine=139
+Caret=11,139
+[..\..\_jjd\svg-01\gemini-code-1785774529541.html]
+TopLine=120
+Caret=1,139

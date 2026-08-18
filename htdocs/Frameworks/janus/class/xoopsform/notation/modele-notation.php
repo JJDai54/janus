@@ -37,10 +37,10 @@ $debug = true;
 if (!$debug){
   header('Content-type: application/json; charset=utf-8');
 }else{
-  $t = print_r($_GET,true);
-  echo "<pre>{$t}</pre>";
-  $t = print_r($p,true);
-  echo "<pre>{$t}</pre>";
+//   $t = print_r($_GET,true);
+//   echo "<pre>{$t}</pre>";
+//   $t = print_r($p,true);
+//   echo "<pre>{$t}</pre>";
 }
 
 

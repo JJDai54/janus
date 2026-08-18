@@ -172,23 +172,18 @@ var $_value = null;
         }
         $tHtml[] = "</div>";
         $isOpen = ($this->getIsOpen()) ? 'true' : 'false';
+
+
 // ================== ajout du JS =========================        
 $tHtml[] = <<<__script02__
 \n<script type="text/javascript">
 
-$(document).ready(function(){
-//alert("show_hide");
-   $('.show_hide').showHide({
-		speed: 500,  // speed you want the toggle to happen
-		easing: '',  // the animation effect you want. Remove this line if you dont want an effect and if you haven't included jQuery UI
-		changeText: 1, // if you dont want the button text to change, set this to 0
-		showHideText: 1,
+var lib_show = {$this->getLibelle("show", true)};
+var lib_hide = {$this->getLibelle("hide", true)};
 
-		showText: '{$this->getLibelle("show", true)}   <img src="{$janusPathIco32}/plus.png"   width="16px" height="16px" alt="" />',// the button text to show when a div is closed
-		hideText: '{$this->getLibelle("hide", true)} <img src="{$janusPathIco32}/moins.png"  width="16px" height="16px" alt="" />' // the button text to show when a div is open
-	});
+var icoShow = "{$janusPathIco32}plus.png";
+var icoHide = "{$janusPathIco32}moins.png";
 
-}); 
 
 if({$isOpen}){
     setTimeout(formShowHide_openDiv,500);

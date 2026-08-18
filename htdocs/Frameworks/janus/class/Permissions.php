@@ -311,6 +311,11 @@ Renvoie la valeur d'un bit préciser par un index dans la valeur binaire
         $inpGroups->addOptionArray($this->groupList);
         return $inpGroups;
 	}
+    
+/* ************************
+* 
+* 
+* ************************* */
 	function getCheckboxByGroup2($label, $permName, $itemId, $isNew)
 	{
         return $this->getCheckboxByGroup($label, $permName, $itemId, $permName, $isNew);    

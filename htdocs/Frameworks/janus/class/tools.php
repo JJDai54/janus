@@ -20,7 +20,7 @@ defined('XOOPS_ROOT_PATH') or die('Restricted access');
  * @package 	janus
  * @access 		public
  */
-class BoolBin{
+class BoolBin_old{
 
 
 /***************************************************************************
@@ -194,7 +194,7 @@ private static function array2js($name, $options, $isNew = false, $bolEcho = fal
   $t[] = "</script>\n"; 
   
   $js = implode("\n", $t);
-  if ($bolEcho) echo "===>{$js}";
+  //if ($bolEcho) echo "===>{$js}";
   
   return $js;
 }

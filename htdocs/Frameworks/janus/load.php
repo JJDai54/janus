@@ -54,6 +54,7 @@ include_once (JANUS_PATH . "/include/fso.php");
 include_once (JANUS_PATH . "/include/date-functions.php");
 include_once (JANUS_PATH . "/include/xform-functions.php");
 include_once (JANUS_PATH . "/include/language-functions.php");
+include_once (JANUS_PATH . "/include/binary-fnc.php");
 
 /*********************************************************************
  *                  classe du back office
@@ -61,6 +62,7 @@ include_once (JANUS_PATH . "/include/language-functions.php");
 include_once (JANUS_PATH . "/class/About.php");
 include_once (JANUS_PATH . "/class/Feedback.php");
 include_once (JANUS_PATH . "/class/Permissions.php");
+include_once (JANUS_PATH . "/class/ImageBuilder.php");
 
 /*********************************************************************
  *                  classes Goffy

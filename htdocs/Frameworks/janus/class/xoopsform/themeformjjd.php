@@ -120,7 +120,7 @@ class XoopsThemeFormJjd extends XoopsForm
                     if (($desc = $ele->getDescription()) != '') {
                         $tHtml[] =  '<div class="xoops-form-element-help">' . $desc . '</div>';
                     }
-                    $tHtml[] =  '</td><td class="' . $class . '">' . $ele->render() . '</td></tr>' . NWLINE;
+                    $tHtml[] =  '</td><td class="' . $class . '">' . $ele->render() . '</td></tr>' . NEWLINE;
 
                 } else {
                     //modif JJD : pour ajout d'une ligne de sous-titre dans les options
@@ -177,18 +177,18 @@ class XoopsThemeFormJjd extends XoopsForm
         }
 
         if($this->_baliseTable)
-            $tHtml[] = '</table>' . NWLINE;
+            $tHtml[] = '</table>' . NEWLINE;
             
-        //$tHtml[] = $hidden . NWLINE;
+        //$tHtml[] = $hidden . NEWLINE;
         
         if($this->_baliseForm)
-            $tHtml[] = '</form>' . NWLINE;
+            $tHtml[] = '</form>' . NEWLINE;
         
         
         //$tHtml[] =  $this->renderValidationJS(true);
         
         
-        return implode(NWLINE, $tHtml);
+        return implode(NEWLINE, $tHtml);
     }
 
 

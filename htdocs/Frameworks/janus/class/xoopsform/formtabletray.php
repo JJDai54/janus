@@ -126,6 +126,11 @@ class XoopsFormTableTray extends XoopsFormElement
         return true;
     }
     
+    function addHidden($element)
+    {
+        $this->_hiddens[] = $element;
+        return true;
+    }
     function addElementHidden($element)
     {
         $this->_hiddens[] = $element;

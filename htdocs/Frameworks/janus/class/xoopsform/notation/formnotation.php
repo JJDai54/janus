@@ -6,7 +6,7 @@
 //include_once(JANUS_FOEM_PATH . "/form_jjd.php");
 //include_once(dirname(dirname(__FILE__)) . "/form_jjd.php");
 
-//class XoopsFormNotation extends Form_JJD  
+  
 class XoopsFormNotation extends XoopsFormElement   
 {
 const _ROUND_ROUND =  0;
